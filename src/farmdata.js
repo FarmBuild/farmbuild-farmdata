@@ -1,3 +1,3 @@
-/**
- * Created by hxg on 14/04/15.
- */
+'use strict';
+
+angular.module('farmbuild.farmdata', []);

@@ -6,8 +6,8 @@ module.exports = function(config){
     files : [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'src/api-define.js',
-      'src/milk-sold/milk-sold-src.js',
+      'src/farmdata.js',
+      'src/farmdata/index.js',
       'src/index.js',
       'src/**/*.js'
     ],
