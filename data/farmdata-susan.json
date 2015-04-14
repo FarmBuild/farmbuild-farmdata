@@ -48,22 +48,5 @@
       },
       "area" : 0.87
     }
-  ],
-  "managementGroups" : [
-    {
-      "number" : "1",
-      "name" : "Group 1",
-      "description" : "Night Paddocks",
-      "paddocks": ["P3"]
-    },
-    {
-      "number" : "2",
-      "name" : "Group 2",
-      "description" : "Effluent",
-      "paddocks": ["P1"]
-    }
-  ],
-  "commons" : {
-    "milkingArea" : 23.34
-  }
+  ]
 }
