@@ -35,9 +35,9 @@
 
     "jshint": " node_modules/.bin/jshint -c .jshintrc --filename src/**/*-src.js --verbose --show-non-errors",
 
-    "concat": "uglifyjs bower_components/angular/angular.min.js src/api-define.js src/**/*-src.js src/api-init.js -o dist/farmbuild.js -v -b",
+    "concat": "uglifyjs src/farmdata.js src/**/*.js src/index.js -o dist/farmbuild.farmdata.js -v -b",
 
-    "dist": "uglifyjs bower_components/angular/angular.min.js src/api-define.js src/**/*-src.js src/api-init.js --source-map dist/farmbuild.min.js.map --source-map-url farmbuild.min.js.map -o dist/farmbuild.min.js -v -c"
+    "dist": "uglifyjs src/farmdata.js src/**/*.js src/index.js --source-map dist/farmbuild.farmdata.min.js.map --source-map-url farmbuild.farmdata.min.js.map -o dist/farmbuild.farmdata.min.js -v -c"
   },
   "repository": {
     "type": "git",
