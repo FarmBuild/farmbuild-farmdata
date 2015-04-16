@@ -31,13 +31,17 @@
     "preprotractor": "npm run update-webdriver",
     "protractor": "protractor protractor.conf.js",
 
+    "clean": "rm -rf dist/* & rm -rf docs/*",
+
     "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json",
 
     "jshint": " node_modules/.bin/jshint -c .jshintrc --filename src/**/*-src.js --verbose --show-non-errors",
 
     "concat": "uglifyjs src/farmdata.js src/**/*.js src/index.js -o dist/farmbuild.farmdata.js -v -b",
 
-    "dist": "uglifyjs src/farmdata.js src/**/*.js src/index.js --source-map dist/farmbuild.farmdata.min.js.map --source-map-url farmbuild.farmdata.min.js.map -o dist/farmbuild.farmdata.min.js -v -c"
+    "uglify": "uglifyjs src/farmdata.js src/**/*.js src/index.js --source-map dist/farmbuild.farmdata.min.js.map --source-map-url farmbuild.farmdata.min.js.map -o dist/farmbuild.farmdata.min.js -v -c",
+
+    "dist": "npm run clean & npm run generate-docs & npm run concat & npm run uglify"
   },
   "repository": {
     "type": "git",

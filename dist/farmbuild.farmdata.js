@@ -5,19 +5,25 @@ angular.module("farmbuild.farmdata", []);
 "use strict";
 
 angular.module("farmbuild.farmdata").factory("Farmdata", function() {
-    var Farmdata = {}, create = function(name) {
+    var Farmdata = {}, defaults = {
+        name: "My new farm",
+        geometry: {
+            type: "Polygon",
+            crs: "EPSG:4283",
+            coordinates: []
+        }
+    }, create = function(name) {
         return {
             version: 1,
             dateCreated: new Date(),
             dateLastUpdated: new Date(),
-            name: name ? name : "My new farm",
-            geometry: {
-                type: "Polygon",
-                crs: "EPSG:4283",
-                coordinates: []
-            },
+            name: name ? name : defaults.name,
+            geometry: angular.copy(defaults.geometry),
             area: 0
         };
+    };
+    Farmdata.defaultValues = function() {
+        return angular.copy(defaults);
     };
     Farmdata.create = function(name) {
         return create(name);
@@ -34,9 +40,23 @@ describe("farmbuild.farmdata module", function() {
     beforeEach(inject(function(_Farmdata_) {
         Farmdata = _Farmdata_;
     }));
-    describe("farmdata factory", function() {
-        it("should be defined", inject(function() {
+    describe("Use the API for the 1st time with the new farm data", function() {
+        it("Farmdata should be defined", inject(function() {
             expect(Farmdata).toBeDefined();
+        }));
+        it("Farmdata.create should create the default farmdata with name, geometry and area", inject(function() {
+            var data = Farmdata.create();
+            expect(data).toBeDefined();
+            expect(data.geometry).toBeDefined();
+            expect(data.geometry.type).toBeDefined();
+            expect(data.geometry.crs).toBeDefined();
+            expect(data.geometry.coordinates).toBeDefined();
+            expect(data.area).toBeDefined();
+            expect(data.name).toEqual(Farmdata.defaultValues().name);
+        }));
+        it("Farmdata.create should create the default farmdata with the specifid name", inject(function() {
+            var name = "Susan's fram", data = Farmdata.create(name);
+            expect(data.name).toEqual(name);
         }));
     });
 });
