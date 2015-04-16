@@ -11,15 +11,27 @@ describe('farmbuild.farmdata module', function() {
     Farmdata = _Farmdata_;
   }));
 
-  describe('farmdata factory', function(){
-    it('should be defined', inject(function() {
+  describe('Use the API for the 1st time with the new farm data', function(){
+    it('Farmdata should be defined', inject(function() {
       expect(Farmdata).toBeDefined();
     }));
 
-//    it('Calculate MilkSold nutrient by Kg', inject(function() {
-//      var nutrientByKg = MilkSold.nutrientOfMilkSoldByKg(100, 10, 90);
-//      expect(nutrientByKg).toBeDefined();
-//    }));
+    it('Farmdata.create should create the default farmdata with name, geometry and area', inject(function() {
+      var data = Farmdata.create();
 
+      expect(data).toBeDefined();
+      expect(data.geometry).toBeDefined();
+      expect(data.geometry.type).toBeDefined();
+      expect(data.geometry.crs).toBeDefined();
+      expect(data.geometry.coordinates).toBeDefined();
+      expect(data.area).toBeDefined();
+      expect(data.name).toEqual(Farmdata.defaultValues().name);
+    }));
+
+    it('Farmdata.create should create the default farmdata with the specifid name', inject(function() {
+      var name = "Susan's fram",
+        data = Farmdata.create(name);
+      expect(data.name).toEqual(name);
+    }));
   });
 });

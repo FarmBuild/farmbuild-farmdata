@@ -15,20 +15,23 @@
 angular.module('farmbuild.farmdata')
   .factory('Farmdata', function () {
     var Farmdata = {},
+      defaults = {name:'My new farm',
+        geometry:{type: 'Polygon',crs:'EPSG:4283',coordinates:[]}
+      },
       create = function(name) {
-      return {
-        version : 1.0,
-        dateCreated : new Date(),
-        dateLastUpdated : new Date(),
-        name : (name?name:'My new farm'),
-        geometry : {
-          "type": "Polygon",
-          "crs": "EPSG:4283",
-          "coordinates": []
-        },
-        area : 0 }
+        return {
+          version : 1.0,
+          dateCreated : new Date(),
+          dateLastUpdated : new Date(),
+          name : (name?name:defaults.name),
+          geometry : angular.copy(defaults.geometry),
+          area : 0 }
       }
       ;
+
+    Farmdata.defaultValues = function() {
+      return angular.copy(defaults);
+    }
 
     /**
      * Creates a new farmdata block as Javascript object with the specified name.
