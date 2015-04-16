@@ -13,8 +13,8 @@
  * @module Farmdata
  */
 angular.module('farmbuild.farmdata')
-  .factory('Farmdata', function () {
-    var Farmdata = {},
+  .factory('FarmData', function () {
+    var FarmData = {},
       defaults = {name:'My new farm',
         geometry:{type: 'Polygon',crs:'EPSG:4283',coordinates:[]}
       },
@@ -29,7 +29,7 @@ angular.module('farmbuild.farmdata')
       }
       ;
 
-    Farmdata.defaultValues = function() {
+    FarmData.defaultValues = function() {
       return angular.copy(defaults);
     }
 
@@ -41,11 +41,11 @@ angular.module('farmbuild.farmdata')
      * @public
      * @static
      */
-    Farmdata.create = function(name) {
+    FarmData.create = function(name) {
       return create(name);
     };
 
-    window.farmbuild.farmdata = Farmdata;
-    return Farmdata;
+    window.farmbuild.farmdata = FarmData;
+    return FarmData;
 
   });

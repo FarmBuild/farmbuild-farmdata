@@ -4,8 +4,8 @@ angular.module("farmbuild.farmdata", []);
 
 "use strict";
 
-angular.module("farmbuild.farmdata").factory("Farmdata", function() {
-    var Farmdata = {}, defaults = {
+angular.module("farmbuild.farmdata").factory("FarmData", function() {
+    var FarmData = {}, defaults = {
         name: "My new farm",
         geometry: {
             type: "Polygon",
@@ -22,40 +22,40 @@ angular.module("farmbuild.farmdata").factory("Farmdata", function() {
             area: 0
         };
     };
-    Farmdata.defaultValues = function() {
+    FarmData.defaultValues = function() {
         return angular.copy(defaults);
     };
-    Farmdata.create = function(name) {
+    FarmData.create = function(name) {
         return create(name);
     };
-    window.farmbuild.farmdata = Farmdata;
-    return Farmdata;
+    window.farmbuild.farmdata = FarmData;
+    return FarmData;
 });
 
 "use strict";
 
 describe("farmbuild.farmdata module", function() {
-    var Farmdata;
+    var FarmData;
     beforeEach(module("farmbuild.farmdata"));
-    beforeEach(inject(function(_Farmdata_) {
-        Farmdata = _Farmdata_;
+    beforeEach(inject(function(_FarmData_) {
+        FarmData = _FarmData_;
     }));
     describe("Use the API for the 1st time with the new farm data", function() {
-        it("Farmdata should be defined", inject(function() {
-            expect(Farmdata).toBeDefined();
+        it("FarmData should be defined", inject(function() {
+            expect(FarmData).toBeDefined();
         }));
-        it("Farmdata.create should create the default farmdata with name, geometry and area", inject(function() {
-            var data = Farmdata.create();
+        it("FarmData.create should create the default farmdata with name, geometry and area", inject(function() {
+            var data = FarmData.create();
             expect(data).toBeDefined();
             expect(data.geometry).toBeDefined();
             expect(data.geometry.type).toBeDefined();
             expect(data.geometry.crs).toBeDefined();
             expect(data.geometry.coordinates).toBeDefined();
             expect(data.area).toBeDefined();
-            expect(data.name).toEqual(Farmdata.defaultValues().name);
+            expect(data.name).toEqual(FarmData.defaultValues().name);
         }));
-        it("Farmdata.create should create the default farmdata with the specifid name", inject(function() {
-            var name = "Susan's fram", data = Farmdata.create(name);
+        it("FarmData.create should create the default farmdata with the specifid name", inject(function() {
+            var name = "Susan's fram", data = FarmData.create(name);
             expect(data.name).toEqual(name);
         }));
     });
