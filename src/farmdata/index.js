@@ -35,11 +35,11 @@ angular.module('farmbuild.farmdata')
     }
 
     /**
-     * Evaluates the paramter if it's a farmData instance by examining the props defined.
+     * Evaluates the parameter if it's a farmData instance by examining the props defined.
      * FarmData instance must be:
      *
      * @method create
-     * @param {FarmData} farmData
+     * @param {object} farmData instance
      * @returns {boolean} true if it's a farmdata object, false otherwise
      * @public
      * @static
@@ -49,7 +49,14 @@ angular.module('farmbuild.farmdata')
         return false;
       }
 
-      //if(angular.isObject())
+      if(!angular.isObject(farmData)) {
+        return false;
+      }
+
+      if(!farmData.hasOwnProperty('name')) {
+        return false;
+      }
+
       return true;
     };
 
