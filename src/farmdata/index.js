@@ -25,13 +25,33 @@ angular.module('farmbuild.farmdata')
           dateLastUpdated : new Date(),
           name : (name?name:defaults.name),
           geometry : angular.copy(defaults.geometry),
-          area : 0 }
+          area : 0
+        }
       }
-      ;
+    ;
 
     FarmData.defaultValues = function() {
       return angular.copy(defaults);
     }
+
+    /**
+     * Evaluates the paramter if it's a farmData instance by examining the props defined.
+     * FarmData instance must be:
+     *
+     * @method create
+     * @param {FarmData} farmData
+     * @returns {boolean} true if it's a farmdata object, false otherwise
+     * @public
+     * @static
+     */
+    FarmData.isFarmData = function(farmData) {
+      if(!angular.isDefined(farmData)) {
+        return false;
+      }
+
+      //if(angular.isObject())
+      return true;
+    };
 
     /**
      * Creates a new farmdata block as Javascript object with the specified name.
