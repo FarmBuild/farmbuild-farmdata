@@ -31,7 +31,7 @@
     "jshint": " node_modules/.bin/jshint -c .jshintrc --filename src/**/*-src.js --verbose --show-non-errors",
     "concat": "uglifyjs src/farmdata.js src/**/*.js src/index.js -o dist/farmbuild-farmdata.js -v -b",
     "uglify": "uglifyjs dist/farmbuild-farmdata.js --source-map-url farmbuild-farmdata.min.js.map -o dist/farmbuild-farmdata.min.js -v -c",
-    "dist": "npm run clean && npm run generate-docs && npm run concat && npm run uglifyjs"
+    "dist": "npm run clean && npm run generate-docs && npm run concat && npm run uglify"
   },
   "repository": {
     "type": "git",
