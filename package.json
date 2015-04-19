@@ -41,7 +41,7 @@
 
     "uglify": "uglifyjs dist/farmbuild-farmdata.js --source-map-url farmbuild-farmdata.min.js.map -o dist/farmbuild-farmdata.min.js -v -c",
 
-    "dist": "npm run clean & npm run generate-docs & npm run concat & npm run uglifyjs"
+    "dist": "npm run clean && npm run generate-docs && npm run concat && npm run uglifyjs"
   },
   "repository": {
     "type": "git",
