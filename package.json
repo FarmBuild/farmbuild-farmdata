@@ -13,7 +13,8 @@
     "minami": "~1.1.0",
     "jsdoc": "3.3.0-beta3",
     "uglify-js": "2.4.19",
-    "jshint": "2.6.3"
+    "jshint": "2.6.3",
+    "ncp":"2.0.0"
   },
   "scripts": {
     "postinstall": "bower install",
@@ -29,7 +30,7 @@
     "clean": "rm -rf dist/* & rm -rf docs/*",
     "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json",
     "jshint": " node_modules/.bin/jshint -c .jshintrc --filename src/**/*-src.js --verbose --show-non-errors",
-    "concat": "uglifyjs src/farmdata.js src/**/*.js src/index.js -o dist/farmbuild-farmdata.js -v -b",
+    "concat": "uglifyjs src/farmdata.js src/**/*.src.js src/index.js -o dist/farmbuild-farmdata.js -v -b",
     "uglify": "uglifyjs dist/farmbuild-farmdata.js --source-map-url farmbuild-farmdata.min.js.map -o dist/farmbuild-farmdata.min.js -v -c",
     "dist": "npm run clean && npm run generate-docs && npm run concat && npm run uglify"
   },
