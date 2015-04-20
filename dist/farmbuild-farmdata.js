@@ -47,7 +47,7 @@ angular.module("farmbuild.farmdata").factory("FarmData", function() {
 "use strict";
 
 angular.module("farmbuild.farmdata").run(function($log) {
-    $log.info("Welcome to farmdata...");
+    $log.info("Welcome to FarmBuild farmdata...");
 });
 
 window.farmbuild = {
