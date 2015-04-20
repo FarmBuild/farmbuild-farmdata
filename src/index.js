@@ -1,7 +1,9 @@
 'use strict';
 
 // Inject modules
-angular.module('farmbuild.farmdata').run(function(){});
+angular.module('farmbuild.farmdata').run(function($log){
+  $log.info('Welcome to farmdata...');
+});
 
 window.farmbuild = {
   farmdata: {}
