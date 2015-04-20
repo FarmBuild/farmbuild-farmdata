@@ -10,4 +10,4 @@ window.farmbuild = {
 };
 
 // Init api by instantiating angular module internally, users are not tied to angular for using farmbuild.
-angular.injector(['ng', 'farmbuild.farmdata']);
+//angular.injector(['ng', 'farmbuild.farmdata']);
