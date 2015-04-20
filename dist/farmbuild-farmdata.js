@@ -53,5 +53,3 @@ angular.module("farmbuild.farmdata").run(function($log) {
 window.farmbuild = {
     farmdata: {}
 };
-
-angular.injector([ "ng", "farmbuild.farmdata" ]);
