@@ -2,7 +2,7 @@
 
 // Inject modules
 angular.module('farmbuild.farmdata').run(function($log){
-  $log.info('Welcome to farmdata...');
+  $log.info('Welcome to FarmBuild farmdata...');
 });
 
 window.farmbuild = {
