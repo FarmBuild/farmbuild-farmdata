@@ -2,6 +2,10 @@
 
 angular.module("farmbuild.farmdata", []);
 
+window.farmbuild = {
+    farmdata: {}
+};
+
 "use strict";
 
 angular.module("farmbuild.farmdata").factory("FarmData", function() {
@@ -43,13 +47,3 @@ angular.module("farmbuild.farmdata").factory("FarmData", function() {
     window.farmbuild.farmdata = FarmData;
     return FarmData;
 });
-
-"use strict";
-
-angular.module("farmbuild.farmdata").run(function($log) {
-    $log.info("Welcome to FarmBuild farmdata...");
-});
-
-window.farmbuild = {
-    farmdata: {}
-};
