@@ -22,6 +22,13 @@ describe('farmbuild.farmdata module', function() {
       var data = farmdataSession.find();
       expect(data).toBe(null);
     }));
+
+    it('farmdataSession.load should return null.', inject(function() {
+      farmdataSession.clear()
+      var data = farmdataSession.find();
+      expect(data).toBe(null);
+    }));
+
   });
 
   describe('save an existing farmdata to session', function(){

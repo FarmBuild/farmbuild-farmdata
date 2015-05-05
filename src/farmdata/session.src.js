@@ -17,6 +17,20 @@ angular.module('farmbuild.farmdata')
     var farmdataSession = {},
       isDefined = validations.isDefined
       ;
+
+
+    /**
+     * Clear the farmData in the session
+     * @method clear
+     * @returns {Object} farmdataSession
+     * @public
+     * @static
+     */
+    farmdataSession.clear = function() {
+      sessionStorage.setItem('farmData', null);
+      return farmdataSession;
+    }
+
     /**
      * Saves the farmData into the sessionStorage
      * @method create
