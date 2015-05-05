@@ -9,31 +9,31 @@
 'use strict';
 
 /**
- * farmDataSession class
+ * farmdataSession class
  * @module Farmdata
  */
 angular.module('farmbuild.farmdata')
-  .factory('farmDataSession', function ($log, validations) {
-    var farmDataSession = {},
+  .factory('farmdataSession', function ($log, validations) {
+    var farmdataSession = {},
       isDefined = validations.isDefined
       ;
     /**
      * Saves the farmData into the sessionStorage
      * @method create
-     * @returns {Object} farmDataSession
+     * @returns {Object} farmdataSession
      * @public
      * @static
      */
-    farmDataSession.save = function(farmData) {
+    farmdataSession.save = function(farmData) {
       $log.info('saving farmData');
 
       if(!isDefined(farmData)) {
         $log.error('Unable to save farmData... it is undefined');
-        return farmDataSession;
+        return farmdataSession;
       }
 
       sessionStorage.setItem('farmData', angular.toJson(farmData));
-      return farmDataSession;
+      return farmdataSession;
     }
 
 
@@ -44,11 +44,11 @@ angular.module('farmbuild.farmdata')
      * @public
      * @static
      */
-    farmDataSession.find = function() {
+    farmdataSession.find = function() {
       return angular.fromJson(sessionStorage.getItem('farmData'));
     };
 
 
-    return farmDataSession;
+    return farmdataSession;
 
   });

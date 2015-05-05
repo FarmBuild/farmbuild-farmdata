@@ -9,12 +9,12 @@
 'use strict';
 
 /**
- * Farmdata class
+ * farmdata class
  * @module Farmdata
  */
 angular.module('farmbuild.farmdata')
-  .factory('farmData', function (farmDataSession) {
-    var farmData = {session:farmDataSession},
+  .factory('farmdata', function (farmdataSession) {
+    var farmdata = {session:farmdataSession},
       defaults = {name:'My new farm',
         geometry:{type: 'Polygon',crs:'EPSG:4283',coordinates:[]}
       },
@@ -30,9 +30,7 @@ angular.module('farmbuild.farmdata')
       }
     ;
 
-
-
-    farmData.defaultValues = function() {
+    farmdata.defaultValues = function() {
       return angular.copy(defaults);
     }
 
@@ -51,7 +49,7 @@ angular.module('farmbuild.farmdata')
      * @public
      * @static
      */
-    farmData.isLoadFlagSet = function(location) {
+    farmdata.isLoadFlagSet = function(location) {
       var load = false;
 
       if(location.href.split('?').length > 1 &&
@@ -64,15 +62,15 @@ angular.module('farmbuild.farmdata')
 
     /**
      * Evaluates the parameter if it's a farmData instance by examining the props defined.
-     * farmData instance must be:
+     * farmdata instance must be:
      *
      * @method create
      * @param {object} farmData instance
-     * @returns {boolean} true if it's a farmdata object, false otherwise
+     * @returns {boolean} true if it's a farmData object, false otherwise
      * @public
      * @static
      */
-    farmData.isFarmData = function(farmData) {
+    farmdata.isFarmData = function(farmData) {
       if(!angular.isDefined(farmData)) {
         return false;
       }
@@ -96,11 +94,11 @@ angular.module('farmbuild.farmdata')
      * @public
      * @static
      */
-    farmData.create = function(name) {
+    farmdata.create = function(name) {
       return create(name);
     };
 
-    window.farmbuild.farmdata = farmData;
-    return farmData;
+    window.farmbuild.farmdata = farmdata;
+    return farmdata;
 
   });

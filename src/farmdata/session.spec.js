@@ -3,34 +3,34 @@
 describe('farmbuild.farmdata module', function() {
 
   // instantiate service
-  var farmDataSession, farmData;
+  var farmdataSession, farmdata;
 
   beforeEach(module('farmbuild.farmdata'));
 
-  beforeEach(inject(function (_farmDataSession_,_farmData_) {
-    farmDataSession = _farmDataSession_;
-    farmData = _farmData_;
+  beforeEach(inject(function (_farmdataSession_,_farmdata_) {
+    farmdataSession = _farmdataSession_;
+    farmdata = _farmdata_;
   }));
 
-  describe('load an existing farmData from session', function(){
-    it('farmDataSession should be defined', inject(function() {
-      expect(farmDataSession).toBeDefined();
+  describe('load an existing farmdata from session', function(){
+    it('farmdataSession should be defined', inject(function() {
+      expect(farmdataSession).toBeDefined();
     }));
 
-    it('farmDataSession.load should return null.', inject(function() {
-      sessionStorage.setItem('farmData', null);
-      var data = farmDataSession.find();
+    it('farmdataSession.load should return null.', inject(function() {
+      sessionStorage.setItem('farmdata', null);
+      var data = farmdataSession.find();
       expect(data).toBe(null);
     }));
   });
 
-  describe('save an existing farmData to session', function(){
+  describe('save an existing farmdata to session', function(){
 
-    it('farmDataSession.load should return undefined.', inject(function() {
+    it('farmdataSession.load should return undefined.', inject(function() {
       var name = 'My farm',
-        data = farmData.create(name);
-      farmDataSession.save(data);
-      var found = farmDataSession.find();
+        data = farmdata.create(name);
+      farmdataSession.save(data);
+      var found = farmdataSession.find();
       expect(found).toBeDefined();
     }));
   });
