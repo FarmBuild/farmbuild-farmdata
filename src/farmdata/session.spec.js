@@ -18,15 +18,16 @@ describe('farmbuild.farmdata module', function() {
     }));
 
     it('farmdataSession.load should return null.', inject(function() {
-      sessionStorage.setItem('farmdata', null);
+      sessionStorage.clear();
       var data = farmdataSession.find();
-      expect(data).toBe(null);
+      expect(data).toBe(undefined);
     }));
 
     it('farmdataSession.load should return null.', inject(function() {
-      farmdataSession.clear()
+      farmdataSession.clear();
       var data = farmdataSession.find();
-      expect(data).toBe(null);
+
+      expect(data).toBe(undefined);
     }));
 
   });

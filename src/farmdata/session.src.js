@@ -27,7 +27,7 @@ angular.module('farmbuild.farmdata')
      * @static
      */
     farmdataSession.clear = function() {
-      sessionStorage.setItem('farmData', null);
+      sessionStorage.clear();
       return farmdataSession;
     }
 
@@ -59,7 +59,11 @@ angular.module('farmbuild.farmdata')
      * @static
      */
     farmdataSession.find = function() {
-      return angular.fromJson(sessionStorage.getItem('farmData'));
+      var json = sessionStorage.getItem('farmData');
+      if(json === null) {
+        return undefined;
+      }
+      return angular.fromJson(json);
     };
 
 
