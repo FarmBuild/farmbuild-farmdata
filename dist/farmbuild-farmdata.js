@@ -66,6 +66,10 @@ angular.module("farmbuild.farmdata").factory("farmdata", function(farmdataSessio
 
 angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, validations) {
     var farmdataSession = {}, isDefined = validations.isDefined;
+    farmdataSession.clear = function() {
+        sessionStorage.setItem("farmData", null);
+        return farmdataSession;
+    };
     farmdataSession.save = function(farmData) {
         $log.info("saving farmData");
         if (!isDefined(farmData)) {
