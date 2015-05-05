@@ -3,21 +3,21 @@
 describe('farmbuild.farmdata module', function() {
 
   // instantiate service
-  var FarmData;
+  var farmData;
 
   beforeEach(module('farmbuild.farmdata'));
 
-  beforeEach(inject(function (_FarmData_) {
-    FarmData = _FarmData_;
+  beforeEach(inject(function (_farmData_) {
+    farmData = _farmData_;
   }));
 
   describe('Use the API for the 1st time with the new farm data', function(){
-    it('FarmData should be defined', inject(function() {
-      expect(FarmData).toBeDefined();
+    it('farmData should be defined', inject(function() {
+      expect(farmData).toBeDefined();
     }));
 
-    it('FarmData.create should create the default farmdata with name, geometry and area', inject(function() {
-      var data = FarmData.create();
+    it('farmData.create should create the default farmdata with name, geometry and area', inject(function() {
+      var data = farmData.create();
 
       expect(data).toBeDefined();
       expect(data.geometry).toBeDefined();
@@ -25,12 +25,12 @@ describe('farmbuild.farmdata module', function() {
       expect(data.geometry.crs).toBeDefined();
       expect(data.geometry.coordinates).toBeDefined();
       expect(data.area).toBeDefined();
-      expect(data.name).toEqual(FarmData.defaultValues().name);
+      expect(data.name).toEqual(farmData.defaultValues().name);
     }));
 
-    it('FarmData.create should create the default farmdata with the specifid name', inject(function() {
+    it('farmData.create should create the default farmdata with the specifid name', inject(function() {
       var name = "Susan's fram",
-        data = FarmData.create(name);
+        data = farmData.create(name);
       expect(data.name).toEqual(name);
     }));
   });

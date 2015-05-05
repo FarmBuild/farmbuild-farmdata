@@ -3,22 +3,22 @@
 describe('farmbuild.farmdata module', function() {
 
   // instantiate service
-  var FarmData, location = {};
+  var farmData, location = {};
 
   beforeEach(module('farmbuild.farmdata'));
 
-  beforeEach(inject(function (_FarmData_) {
-    FarmData = _FarmData_;
+  beforeEach(inject(function (_farmData_) {
+    farmData = _farmData_;
   }));
 
   describe('Load from session', function(){
-    it('FarmData.isLoadFlagSet should be true with ?load=true ', inject(function() {
+    it('farmData.isLoadFlagSet should be true with ?load=true ', inject(function() {
       location.href = 'http://localhost:8000/examples/angularjs/cows-culled/index.html?load=true';
-      expect(FarmData.isLoadFlagSet(location)).toBeTruthy();
+      expect(farmData.isLoadFlagSet(location)).toBeTruthy();
     }));
-    it('FarmData.isLoadFlagSet should be true with ?load=false ', inject(function() {
+    it('farmData.isLoadFlagSet should be true with ?load=false ', inject(function() {
       location.href = 'http://localhost:8000/examples/angularjs/cows-culled/index.html?load=false';
-      expect(FarmData.isLoadFlagSet(location)).toBe(false);
+      expect(farmData.isLoadFlagSet(location)).toBe(false);
     }));
 
   });
