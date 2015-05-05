@@ -43,6 +43,14 @@ angular.module('farmbuild.farmdata')
       return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 
+    /**
+     * Returns true if the location.search has ?load=true, false otherwise
+     * @method create
+     * @param {object} location instance
+     * @returns {boolean} Returns true if the location.search has ?load=true, false otherwise
+     * @public
+     * @static
+     */
     FarmData.isLoadFlagSet = function(location) {
       var load = false;
 
