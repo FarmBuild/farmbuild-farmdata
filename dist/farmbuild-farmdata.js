@@ -67,7 +67,7 @@ angular.module("farmbuild.farmdata").factory("farmdata", function(farmdataSessio
 angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, validations) {
     var farmdataSession = {}, isDefined = validations.isDefined;
     farmdataSession.clear = function() {
-        sessionStorage.setItem("farmData", null);
+        sessionStorage.clear();
         return farmdataSession;
     };
     farmdataSession.save = function(farmData) {
@@ -80,7 +80,11 @@ angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, v
         return farmdataSession;
     };
     farmdataSession.find = function() {
-        return angular.fromJson(sessionStorage.getItem("farmData"));
+        var json = sessionStorage.getItem("farmData");
+        if (json === null) {
+            return undefined;
+        }
+        return angular.fromJson(json);
     };
     return farmdataSession;
 });
