@@ -30,8 +30,28 @@ angular.module('farmbuild.farmdata')
       }
     ;
 
+
+
     FarmData.defaultValues = function() {
       return angular.copy(defaults);
+    }
+
+    function parameterByName(search, name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    FarmData.isLoadFlagSet = function(location) {
+      var load = false;
+
+      if(location.href.split('?').length > 1 &&
+        location.href.split('?')[1].indexOf('load') === 0){
+        load = (location.href.split('?')[1].split('=')[1] === 'true');
+      }
+
+      return load
     }
 
     /**
