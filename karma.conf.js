@@ -4,8 +4,8 @@ module.exports = function(config){
     basePath : './',
 
     files : [
-      //'src/specs/index.js',
-      'bower_components/angular/angular.js',
+      //'src/specs/index.js'
+      'bower_components/farmbuild-core/dist/farmbuild-core.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'src/farmdata.js',
       'src/farmdata/index.js',
