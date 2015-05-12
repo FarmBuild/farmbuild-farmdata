@@ -1,6 +1,6 @@
 {
   "name": "farmbuild-farmdata",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "Provides a set of APIs for the farmdata, the core data structure for farmbuild project.",
   "main": "index.js",
   "devDependencies": {
@@ -15,7 +15,7 @@
     "uglify-js": "2.4.19",
     "jshint": "2.6.3",
     "ncp": "2.0.0",
-    "generate-schema":"2.1.1"
+    "generate-schema": "2.1.1"
   },
   "scripts": {
     "postinstall": "bower install | bower update",
