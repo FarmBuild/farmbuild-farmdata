@@ -14,7 +14,8 @@
     "jsdoc": "3.3.0-beta3",
     "uglify-js": "2.4.19",
     "jshint": "2.6.3",
-    "ncp": "2.0.0"
+    "ncp": "2.0.0",
+    "generate-schema":"2.1.1"
   },
   "scripts": {
     "postinstall": "bower install",

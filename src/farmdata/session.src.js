@@ -33,7 +33,7 @@ angular.module('farmbuild.farmdata')
 
     /**
      * Saves the farmData into the sessionStorage
-     * @method create
+     * @method save
      * @returns {Object} farmdataSession
      * @public
      * @static
@@ -53,7 +53,7 @@ angular.module('farmbuild.farmdata')
 
     /**
      * Returns a farmData as an object from sessionStorage
-     * @method create
+     * @method find
      * @returns {Object} the farmdata, null, if not found.
      * @public
      * @static
