@@ -13,7 +13,7 @@
  * @module Farmdata
  */
 angular.module('farmbuild.farmdata')
-  .factory('farmdataSession', function ($log, validations) {
+  .factory('farmdataSession', function ($log, farmdataValidator, validations) {
     var farmdataSession = {},
       isDefined = validations.isDefined
       ;
@@ -41,12 +41,13 @@ angular.module('farmbuild.farmdata')
     farmdataSession.save = function(farmData) {
       $log.info('saving farmData');
 
-      if(!isDefined(farmData)) {
-        $log.error('Unable to save farmData... it is undefined');
+      if(!farmdataValidator.validate(farmData)) {
+        $log.error('Unable to save farmData... it is invalid');
         return farmdataSession;
       }
 
       sessionStorage.setItem('farmData', angular.toJson(farmData));
+
       return farmdataSession;
     }
 
@@ -54,27 +55,33 @@ angular.module('farmbuild.farmdata')
     /**
      * Returns a farmData as an object from sessionStorage
      * @method find
-     * @returns {Object} the farmdata, null, if not found.
+     * @returns {Object} the farmdata, undefined, if not found.
      * @public
      * @static
      */
     farmdataSession.find = function() {
       var json = sessionStorage.getItem('farmData');
+
       if(json === null) {
         return undefined;
       }
+
       return angular.fromJson(json);
     };
 
     /**
-     * Returns a farmData as an object from sessionStorage
-     * @method find
-     * @returns {Object} the farmdata, null, if not found.
+     * Load the specified farmData into session.
+     * @method load
+     * @returns {Object} the farmdata loaded in the session, undefined if it's invalid.
      * @public
      * @static
      */
     farmdataSession.load = function(farmData) {
+      if(!farmdataValidator.validate(farmData)) {
+        $log.error('Unable to load farmData... it is invalid');
+      }
 
+      return farmdataSession.save(farmData).find();
     };
 
     return farmdataSession;

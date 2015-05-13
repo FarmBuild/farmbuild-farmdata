@@ -14,7 +14,7 @@
  */
 angular.module('farmbuild.farmdata')
   .factory('farmdata', function (farmdataSession, farmdataValidator, validations) {
-    var farmdata = {session:farmdataSession},
+    var farmdata = {session:farmdataSession, validator:farmdataValidator},
       isEmpty = validations.isEmpty,
       defaults = {
         id:'' + (new Date()).getTime(),
@@ -85,6 +85,7 @@ angular.module('farmbuild.farmdata')
     };
 
     window.farmbuild.farmdata = farmdata;
+
     return farmdata;
 
   });
