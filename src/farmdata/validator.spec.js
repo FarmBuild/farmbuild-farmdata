@@ -17,13 +17,13 @@ describe('farmbuild.farmdata module', function() {
       expect(farmdataSession).toBeDefined();
     }));
 
-    it('farmdataSession.find should return undefined.', inject(function() {
+    it('farmdataSession.load should return null.', inject(function() {
       sessionStorage.clear();
       var data = farmdataSession.find();
       expect(data).toBe(undefined);
     }));
 
-    it('clear and then farmdataSession.find should return undefined.', inject(function() {
+    it('farmdataSession.load should return null.', inject(function() {
       farmdataSession.clear();
       var data = farmdataSession.find();
 
@@ -34,13 +34,12 @@ describe('farmbuild.farmdata module', function() {
 
   describe('save an existing farmdata to session', function(){
 
-    it('create, save and find should return undefined.', inject(function() {
+    it('farmdataSession.load should return undefined.', inject(function() {
       var name = 'My farm',
         data = farmdata.create(name);
       farmdataSession.save(data);
       var found = farmdataSession.find();
       expect(found).toBeDefined();
-      expect(found.name).toBe(name);
     }));
   });
 

@@ -66,6 +66,16 @@ angular.module('farmbuild.farmdata')
       return angular.fromJson(json);
     };
 
+    /**
+     * Returns a farmData as an object from sessionStorage
+     * @method find
+     * @returns {Object} the farmdata, null, if not found.
+     * @public
+     * @static
+     */
+    farmdataSession.load = function(farmData) {
+
+    };
 
     return farmdataSession;
 

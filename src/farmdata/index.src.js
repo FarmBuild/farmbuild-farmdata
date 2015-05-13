@@ -13,7 +13,7 @@
  * @module farmdata
  */
 angular.module('farmbuild.farmdata')
-  .factory('farmdata', function (farmdataSession, validations) {
+  .factory('farmdata', function (farmdataSession, farmdataValidator, validations) {
     var farmdata = {session:farmdataSession},
       isEmpty = validations.isEmpty,
       defaults = {
@@ -39,16 +39,13 @@ angular.module('farmbuild.farmdata')
       return angular.copy(defaults);
     }
 
-    function parameterByName(search, name) {
-      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
-      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
+//    function parameterByName(search, name) {
+//      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+//      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+//        results = regex.exec(location.search);
+//      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+//    }
 
-    farmdata.validate = function(farmData) {
-
-    }
     /**
      * Evaluates the parameter if it's a farmData instance by examining the props defined.
      * farmdata instance must be:
@@ -59,20 +56,21 @@ angular.module('farmbuild.farmdata')
      * @static
      */
     farmdata.isFarmData = function(farmData) {
-      if(!angular.isDefined(farmData)) {
-        return false;
-      }
-
-      if(!angular.isObject(farmData)) {
-        return false;
-      }
-
-      if(!farmData.hasOwnProperty('name')) {
-        return false;
-      }
-
-      return true;
+      return farmdataValidator.validate(farmData);
     };
+
+    /**
+     * Evaluates the parameter if it's a farmData instance by examining the props defined.
+     * farmdata instance must be:
+     * @method validate
+     * @param {object} farmData instance
+     * @returns {boolean} true if it's a farmData object, false otherwise
+     * @public
+     * @static
+     */
+    farmdata.validate = function(farmData) {
+      return farmdataValidator.validate(farmData);
+    }
 
     /**
      * Creates a new farmdata block as Javascript object with the specified name.
