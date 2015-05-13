@@ -2,15 +2,16 @@
 
 angular.module("farmbuild.farmdata", [ "farmbuild.core" ]);
 
-window.farmbuild = {
-    farmdata: {}
-};
+window.farmbuild.farmdata = {};
+
+angular.injector([ "ng", "farmbuild.farmdata" ]);
 
 "use strict";
 
-angular.module("farmbuild.farmdata").factory("farmdata", function(farmdataSession, validations) {
+angular.module("farmbuild.farmdata").factory("farmdata", function(farmdataSession, farmdataValidator, validations) {
     var farmdata = {
-        session: farmdataSession
+        session: farmdataSession,
+        validator: farmdataValidator
     }, isEmpty = validations.isEmpty, defaults = {
         id: "" + new Date().getTime(),
         name: "My new farm",
@@ -34,23 +35,11 @@ angular.module("farmbuild.farmdata").factory("farmdata", function(farmdataSessio
     farmdata.defaultValues = function() {
         return angular.copy(defaults);
     };
-    function parameterByName(search, name) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), results = regex.exec(location.search);
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
-    farmdata.validate = function(farmData) {};
     farmdata.isFarmData = function(farmData) {
-        if (!angular.isDefined(farmData)) {
-            return false;
-        }
-        if (!angular.isObject(farmData)) {
-            return false;
-        }
-        if (!farmData.hasOwnProperty("name")) {
-            return false;
-        }
-        return true;
+        return farmdataValidator.validate(farmData);
+    };
+    farmdata.validate = function(farmData) {
+        return farmdataValidator.validate(farmData);
     };
     farmdata.create = function(name) {
         return create(name);
@@ -61,7 +50,7 @@ angular.module("farmbuild.farmdata").factory("farmdata", function(farmdataSessio
 
 "use strict";
 
-angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, validations) {
+angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, farmdataValidator, validations) {
     var farmdataSession = {}, isDefined = validations.isDefined;
     farmdataSession.clear = function() {
         sessionStorage.clear();
@@ -69,8 +58,8 @@ angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, v
     };
     farmdataSession.save = function(farmData) {
         $log.info("saving farmData");
-        if (!isDefined(farmData)) {
-            $log.error("Unable to save farmData... it is undefined");
+        if (!farmdataValidator.validate(farmData)) {
+            $log.error("Unable to save farmData... it is invalid");
             return farmdataSession;
         }
         sessionStorage.setItem("farmData", angular.toJson(farmData));
@@ -83,7 +72,38 @@ angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, v
         }
         return angular.fromJson(json);
     };
+    farmdataSession.load = function(farmData) {
+        if (!farmdataValidator.validate(farmData)) {
+            $log.error("Unable to load farmData... it is invalid");
+        }
+        return farmdataSession.save(farmData).find();
+    };
     return farmdataSession;
+});
+
+"use strict";
+
+angular.module("farmbuild.core").factory("farmdataValidator", function(validations, $log) {
+    var farmdataValidator = {}, _isDefined = validations.isDefined, _isArray = validations.isArray, _isPositiveNumber = validations.isPositiveNumber, _isEmpty = validations.isEmpty, _isObject = validations.isObject, _isString = validations.isString;
+    function errorLog() {}
+    function _validate(farmData) {
+        $log.info("validating farmData...");
+        if (!_isDefined(farmData)) {
+            $log.error("farmData is undefined.");
+            return false;
+        }
+        if (!_isObject(farmData)) {
+            $log.error("farmData must be a javascript Object.");
+            return false;
+        }
+        if (!farmData.hasOwnProperty("name") || !_isString(farmData.name) || _isEmpty(farmData.name)) {
+            $log.error("farmData must have a name property and cannot be empty.");
+            return false;
+        }
+        return true;
+    }
+    farmdataValidator.validate = _validate;
+    return farmdataValidator;
 });
 
 "use strict";
