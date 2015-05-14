@@ -46,6 +46,8 @@ angular.module('farmbuild.farmdata')
         return farmdataSession;
       }
 
+      farmData.dateLastUpdated = new Date();
+
       sessionStorage.setItem('farmData', angular.toJson(farmData));
 
       return farmdataSession;
