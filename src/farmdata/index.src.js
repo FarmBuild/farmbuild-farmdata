@@ -102,7 +102,9 @@ angular.module('farmbuild.farmdata')
      * @public
      * @static
      */
-    farmdata.save = farmdataSession.save;
+    farmdata.save = function(farmData) {
+      return farmdataSession.save(farmData).find();
+    }
 
     window.farmbuild.farmdata = farmdata;
 
