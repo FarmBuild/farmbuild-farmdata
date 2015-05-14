@@ -45,6 +45,7 @@ angular.module("farmbuild.farmdata").factory("farmdata", function(farmdataSessio
         return create(name);
     };
     farmdata.load = farmdataSession.load;
+    farmdata.find = farmdataSession.find;
     farmdata.save = function(farmData) {
         return farmdataSession.save(farmData).find();
     };
