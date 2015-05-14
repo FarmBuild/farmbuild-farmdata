@@ -84,6 +84,18 @@ angular.module('farmbuild.farmdata')
       return create(name);
     };
 
+    /**
+     * Load the specified farmData into session
+     * @method load
+     * @param {Object} farmData - The farmData
+     * @returns {Object} the farmData
+     * @public
+     * @static
+     */
+    farmdata.load = function(farmData) {
+      return farmdataSession.load(farmData);
+    };
+
     window.farmbuild.farmdata = farmdata;
 
     return farmdata;
