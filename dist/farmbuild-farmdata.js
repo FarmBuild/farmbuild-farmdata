@@ -45,7 +45,9 @@ angular.module("farmbuild.farmdata").factory("farmdata", function(farmdataSessio
         return create(name);
     };
     farmdata.load = farmdataSession.load;
-    farmdata.save = farmdataSession.save;
+    farmdata.save = function(farmData) {
+        return farmdataSession.save(farmData).find();
+    };
     window.farmbuild.farmdata = farmdata;
     return farmdata;
 });
