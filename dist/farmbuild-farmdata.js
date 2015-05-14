@@ -66,6 +66,7 @@ angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, f
             $log.error("Unable to save farmData... it is invalid");
             return farmdataSession;
         }
+        farmData.dateLastUpdated = new Date();
         sessionStorage.setItem("farmData", angular.toJson(farmData));
         return farmdataSession;
     };
