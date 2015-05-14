@@ -96,6 +96,18 @@ angular.module('farmbuild.farmdata')
       return farmdataSession.load(farmData);
     };
 
+    /**
+     * Save the specified farmData into session
+     * @method load
+     * @param {Object} farmData - The farmData
+     * @returns {Object} the farmData
+     * @public
+     * @static
+     */
+    farmdata.save = function(farmData) {
+      return farmdataSession.save(farmData);
+    };
+
     window.farmbuild.farmdata = farmdata;
 
     return farmdata;
