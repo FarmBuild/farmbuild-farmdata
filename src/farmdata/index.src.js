@@ -92,9 +92,7 @@ angular.module('farmbuild.farmdata')
      * @public
      * @static
      */
-    farmdata.load = function(farmData) {
-      return farmdataSession.load(farmData);
-    };
+    farmdata.load = farmdataSession.load;
 
     /**
      * Save the specified farmData into session
@@ -104,9 +102,7 @@ angular.module('farmbuild.farmdata')
      * @public
      * @static
      */
-    farmdata.save = function(farmData) {
-      return farmdataSession.save(farmData);
-    };
+    farmdata.save = farmdataSession.save;
 
     window.farmbuild.farmdata = farmdata;
 
