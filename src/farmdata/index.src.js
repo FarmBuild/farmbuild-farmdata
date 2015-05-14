@@ -95,6 +95,16 @@ angular.module('farmbuild.farmdata')
     farmdata.load = farmdataSession.load;
 
     /**
+     * Loads the farmData from session
+     * @method find
+     * @param {Object} farmData - The farmData
+     * @returns {Object} the farmData
+     * @public
+     * @static
+     */
+    farmdata.find = farmdataSession.find;
+
+    /**
      * Save the specified farmData into session
      * @method load
      * @param {Object} farmData - The farmData
