@@ -49,6 +49,9 @@ angular.module("farmbuild.farmdata").factory("farmdata", function(farmdataSessio
     farmdata.save = function(farmData) {
         return farmdataSession.save(farmData).find();
     };
+    farmdata.update = function(farmData) {
+        return farmdataSession.update(farmData).find();
+    };
     window.farmbuild.farmdata = farmdata;
     return farmdata;
 });
@@ -67,8 +70,13 @@ angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, f
             $log.error("Unable to save farmData... it is invalid");
             return farmdataSession;
         }
-        farmData.dateLastUpdated = new Date();
         sessionStorage.setItem("farmData", angular.toJson(farmData));
+        return farmdataSession;
+    };
+    farmdataSession.update = function(farmData) {
+        $log.info("update farmData");
+        farmData.dateLastUpdated = new Date();
+        farmdataSession.save(farmData);
         return farmdataSession;
     };
     farmdataSession.find = function() {
@@ -81,6 +89,7 @@ angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, f
     farmdataSession.load = function(farmData) {
         if (!farmdataValidator.validate(farmData)) {
             $log.error("Unable to load farmData... it is invalid");
+            return undefined;
         }
         return farmdataSession.save(farmData).find();
     };
