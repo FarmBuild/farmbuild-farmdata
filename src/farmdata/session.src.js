@@ -45,14 +45,24 @@ angular.module('farmbuild.farmdata')
         $log.error('Unable to save farmData... it is invalid');
         return farmdataSession;
       }
-
-      farmData.dateLastUpdated = new Date();
-
       sessionStorage.setItem('farmData', angular.toJson(farmData));
 
       return farmdataSession;
     }
 
+    /**
+     * Updates dateLastUpdated and then the farmData into the sessionStorage
+     * @method save
+     * @returns {Object} farmdataSession
+     * @public
+     * @static
+     */
+    farmdataSession.update = function(farmData) {
+      $log.info('update farmData');
+      farmData.dateLastUpdated = new Date();
+      farmdataSession.save(farmData);
+      return farmdataSession;
+    }
 
     /**
      * Returns a farmData as an object from sessionStorage
@@ -81,6 +91,7 @@ angular.module('farmbuild.farmdata')
     farmdataSession.load = function(farmData) {
       if(!farmdataValidator.validate(farmData)) {
         $log.error('Unable to load farmData... it is invalid');
+        return undefined;
       }
 
       return farmdataSession.save(farmData).find();

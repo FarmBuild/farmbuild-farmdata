@@ -38,6 +38,10 @@ describe('farmbuild.farmdata module', function() {
 
       $log.info('sessioned: %j', sessioned)
 
+      expect(angular.equals(loaded.id, sessioned.id)).toBeTruthy()
+      expect(angular.equals(loaded.name, sessioned.name)).toBeTruthy()
+      expect(angular.equals(loaded.dateCreated, sessioned.dateCreated)).toBeTruthy()
+      expect(angular.equals(loaded.dateLastUpdated, sessioned.dateLastUpdated)).toBeTruthy()
       expect(angular.equals(loaded, sessioned)).toBeTruthy()
 
     }));

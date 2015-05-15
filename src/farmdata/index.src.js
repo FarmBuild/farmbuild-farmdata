@@ -116,6 +116,18 @@ angular.module('farmbuild.farmdata')
       return farmdataSession.save(farmData).find();
     }
 
+    /**
+     * Save the specified farmData into session
+     * @method load
+     * @param {Object} farmData - The updated farmData
+     * @returns {Object} the farmData
+     * @public
+     * @static
+     */
+    farmdata.update = function(farmData) {
+      return farmdataSession.update(farmData).find();
+    }
+
     window.farmbuild.farmdata = farmdata;
 
     return farmdata;
