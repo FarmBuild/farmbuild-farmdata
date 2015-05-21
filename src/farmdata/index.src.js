@@ -109,7 +109,7 @@ angular.module('farmbuild.farmdata')
 
     /**
      * Save the specified farmData into session
-     * @method load
+     * @method save
      * @param {Object} farmData - The farmData
      * @returns {Object} the farmData
      * @public
@@ -121,7 +121,7 @@ angular.module('farmbuild.farmdata')
 
     /**
      * Save the specified farmData into session
-     * @method load
+     * @method update
      * @param {Object} farmData - The updated farmData
      * @returns {Object} the farmData
      * @public

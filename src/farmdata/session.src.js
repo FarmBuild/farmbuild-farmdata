@@ -8,10 +8,6 @@
 
 'use strict';
 
-/**
- * farmdataSession class
- * @module Farmdata
- */
 angular.module('farmbuild.farmdata')
   .factory('farmdataSession', function ($log, farmdataValidator, validations) {
     var farmdataSession = {},
@@ -19,25 +15,11 @@ angular.module('farmbuild.farmdata')
       ;
 
 
-    /**
-     * Clear the farmData in the session
-     * @method clear
-     * @returns {Object} farmdataSession
-     * @public
-     * @static
-     */
     farmdataSession.clear = function() {
       sessionStorage.clear();
       return farmdataSession;
     }
 
-    /**
-     * Saves the farmData into the sessionStorage
-     * @method save
-     * @returns {Object} farmdataSession
-     * @public
-     * @static
-     */
     farmdataSession.save = function(farmData) {
       $log.info('saving farmData');
 
@@ -50,13 +32,6 @@ angular.module('farmbuild.farmdata')
       return farmdataSession;
     }
 
-    /**
-     * Updates dateLastUpdated and then the farmData into the sessionStorage
-     * @method save
-     * @returns {Object} farmdataSession
-     * @public
-     * @static
-     */
     farmdataSession.update = function(farmData) {
       $log.info('update farmData');
       farmData.dateLastUpdated = new Date();
@@ -64,13 +39,6 @@ angular.module('farmbuild.farmdata')
       return farmdataSession;
     }
 
-    /**
-     * Returns a farmData as an object from sessionStorage
-     * @method find
-     * @returns {Object} the farmdata, undefined, if not found.
-     * @public
-     * @static
-     */
     farmdataSession.find = function() {
       var json = sessionStorage.getItem('farmData');
 
@@ -81,13 +49,6 @@ angular.module('farmbuild.farmdata')
       return angular.fromJson(json);
     };
 
-    /**
-     * Load the specified farmData into session.
-     * @method load
-     * @returns {Object} the farmdata loaded in the session, undefined if it's invalid.
-     * @public
-     * @static
-     */
     farmdataSession.load = function(farmData) {
       if(!farmdataValidator.validate(farmData)) {
         $log.error('Unable to load farmData... it is invalid');
