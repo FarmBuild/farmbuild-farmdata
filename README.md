@@ -9,7 +9,7 @@ Please <a href="https://farmbuild-user.agriculture.vic.gov.au">register</a> firs
 
 To get you started simply download this repository using <a href="https://github.com/FarmBuild/farmbuild-farmdata/archive/master.zip" target="_blank">"Download ZIP"</a> on the right side of this page. Unzip the downloaded folder and go to "examples" and open one of the html files in a browser.
 
-<a href="https://rawgit.com/FarmBuild/farmbuild-farmdata/master/docs/farmbuild-farmdata/1.0.32/index.html" target="_blank">API documentation</a>
+<a href="https://rawgit.com/FarmBuild/farmbuild-farmdata/master/docs/farmbuild-farmdata/1.0.33/index.html" target="_blank">API documentation</a>
 
 For more information about API and Testing see the [Wiki](https://github.com/FarmBuild/farmbuild-farmdata/wiki) section.
 
