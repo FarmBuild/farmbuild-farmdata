@@ -8,7 +8,7 @@ angular.injector([ "ng", "farmbuild.farmdata" ]);
 
 "use strict";
 
-angular.module("farmbuild.farmdata").factory("farmdata", function(farmdataSession, farmdataValidator, validations) {
+angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdataSession, farmdataValidator, validations) {
     var farmdata = {
         session: farmdataSession,
         validator: farmdataValidator
@@ -41,8 +41,8 @@ angular.module("farmbuild.farmdata").factory("farmdata", function(farmdataSessio
     farmdata.validate = function(farmData) {
         return farmdataValidator.validate(farmData);
     };
-    farmdata.create = function(name) {
-        return create(name);
+    farmdata.create = function(name, id) {
+        return create(name, id);
     };
     farmdata.load = farmdataSession.load;
     farmdata.find = farmdataSession.find;
