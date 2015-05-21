@@ -13,7 +13,8 @@
  * @module farmdata
  */
 angular.module('farmbuild.farmdata')
-  .factory('farmdata', function (farmdataSession, farmdataValidator, validations) {
+  .factory('farmdata',
+  function ($log, farmdataSession, farmdataValidator, validations) {
     var farmdata = {session:farmdataSession, validator:farmdataValidator},
       isEmpty = validations.isEmpty,
       defaults = {
@@ -75,13 +76,15 @@ angular.module('farmbuild.farmdata')
     /**
      * Creates a new farmdata block as Javascript object with the specified name.
      * @method create
-     * @param {string} name - The name of the farm
-     * @returns {Object} the farmdata
+     * @param {string} id - The ID of this farm in case if you manage this farm in an external system, so you can map the farmData
+     * with the external system
+     * @param {!string} name - The name of the farm
+     * @returns {Object} the farmdata object, undefined if the required fields are not provided
      * @public
      * @static
      */
-    farmdata.create = function(name) {
-      return create(name);
+    farmdata.create = function(name, id) {
+      return create(name, id);
     };
 
     /**

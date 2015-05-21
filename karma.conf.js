@@ -12,11 +12,11 @@ module.exports = function(config){
       'src/farmdata/session.src.js',
       'src/farmdata/validator.src.js',
       'src/farmdata/blank.spec.js',
-      'src/farmdata/index.spec.js',
-      'src/farmdata/session.spec.js',
-      'src/farmdata/validator.spec.js',
-      'src/farmdata/session-load.spec.js',
-//      'src/**/*.spec.js'
+//      'src/farmdata/index.spec.js',
+//      'src/farmdata/session.spec.js',
+//      'src/farmdata/validator.spec.js',
+//      'src/farmdata/session-load.spec.js',
+      'src/**/*.spec.js',
       {pattern: 'data/*.json'}
     ],
 

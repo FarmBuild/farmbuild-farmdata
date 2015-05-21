@@ -6,6 +6,14 @@ describe('farmbuild.farmdata module', function() {
   var farmdata;
 
   beforeEach(module('farmbuild.farmdata'));
+  var $log;
+  beforeEach(module('farmbuild.farmdata', function($provide) {
+    $provide.value('$log', console)
+  }));
+
+  beforeEach(inject(function (_$log_) {
+    $log = _$log_
+  }))
 
   beforeEach(inject(function (_farmdata_) {
     farmdata = _farmdata_;
@@ -31,6 +39,7 @@ describe('farmbuild.farmdata module', function() {
     it('farmdata.create should create the default farmdata with the specifid name', inject(function() {
       var name = "Susan's fram",
         data = farmdata.create(name);
+
       expect(data.name).toEqual(name);
     }));
   });
