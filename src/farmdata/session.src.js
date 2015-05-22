@@ -58,6 +58,17 @@ angular.module('farmbuild.farmdata')
       return farmdataSession.save(farmData).find();
     };
 
+    farmdataSession.isLoadFlagSet = function(location) {
+      var load = false;
+
+      if(location.href.split('?').length > 1 &&
+        location.href.split('?')[1].indexOf('load') === 0){
+        load = (location.href.split('?')[1].split('=')[1] === 'true');
+      }
+
+      return load;
+    }
+
     return farmdataSession;
 
   });
