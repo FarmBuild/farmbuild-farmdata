@@ -20,9 +20,11 @@ angular.module('farmbuild.core')
       _isDefined = validations.isDefined,
       _isArray = validations.isArray,
       _isPositiveNumber = validations.isPositiveNumber,
+      _isPositiveNumberOrZero = validations.isPositiveNumberOrZero,
       _isEmpty = validations.isEmpty,
       _isObject = validations.isObject,
-      _isString = validations.isString;
+      _isString = validations.isString,
+      areaUnitDefault = 'hectare';
 
     function errorLog() {
 
@@ -42,8 +44,11 @@ angular.module('farmbuild.core')
 
       if(!farmData.hasOwnProperty('name') ||
         !_isString(farmData.name) ||
-        _isEmpty(farmData.name)) {
-        $log.error('farmData must have a name property and cannot be empty.');
+        _isEmpty(farmData.name) ||
+        !_isDefined(farmData.area) ||
+        !_isPositiveNumberOrZero(farmData.area) ||
+        !angular.equals(farmData.areaUnit, areaUnitDefault)) {
+        $log.error('farmData must have name, area (positve number or zero) and areaUnit (must be '+areaUnitDefault+') and cannot be empty.');
         return false;
       }
 
