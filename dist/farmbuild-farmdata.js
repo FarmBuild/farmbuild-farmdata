@@ -100,6 +100,14 @@ angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, f
         }
         return load;
     };
+    farmdataSession.setLoadFlag = function(location) {
+        var path = farmdataSession.clearLoadFlag(location);
+        return path + "?load=true";
+    };
+    farmdataSession.clearLoadFlag = function(location) {
+        var path = location.href.toString(), path = path.substring(0, path.indexOf("?"));
+        return path;
+    };
     return farmdataSession;
 });
 
