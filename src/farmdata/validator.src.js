@@ -48,7 +48,7 @@ angular.module('farmbuild.core')
         !_isDefined(farmData.area) ||
         !_isPositiveNumberOrZero(farmData.area) ||
         !angular.equals(farmData.areaUnit, areaUnitDefault)) {
-        $log.error('farmData must have name, area (positve number or zero) and areaUnit (must be '+areaUnitDefault+') and cannot be empty.');
+        $log.error('farmData must have name, area (positve number or zero) and areaUnit (must be '+areaUnitDefault+'): %j', farmData);
         return false;
       }
 
