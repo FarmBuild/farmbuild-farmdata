@@ -99,7 +99,7 @@ angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, f
 "use strict";
 
 angular.module("farmbuild.core").factory("farmdataValidator", function(validations, $log) {
-    var farmdataValidator = {}, _isDefined = validations.isDefined, _isArray = validations.isArray, _isPositiveNumber = validations.isPositiveNumber, _isEmpty = validations.isEmpty, _isObject = validations.isObject, _isString = validations.isString;
+    var farmdataValidator = {}, _isDefined = validations.isDefined, _isArray = validations.isArray, _isPositiveNumber = validations.isPositiveNumber, _isPositiveNumberOrZero = validations.isPositiveNumberOrZero, _isEmpty = validations.isEmpty, _isObject = validations.isObject, _isString = validations.isString, areaUnitDefault = "hectare";
     function errorLog() {}
     function _validate(farmData) {
         $log.info("validating farmData...");
@@ -111,8 +111,8 @@ angular.module("farmbuild.core").factory("farmdataValidator", function(validatio
             $log.error("farmData must be a javascript Object.");
             return false;
         }
-        if (!farmData.hasOwnProperty("name") || !_isString(farmData.name) || _isEmpty(farmData.name)) {
-            $log.error("farmData must have a name property and cannot be empty.");
+        if (!farmData.hasOwnProperty("name") || !_isString(farmData.name) || _isEmpty(farmData.name) || !_isDefined(farmData.area) || !_isPositiveNumberOrZero(farmData.area) || !angular.equals(farmData.areaUnit, areaUnitDefault)) {
+            $log.error("farmData must have name, area (positve number or zero) and areaUnit (must be " + areaUnitDefault + ") and cannot be empty.");
             return false;
         }
         return true;
