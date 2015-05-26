@@ -31,6 +31,8 @@ describe('farmbuild.farmdata module', function() {
       expect(data.geometry).toBeDefined();
       expect(data.geometry.type).toBeDefined();
       expect(data.geometry.crs).toBeDefined();
+      expect(data.geometry.crs).toBe('EPSG:4283');
+
       expect(data.geometry.coordinates).toBeDefined();
       expect(data.area).toBeDefined();
       expect(data.name).toEqual(farmdata.defaultValues().name);

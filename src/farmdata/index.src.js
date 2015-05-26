@@ -14,13 +14,20 @@
  */
 angular.module('farmbuild.farmdata')
   .factory('farmdata',
-  function ($log, farmdataSession, farmdataValidator, validations) {
-    var farmdata = {session:farmdataSession, validator:farmdataValidator},
+  function ($log,
+            farmdataSession, farmdataValidator,
+            crsSupported, validations) {
+    var farmdata =
+      {
+        session:farmdataSession,
+        validator:farmdataValidator,
+        crsSupported: crsSupported
+      },
       isEmpty = validations.isEmpty,
       defaults = {
         id:'' + (new Date()).getTime(),
         name:'My new farm',
-        geometry:{type: 'Polygon',crs:'EPSG:4283',coordinates:[]}
+        geometry:{type: 'Polygon',crs:crsSupported[0].name,coordinates:[]}
       },
       create = function(name, id) {
         return {
