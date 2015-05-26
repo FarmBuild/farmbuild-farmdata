@@ -1,6 +1,6 @@
 {
   "name": "farmbuild-farmdata",
-  "version": "1.0.38",
+  "version": "1.0.39",
   "description": "Provides a set of APIs for the farmdata, the core data structure for farmbuild project.",
   "main": "index.js",
   "devDependencies": {
