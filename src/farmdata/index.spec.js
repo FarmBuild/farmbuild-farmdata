@@ -36,6 +36,10 @@ describe('farmbuild.farmdata module', function() {
       expect(data.geometry.coordinates).toBeDefined();
       expect(data.area).toBeDefined();
       expect(data.name).toEqual(farmdata.defaultValues().name);
+
+      expect(data.paddocks).toBeDefined();
+      $log.info('typeof data.paddocks %s', typeof data.paddocks)
+      expect(Object.prototype.toString.call(data.paddocks) === '[object Array]').toBeTruthy();
     }));
 
     it('farmdata.create should create the default farmdata with the specifid name', inject(function() {
