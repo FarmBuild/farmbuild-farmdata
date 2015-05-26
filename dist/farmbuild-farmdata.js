@@ -126,12 +126,13 @@ angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, $
     };
     farmdataSession.export = function(document, farmData) {
         var a = document.createElement("a"), name = "farmdata-" + farmData.name.replace(/\W+/g, "") + "-" + $filter("date")(new Date(), "yyyyMMddHHmmss") + ".json";
-        a.id = "downloadFarmData";
+        a.id = "downloadFarmData123456";
         document.body.appendChild(a);
-        $("a#downloadFarmData").attr({
+        angular.element(a).attr({
             download: name,
             href: "data:application/json;charset=utf8," + encodeURIComponent(JSON.stringify(farmData, undefined, 2))
-        }).get(0).click();
+        });
+        a.click();
     };
     farmdataSession.isLoadFlagSet = function(location) {
         var load = false;
