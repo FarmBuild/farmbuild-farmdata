@@ -27,16 +27,21 @@ angular.module('farmbuild.farmdata')
       defaults = {
         id:'' + (new Date()).getTime(),
         name:'My new farm',
-        geometry:{type: 'Polygon',crs:crsSupported[0].name,coordinates:[]}
+        geometry:{type: 'Polygon', crs:crsSupported[0].name,coordinates:[]}
       },
-      create = function(name, id) {
+      geometry = function(projectionName) {
+        var g = angular.copy(defaults.geometry);
+        g.crs = (!isEmpty(projectionName)?projectionName: g.crs);
+        return g;
+      },
+      create = function(name, id, projectionName) {
         return {
           version : 1.0,
           dateCreated : new Date(),
           dateLastUpdated : new Date(),
           id:(isEmpty(id)?defaults.id:id),
           name : (isEmpty(name)?defaults.name:name),
-          geometry : angular.copy(defaults.geometry),
+          geometry : geometry(projectionName),
           paddocks:[],
           area : 0,
           areaUnit:'hectare'
@@ -91,9 +96,7 @@ angular.module('farmbuild.farmdata')
      * @public
      * @static
      */
-    farmdata.create = function(name, id) {
-      return create(name, id);
-    };
+    farmdata.create = create;
 
     /**
      * Load the specified farmData into session
