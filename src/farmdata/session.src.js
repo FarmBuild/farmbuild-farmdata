@@ -9,7 +9,8 @@
 'use strict';
 
 angular.module('farmbuild.farmdata')
-  .factory('farmdataSession', function ($log, farmdataValidator, validations) {
+  .factory('farmdataSession',
+  function ($log, $filter, farmdataValidator, validations) {
     var farmdataSession = {},
       isDefined = validations.isDefined
       ;
@@ -56,6 +57,27 @@ angular.module('farmbuild.farmdata')
       }
 
       return farmdataSession.save(farmData).find();
+    };
+
+    /**
+     * Exports the farmData.json with a file name: farmdata-NAME_OF_FILE-yyyyMMddHHmmss.json
+     * It creates <a> element with 'download' attribute, the data is attached to href
+     * and invoke click() function so the user gets the file save dialogue or something equivalent.
+     * @method export
+     * @param {object} document
+     * @param {object} farmData
+     */
+    farmdataSession.export = function(document, farmData) {
+
+      var a = document.createElement("a"),
+      name = 'farmdata-'+farmData.name.replace(/\W+/g, "")+'-'+$filter('date')(new Date(), 'yyyyMMddHHmmss')+'.json';
+      a.id='downloadFarmData';
+      document.body.appendChild(a);
+
+      angular.element('a#downloadFarmData').attr({
+        'download': name,
+        'href': 'data:application/json;charset=utf8,' + encodeURIComponent(JSON.stringify(farmData, undefined, 2))
+      }).get(0).click();
     };
 
     farmdataSession.isLoadFlagSet = function(location) {
