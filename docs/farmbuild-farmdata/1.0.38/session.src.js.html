@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>session.src.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-farmdata.html">farmdata</a><ul class='methods'><li data-type='method'><a href="module-farmdata.html#.create">create</a></li><li data-type='method'><a href="module-farmdata.html#.find">find</a></li><li data-type='method'><a href="module-farmdata.html#.isFarmData">isFarmData</a></li><li data-type='method'><a href="module-farmdata.html#.load">load</a></li><li data-type='method'><a href="module-farmdata.html#.save">save</a></li><li data-type='method'><a href="module-farmdata.html#.update">update</a></li><li data-type='method'><a href="module-farmdata.html#.validate">validate</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#export">export</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">session.src.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @since 0.0.1
+ * @copyright 2015 Spatial Vision, Inc. http://spatialvision.com.au
+ * @license The MIT License
+ * @author Spatial Vision
+ * @version 1.0.0
+ */
+
+'use strict';
+
+angular.module('farmbuild.farmdata')
+  .factory('farmdataSession',
+  function ($log, $filter, farmdataValidator, validations) {
+    var farmdataSession = {},
+      isDefined = validations.isDefined
+      ;
+
+
+    farmdataSession.clear = function() {
+      sessionStorage.clear();
+      return farmdataSession;
+    }
+
+    farmdataSession.save = function(farmData) {
+      $log.info('saving farmData');
+
+      if(!farmdataValidator.validate(farmData)) {
+        $log.error('Unable to save farmData... it is invalid');
+        return farmdataSession;
+      }
+      sessionStorage.setItem('farmData', angular.toJson(farmData));
+
+      return farmdataSession;
+    }
+
+    farmdataSession.update = function(farmData) {
+      $log.info('update farmData');
+      farmData.dateLastUpdated = new Date();
+      farmdataSession.save(farmData);
+      return farmdataSession;
+    }
+
+    farmdataSession.find = function() {
+      var json = sessionStorage.getItem('farmData');
+
+      if(json === null) {
+        return undefined;
+      }
+
+      return angular.fromJson(json);
+    };
+
+    farmdataSession.load = function(farmData) {
+      if(!farmdataValidator.validate(farmData)) {
+        $log.error('Unable to load farmData... it is invalid');
+        return undefined;
+      }
+
+      return farmdataSession.save(farmData).find();
+    };
+
+    /**
+     * Exports the farmData.json with a file name: farmdata-NAME_OF_FILE-yyyyMMddHHmmss.json
+     * It creates &lt;a> element with 'download' attribute, the data is attached to href
+     * and invoke click() function so the user gets the file save dialogue or something equivalent.
+     * @method export
+     * @param {object} document
+     * @param {object} farmData
+     */
+    farmdataSession.export = function(document, farmData) {
+
+      var a = document.createElement("a"),
+      name = 'farmdata-'+farmData.name.replace(/\W+/g, "")+'-'+$filter('date')(new Date(), 'yyyyMMddHHmmss')+'.json';
+      a.id='downloadFarmData';
+      document.body.appendChild(a);
+
+      angular.element('a#downloadFarmData').attr({
+        'download': name,
+        'href': 'data:application/json;charset=utf8,' + encodeURIComponent(JSON.stringify(farmData, undefined, 2))
+      }).get(0).click();
+    };
+
+    farmdataSession.isLoadFlagSet = function(location) {
+      var load = false;
+
+      if(location.href.split('?').length > 1 &amp;&amp;
+        location.href.split('?')[1].indexOf('load') === 0){
+        load = (location.href.split('?')[1].split('=')[1] === 'true');
+      }
+
+      return load;
+    }
+
+    farmdataSession.setLoadFlag = function(location) {
+      var path = farmdataSession.clearLoadFlag(location);
+      return path + '?load=true';
+    }
+
+    farmdataSession.clearLoadFlag = function(location) {
+      var path = location.href.toString(),
+        path = path.substring(0, path.indexOf('?'));
+      return path;
+    }
+
+    return farmdataSession;
+
+  });
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Tue May 26 2015 11:00:11 GMT+1000 (AEST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
