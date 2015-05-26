@@ -29,6 +29,7 @@ angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdata
             id: isEmpty(id) ? defaults.id : id,
             name: isEmpty(name) ? defaults.name : name,
             geometry: angular.copy(defaults.geometry),
+            paddocks: [],
             area: 0,
             areaUnit: "hectare"
         };
