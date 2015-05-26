@@ -74,7 +74,7 @@ angular.module('farmbuild.farmdata')
       a.id='downloadFarmData';
       document.body.appendChild(a);
 
-      angular.element('a#downloadFarmData').attr({
+      $('a#downloadFarmData').attr({
         'download': name,
         'href': 'data:application/json;charset=utf8,' + encodeURIComponent(JSON.stringify(farmData, undefined, 2))
       }).get(0).click();
