@@ -11,8 +11,8 @@
 'use strict';
 
 /**
- * webmapping/geoJsonValidator singleton
- * @private-module webmapping/geoJsonValidator
+ * farmdata/geoJsonValidator singleton
+ * @private-module farmdata/geoJsonValidator
  */
 angular.module('farmbuild.farmdata')
   .factory('geoJsonValidator',

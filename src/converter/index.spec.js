@@ -4,34 +4,35 @@
  * how to set $log so it ouputs to console
  * how to use the test data using fixture
  */
-describe('farmbuild.webmapping module', function() {
+describe('farmbuild.farmdata module', function() {
   //access test data under data dir
   beforeEach(function() {
-    fixture.setBase('examples/data')
+    fixture.setBase('data')
   })
+  beforeEach(module('farmbuild.farmdata'));
 
   // instantiate log
   var $log,
-    webmappingConverter,webmappingValidator,
+    farmdataConverter,geoJsonValidator,
     susanFarm = 'farmdata-susan.json';
-  beforeEach(module('farmbuild.webmapping', function($provide) {
+  beforeEach(module('farmbuild.farmdata', function($provide) {
     $provide.value('$log', console)
   }));
 
-  beforeEach(inject(function (_$log_, _webmappingConverter_, _webmappingValidator_) {
+  beforeEach(inject(function (_$log_, _farmdataConverter_, _geoJsonValidator_) {
     $log = _$log_,
-    webmappingConverter = _webmappingConverter_
-    webmappingValidator = _webmappingValidator_
+    farmdataConverter = _farmdataConverter_
+    geoJsonValidator = _geoJsonValidator_
   }))
 
   describe('Given calling validator.validate should return true or fale', function() {
-    it('webmappingConverter should be defined', inject(function() {
-      expect(webmappingConverter).toBeDefined()
+    it('farmdataConverter should be defined', inject(function() {
+      expect(farmdataConverter).toBeDefined()
     }))
 
     it('Susan farm data should be converted to valid geoJsons', inject(function() {
       var loaded = fixture.load(susanFarm),
-        geoJsons = webmappingConverter.toGeoJsons(loaded);
+        geoJsons = farmdataConverter.toGeoJsons(loaded);
 
 
       expect(geoJsons).toBeDefined()
@@ -41,9 +42,9 @@ describe('farmbuild.webmapping module', function() {
 
       $log.info('geoJsons.farm:%j', geoJsons.farm)
 
-      expect(webmappingValidator.isGeoJsons(geoJsons.farm)).toBeTruthy()
+      expect(geoJsonValidator.isGeoJsons(geoJsons.farm)).toBeTruthy()
       expect(geoJsons.paddocks).toBeDefined()
-      expect(webmappingValidator.isGeoJsons(geoJsons.paddocks)).toBeTruthy()
+      expect(geoJsonValidator.isGeoJsons(geoJsons.paddocks)).toBeTruthy()
       expect(geoJsons.paddocks.features[0].properties.name).toBeDefined()
 
       $log.info('geoJsons:%j', geoJsons)
@@ -52,11 +53,11 @@ describe('farmbuild.webmapping module', function() {
     it('geoJsons  should be converted to valid farmData', inject(function() {
       var loaded = fixture.load(susanFarm),
         source = angular.copy(loaded),
-        geoJsons = webmappingConverter.toGeoJsons(loaded)
+        geoJsons = farmdataConverter.toGeoJsons(loaded)
 
       $log.info('loaded:%j', source.geometry.crs)
 
-      var converted = webmappingConverter.toFarmData(loaded, geoJsons)
+      var converted = farmdataConverter.toFarmData(loaded, geoJsons)
 
       $log.info('source:%j, converted:%j', source.geometry.crs, converted.geometry.crs)
 

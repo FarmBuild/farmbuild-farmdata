@@ -8,16 +8,15 @@
 
 'use strict';
 
-angular.module('farmbuild.webmapping')
-  .factory('webmappingConverter',
+angular.module('farmbuild.farmdata')
+  .factory('farmdataConverter',
   function (farmdata,
             validations,
             $log,
-            webmappingValidator,
-            webMappingSession) {
+            geoJsonValidator) {
     var _isDefined = validations.isDefined,
-      webmappingConverter = {},
-      validator = webmappingValidator;
+      farmdataConverter = {},
+      validator = geoJsonValidator;
 
     function createFeatureCollection(geometry) {
 
@@ -68,7 +67,7 @@ angular.module('farmbuild.webmapping')
         }
       }
     };
-    webmappingConverter.toGeoJsons = toGeoJsons;
+    farmdataConverter.toGeoJsons = toGeoJsons;
 
     function toFarmData(farmData, geoJsons) {
 
@@ -85,10 +84,10 @@ angular.module('farmbuild.webmapping')
 
       return farmData;
     };
-    webmappingConverter.toFarmData = toFarmData;
+    farmdataConverter.toFarmData = toFarmData;
 
 
 
-    return webmappingConverter;
+    return farmdataConverter;
 
   });
