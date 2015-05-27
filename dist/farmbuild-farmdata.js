@@ -1315,8 +1315,8 @@ angular.injector([ "ng", "farmbuild.farmdata" ]);
 
 "use strict";
 
-angular.module("farmbuild.webmapping").factory("webmappingConverter", function(farmdata, validations, $log, webmappingValidator, webMappingSession) {
-    var _isDefined = validations.isDefined, webmappingConverter = {}, validator = webmappingValidator;
+angular.module("farmbuild.farmdata").factory("farmdataConverter", function(farmdata, validations, $log, geoJsonValidator) {
+    var _isDefined = validations.isDefined, farmdataConverter = {}, validator = geoJsonValidator;
     function createFeatureCollection(geometry) {}
     function convertCrs(geometry, crs) {
         geometry.crs = {
@@ -1361,7 +1361,7 @@ angular.module("farmbuild.webmapping").factory("webmappingConverter", function(f
             }
         };
     }
-    webmappingConverter.toGeoJsons = toGeoJsons;
+    farmdataConverter.toGeoJsons = toGeoJsons;
     function toFarmData(farmData, geoJsons) {
         $log.info("Converting geoJsons.farm.features[0] and paddocks geojson to farmData ...");
         var farmFeature = geoJsons.farm.features[0], paddocks = geoJsons.paddocks;
@@ -1372,8 +1372,8 @@ angular.module("farmbuild.webmapping").factory("webmappingConverter", function(f
         });
         return farmData;
     }
-    webmappingConverter.toFarmData = toFarmData;
-    return webmappingConverter;
+    farmdataConverter.toFarmData = toFarmData;
+    return farmdataConverter;
 });
 
 "use strict";
