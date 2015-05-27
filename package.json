@@ -23,7 +23,8 @@
     "jshint": "2.6.3",
     "ncp": "2.0.0",
     "generate-schema": "2.1.1",
-    "replace": "^0.3"
+    "replace": "^0.3",
+    "geojsonhint": "^1.0"
   },
   "scripts": {
     "bower-update": "bower update",
@@ -40,7 +41,7 @@
     "clean": "rm -rf dist/* & rm -rf docs/*",
     "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json",
     "jshint": " node_modules/.bin/jshint -c .jshintrc --filename src/**/*-src.js --verbose --show-non-errors",
-    "concat": "uglifyjs src/index.js src/**/*.src.js -o dist/farmbuild-farmdata.js -v -b",
+    "concat": "uglifyjs node_modules/geojsonhint/geojsonhint.js src/index.js src/**/*.src.js -o dist/farmbuild-farmdata.js -v -b",
     "uglify": "uglifyjs dist/farmbuild-farmdata.js --source-map-url farmbuild-farmdata.min.js.map -o dist/farmbuild-farmdata.min.js -v -c",
     "dist": "npm run clean && npm run generate-docs && npm run concat && npm run uglify"
   },

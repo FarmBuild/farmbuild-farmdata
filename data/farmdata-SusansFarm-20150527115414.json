@@ -1,11 +1,11 @@
 {
-  "version": 1.0,
+  "version": 1,
   "dateCreated": "2015-03-30T21:19:00",
-  "dateLastUpdated": "2015-03-30T21:19:06",
-  "id":"1432602446885",
+  "dateLastUpdated": "2015-05-27T01:54:14.353Z",
+  "id": "1432602446885",
   "name": "Susan's Farm",
   "area": 89.95,
-  "areaUnit":"hectare",
+  "areaUnit": "hectare",
   "geometry": {
     "type": "Polygon",
     "crs": "EPSG:4283",
@@ -39,7 +39,7 @@
       "name": "DAMS",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5826132801325,
@@ -81,7 +81,7 @@
       "name": "TRESS",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.58072609426455,
@@ -111,7 +111,7 @@
       "name": "P3",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.58072144612308,
@@ -149,7 +149,7 @@
       "name": "P1",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5820357180293,
@@ -183,7 +183,7 @@
       "name": "P2",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.58218018756546,
@@ -217,7 +217,7 @@
       "name": "P8",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.58006382798473,
@@ -251,7 +251,7 @@
       "name": "P9",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5800712702983,
@@ -281,7 +281,7 @@
       "name": "P10",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5800710187229,
@@ -315,7 +315,7 @@
       "name": "HOUSE",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.579975038195,
@@ -349,7 +349,7 @@
       "name": "TREES",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57948994791735,
@@ -379,7 +379,7 @@
       "name": "CALVING PAD",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57890875890018,
@@ -421,7 +421,7 @@
       "name": "UTILITIES / SHEDS",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57891727122728,
@@ -491,7 +491,7 @@
       "name": "HAY SHED",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57891537816485,
@@ -533,7 +533,7 @@
       "name": "CALF SHED",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57892044791373,
@@ -571,7 +571,7 @@
       "name": "STOCK YARD",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5788186952284,
@@ -601,7 +601,7 @@
       "name": "DAIRY",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5790649398656,
@@ -639,7 +639,7 @@
       "name": "TREES",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.58261175062248,
@@ -677,7 +677,7 @@
       "name": "P6",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.58261063782288,
@@ -707,7 +707,7 @@
       "name": "EFFLUENT POND",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5788186952284,
@@ -737,7 +737,7 @@
       "name": "P11",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57881972412468,
@@ -767,7 +767,7 @@
       "name": "LANE WAY 1",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5826118583508,
@@ -933,7 +933,7 @@
       "name": "P17",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57818135766544,
@@ -963,7 +963,7 @@
       "name": "P4",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5820157811102,
@@ -1001,7 +1001,7 @@
       "name": "P5",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57979369971073,
@@ -1035,7 +1035,7 @@
       "name": "REUSE DAM",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5749004611122,
@@ -1065,7 +1065,7 @@
       "name": "P22",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57485452046953,
@@ -1095,7 +1095,7 @@
       "name": "P15",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5782388927763,
@@ -1133,7 +1133,7 @@
       "name": "LANE WAY 2",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57883007895057,
@@ -1171,7 +1171,7 @@
       "name": "P23",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57433983931378,
@@ -1205,7 +1205,7 @@
       "name": "P21",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57818902440368,
@@ -1247,7 +1247,7 @@
       "name": "P19",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57816789627498,
@@ -1281,7 +1281,7 @@
       "name": "P20",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57740999889094,
@@ -1311,7 +1311,7 @@
       "name": "P16",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57817333934065,
@@ -1341,7 +1341,7 @@
       "name": "P18",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57819020310782,
@@ -1371,7 +1371,7 @@
       "name": "P7",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.58261007007923,
@@ -1401,7 +1401,7 @@
       "name": "P24",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57651257301177,
@@ -1435,7 +1435,7 @@
       "name": "P25",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5765168059236,
@@ -1469,7 +1469,7 @@
       "name": "P12",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.5796767387895,
@@ -1503,7 +1503,7 @@
       "name": "P14",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57968412779695,
@@ -1537,7 +1537,7 @@
       "name": "P13",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57877918053026,
@@ -1575,7 +1575,7 @@
       "name": "P26",
       "geometry": {
         "type": "Polygon",
-            "coordinates": [
+        "coordinates": [
           [
             [
               145.57629990712113,
