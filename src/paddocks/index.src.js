@@ -25,22 +25,25 @@ angular.module('farmbuild.farmdata')
       isDefined = validations.isDefined
       ;
 
-
     function createName() {
       return 'Paddock ' + new Date().getTime();
     }
 
-    function create(paddockFeature) {
+    function createPaddockFeature(geoJsonGeometry) {
+      return farmdataConverter.createFeature(geoJsonGeometry, createName());
+    }
+    farmdataPaddocks.createPaddockFeature = createPaddockFeature;
+
+    function createPaddock(paddockFeature) {
       var name = paddockFeature.properties.name,
         name = isDefined(name)?name:createName()
         ;
-
       return {name: name,
-        gemotry:farmdataConverter.convertToFarmDataGeometry(paddockFeature.geometry),
+        geometry:farmdataConverter.convertToFarmDataGeometry(paddockFeature.geometry),
         dateLastUpdated:new Date()};
     }
+    farmdataPaddocks.createPaddock = createPaddock;
 
-    //farmdataPaddocks.create = create;
     function isNew(paddockFeature) {
       return !isDefined(paddockFeature.properties._id);
     }
@@ -50,7 +53,7 @@ angular.module('farmbuild.farmdata')
 //      delete farmData.paddocks[i].geometry.crs;
 
       if (isNew(paddockFeature)) {
-        return create(paddockFeature);
+        return createPaddock(paddockFeature);
       }
 
       return update( paddockFeature)
@@ -73,14 +76,14 @@ angular.module('farmbuild.farmdata')
     }
 
 
+//    function _add(geoJsons, geoJsonGeometry) {
+//      $log.info('farmdataPaddocks.add item ...', geoJsonGeometry);
+//      geoJsons.paddocks.features.push(geoJsonGeometry);
+//      return geoJsons;
+//    };
+//
+//    farmdataPaddocks.add = _add
 
-    function _add(geoJsons, geoJsonGeometry) {
-      $log.info('farmdataPaddocks.add item ...', geoJsonGeometry);
-      geoJsons.paddocks.features.push(geoJsonGeometry);
-      return geoJsons;
-    };
-
-    farmdataPaddocks.add = _add
     return farmdataPaddocks;
 
   });
