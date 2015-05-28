@@ -14,9 +14,12 @@
  */
 angular.module('farmbuild.core')
   .factory('farmdataValidator',
-  function (validations, $log) {
+  function (validations, $log, geoJsonValidator) {
 
-    var farmdataValidator = {},
+    var farmdataValidator =
+      {
+        isGeoJsons: geoJsonValidator.isGeoJsons,
+      },
       _isDefined = validations.isDefined,
       _isArray = validations.isArray,
       _isPositiveNumber = validations.isPositiveNumber,
@@ -52,8 +55,9 @@ angular.module('farmbuild.core')
         return false;
       }
 
-      return true;
+      return geoJsonValidator.validate(farmData);
     };
+
 
     farmdataValidator.validate = _validate;
 

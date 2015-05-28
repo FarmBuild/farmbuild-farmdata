@@ -10,11 +10,28 @@
 
 angular.module('farmbuild.farmdata')
   .factory('farmdataSession',
-  function ($log, $filter, farmdataValidator, validations) {
+  function ($log, $filter,
+            farmdataValidator,
+            farmdataConverter,
+            farmdataPaddocks,
+            validations) {
     var farmdataSession = {},
       isDefined = validations.isDefined
       ;
 
+    function merge(farmData, geoJsons) {
+      $log.info("Merging geoJsons.farm.features[0] and paddocks geojson to farmData ...");
+
+      var farmFeature = geoJsons.farm.features[0],
+        paddocks = geoJsons.paddocks;
+      farmData.geometry = farmdataConverter.convertToFarmDataGeometry(farmFeature.geometry);
+
+
+      var farmDataMerged = farmdataPaddocks.merge(farmData, geoJsons);
+
+      return farmdataSession.save(farmDataMerged);
+    };
+    farmdataSession.merge = merge;
 
     farmdataSession.clear = function() {
       sessionStorage.clear();

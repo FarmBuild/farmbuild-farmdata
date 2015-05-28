@@ -10,56 +10,56 @@
 
 angular.module('farmbuild.farmdata')
   .factory('farmdataConverter',
-  function (farmdata,
-            validations,
-            $log,
-            geoJsonValidator) {
+  function (validations,
+
+            $log) {
     var _isDefined = validations.isDefined,
-      farmdataConverter = {},
-      validator = geoJsonValidator;
+      farmdataConverter = {};
 
     function createFeatureCollection(geometry) {
 
     }
 
-    function convertCrs(geometry, crs) {
+    function convertToGeoJsonGeometry(geometry, crs) {
       geometry.crs = {"type": "name", "properties": {"name": crs}};
       return geometry;
     }
 
-    function resetCrs(geometry) {
+    function convertToFarmDataGeometry(geometry) {
       geometry.crs = geometry.crs.properties.name;
       return geometry;
     }
+    farmdataConverter.convertToFarmDataGeometry = convertToFarmDataGeometry;
 
-    function createFeature(geometry, crs, name) {
+    function createFeature(geoJsonGeometry, name) {
       return {
         "type": "Feature",
-        "geometry": angular.copy(convertCrs(geometry, crs)),
+        "geometry": angular.copy(geoJsonGeometry),
         "properties": {name:name}
       };
     }
+    farmdataConverter.createFeature = createFeature;
 
 
     function toGeoJsons(farmData) {
       $log.info("Extracting farm and paddocks geometry from farmData ...");
       var copied = angular.copy(farmData)
 
-      if (!validator.validate(copied)) {
-        return undefined;
-      }
+//      if (!validator.validate(copied)) {
+//        return undefined;
+//      }
 
-      var farm = copied.geometry,
+      var farmGeometry = copied.geometry,
         paddocks = [];
 
       copied.paddocks.forEach(function (paddock) {
-        paddocks.push(createFeature(paddock.geometry, farm.crs, paddock.name));
+        paddocks.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name));
       });
 
       return {
         farm: {
           "type": "FeatureCollection",
-          "features": [createFeature(farm, farm.crs, copied.name)]
+          "features": [createFeature(convertToGeoJsonGeometry(farmGeometry, farmGeometry.crs), copied.name)]
         },
         paddocks: {
           "type": "FeatureCollection",
@@ -69,24 +69,18 @@ angular.module('farmbuild.farmdata')
     };
     farmdataConverter.toGeoJsons = toGeoJsons;
 
-    function toFarmData(farmData, geoJsons) {
-
-      $log.info("Converting geoJsons.farm.features[0] and paddocks geojson to farmData ...");
-      var farmFeature = geoJsons.farm.features[0],
-        paddocks = geoJsons.paddocks;
-      farmData.geometry = resetCrs(farmFeature.geometry);
-      //farmData.area =
-
-      paddocks.features.forEach(function (paddockFeature, i) {
-        farmData.paddocks[i].geometry = paddockFeature.geometry;
-        delete farmData.paddocks[i].geometry.crs;
-      });
-
-      return farmData;
-    };
-    farmdataConverter.toFarmData = toFarmData;
-
-
+//    function toFarmData(farmData, geoJsons) {
+//
+//      $log.info("Converting geoJsons.farm.features[0] and paddocks geojson to farmData ...");
+//      var farmFeature = geoJsons.farm.features[0];
+//
+//      farmData.geometry = convertToFarmDataGeometry(farmFeature.geometry);
+//
+//      farmData = farmdataPaddocks.merge(farmData, geoJsons)
+//
+//      return farmData;
+//    };
+//    farmdataConverter.toFarmData = toFarmData;
 
     return farmdataConverter;
 

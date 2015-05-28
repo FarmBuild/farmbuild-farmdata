@@ -142,6 +142,19 @@ angular.module('farmbuild.farmdata')
       return farmdataSession.update(farmData).find();
     }
 
+    /**
+     * Merges the geoJsons into the farmData
+     * @method merge
+     * @param {Object} farmData - The updated farmData
+     * @param {Object} farmData - The updated farmData
+     * @returns {Object} the farmData
+     * @public
+     * @static
+     */
+    farmdata.merge = function(farmData, geoJsons) {
+       return farmdataSession.merge(farmData, geoJsons).find();
+    }
+
     window.farmbuild.farmdata = farmdata;
 
     return farmdata;

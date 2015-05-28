@@ -16,36 +16,71 @@ angular.module('farmbuild.farmdata')
   .factory('farmdataPaddocks',
   function ($log,
             collections,
-            validations) {
+            validations,
+            farmdataConverter) {
     var farmdataPaddocks =
       {
       },
-      isEmpty = validations.isEmpty
+      isEmpty = validations.isEmpty,
+      isDefined = validations.isDefined
       ;
 
-    function _create(name, gemotry) {
-      return {name: name, gemotry:gemotry, dateLastUpdated:new Date()};
+
+    function createName() {
+      return 'Paddock ' + new Date().getTime();
     }
-    farmdataPaddocks.create = _create;
 
-    function _add(feature) {
+    function create(paddockFeature) {
+      var name = paddockFeature.properties.name,
+        name = isDefined(name)?name:createName()
+        ;
 
+      return {name: name,
+        gemotry:farmdataConverter.convertToFarmDataGeometry(paddockFeature.geometry),
+        dateLastUpdated:new Date()};
+    }
 
-      var item = _create(type, weight, isDry);
+    //farmdataPaddocks.create = create;
+    function isNew(paddockFeature) {
+      return !isDefined(paddockFeature.properties._id);
+    }
 
-      $log.info('farmdataPaddocks.add item ...', item);
+    function merge(paddockFeature, paddocksExisting) {
+//      farmData.paddocks[i].geometry = paddockFeature.geometry;
+//      delete farmData.paddocks[i].geometry.crs;
 
-      if (!validator.validate(item)) {
-        $log.error('farmdataPaddocks.add unable to add as the validation has been failed, %j', item);
-        return undefined;
+      if (isNew(paddockFeature)) {
+        return create(paddockFeature);
       }
 
-      return collections.add(items, item);
+      return update( paddockFeature)
+
+    }
+
+    farmdataPaddocks.merge = function(farmData, geoJsons) {
+      var paddockFeatures = geoJsons.paddocks,
+        paddocksExisting = farmData.paddocks,
+        paddocksMerged = [];
+
+      paddockFeatures.features.forEach(function (paddockFeature, i) {
+        paddocksMerged.push(merge(paddockFeature, paddocksExisting));
+      });
+
+      farmData.paddocks = paddocksMerged;
+
+      return farmData;
+
+    }
+
+
+
+    function _add(geoJsons, geoJsonGeometry) {
+      $log.info('farmdataPaddocks.add item ...', geoJsonGeometry);
+      geoJsons.paddocks.features.push(geoJsonGeometry);
+      return geoJsons;
     };
 
-    farmdataPaddocks.add = _add;
-    
-    
+    farmdataPaddocks.add = _add
     return farmdataPaddocks;
 
   });

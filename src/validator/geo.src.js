@@ -17,7 +17,6 @@
 angular.module('farmbuild.farmdata')
   .factory('geoJsonValidator',
   function (validations,
-            farmdata,
             $log) {
     var geoJsonValidator = {geojsonhint:geojsonhint},
       _isDefined = validations.isDefined,
@@ -43,15 +42,10 @@ angular.module('farmbuild.farmdata')
     function _validate(farmData) {
       $log.info('validating farmData...', farmData);
 
-      if(!farmdata.validate(farmData)) {
-        return false;
-      }
-
-
       if (!_isDefined(farmData) ||
-          !_isDefined(farmData.geometry) ||
-          !_isDefined(farmData.geometry.crs) ||
-          !_isDefined(farmData.paddocks)) {
+        !_isDefined(farmData.geometry) ||
+        !_isDefined(farmData.geometry.crs) ||
+        !_isDefined(farmData.paddocks)) {
         $log.error('farmData must have geometry, geometry.crs, paddocks');
         return false;
       }
@@ -60,7 +54,6 @@ angular.module('farmbuild.farmdata')
     };
 
     geoJsonValidator.validate = _validate;
-
 
     return geoJsonValidator;
   });
