@@ -70,7 +70,7 @@ angular.module('farmbuild.farmdata')
 
 		function updatePaddock(paddockFeature, paddocksExisting) {
 			var toUpdate = angular.copy(findPaddock(paddockFeature, paddocksExisting));
-			toUpdate.name = paddockFeature.name;
+			toUpdate.name = paddockFeature.properties.name;
 			toUpdate.geometry = paddockFeature.geometry;
 			return toUpdate;
 		}

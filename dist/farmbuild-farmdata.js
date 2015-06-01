@@ -1409,7 +1409,6 @@ angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdata
     farmdata.create = create;
     farmdata.load = farmdataSession.load;
     farmdata.find = farmdataSession.find;
-    farmdata.paddocks = farmdataPaddocks;
     farmdata.save = function(farmData) {
         return farmdataSession.save(farmData).find();
     };
@@ -1464,7 +1463,7 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
     farmdataPaddocks.findPaddock = findPaddock;
     function updatePaddock(paddockFeature, paddocksExisting) {
         var toUpdate = angular.copy(findPaddock(paddockFeature, paddocksExisting));
-        toUpdate.name = paddockFeature.name;
+        toUpdate.name = paddockFeature.properties.name;
         toUpdate.geometry = paddockFeature.geometry;
         return toUpdate;
     }

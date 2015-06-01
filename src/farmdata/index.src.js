@@ -119,13 +119,6 @@ angular.module('farmbuild.farmdata')
     farmdata.find = farmdataSession.find;
 
     /**
-     * Paddocks collection
-     * @public
-     * @static
-     */
-    farmdata.paddocks = farmdataPaddocks;
-
-    /**
      * Save the specified farmData into session
      * @method save
      * @param {Object} farmData - The farmData
