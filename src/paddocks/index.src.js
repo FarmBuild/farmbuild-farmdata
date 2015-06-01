@@ -13,88 +13,99 @@
  * @module farmdataPaddocks
  */
 angular.module('farmbuild.farmdata')
-  .factory('farmdataPaddocks',
-  function ($log,
-            collections,
-            validations,
-            farmdataConverter) {
-    var farmdataPaddocks =
-      {
-      },
-      isEmpty = validations.isEmpty,
-      isDefined = validations.isDefined
-      ;
+	.factory('farmdataPaddocks',
+	function ($log,
+	          collections,
+	          validations,
+	          farmdataConverter) {
+		var farmdataPaddocks =
+			{},
+			isEmpty = validations.isEmpty,
+			isDefined = validations.isDefined
+			;
 
-    function createName() {
-      return 'Paddock ' + new Date().getTime();
-    }
+		function createName() {
+			return 'Paddock ' + (new Date()).getTime();
+		}
 
-    function createPaddockFeature(geoJsonGeometry) {
-      return farmdataConverter.createFeature(geoJsonGeometry, createName());
-    }
-    farmdataPaddocks.createPaddockFeature = createPaddockFeature;
+		function generateId() {
+			return (new Date()).getTime();
+		}
 
-    function createPaddock(paddockFeature) {
-      var name = paddockFeature.properties.name,
-        name = isDefined(name)?name:createName()
-        ;
-      return {name: name,
-        geometry:farmdataConverter.convertToFarmDataGeometry(paddockFeature.geometry),
-        dateLastUpdated:new Date()};
-    }
-    farmdataPaddocks.createPaddock = createPaddock;
+		function createPaddockFeature(geoJsonGeometry) {
+			return farmdataConverter.createFeature(geoJsonGeometry, createName());
+		}
 
-    function findPaddock(paddock, paddocks) {
-      var found;
-      if(!paddock.properties._id){
-        return;
-      }
-      paddocks.forEach(function(p){
-        if(paddock.properties._id === p._id){
-          found = p;
-        }
-      });
-      return found;
-    }
-    farmdataPaddocks.findPaddock = findPaddock;
+		farmdataPaddocks.createPaddockFeature = createPaddockFeature;
 
-    function updatePaddock(paddockFeature, paddocksExisting) {
-      var toUpdate = angular.copy(findPaddock(paddockFeature, paddocksExisting));
-      toUpdate.name = paddockFeature.name;
-      toUpdate.geometry = paddockFeature.geometry;
-      return toUpdate;
-    }
-    farmdataPaddocks.updatePaddock = updatePaddock;
+		function createPaddock(paddockFeature) {
+			var name = paddockFeature.properties.name,
+				id = paddockFeature.properties._id;
+			name = isDefined(name) ? name : createName();
+			id = isDefined(id) ? id : generateId();
+			return {
+				name: name,
+				_id: id,
+				geometry: farmdataConverter.convertToFarmDataGeometry(paddockFeature.geometry),
+				dateLastUpdated: new Date()
+			};
+		}
 
-    function isNew(paddockFeature) {
-      return !isDefined(paddockFeature.properties._id);
-    }
+		farmdataPaddocks.createPaddock = createPaddock;
 
-    function merge(paddockFeature, paddocksExisting) {
+		function findPaddock(paddock, paddocks) {
+			var found;
+			if (!paddock.properties._id) {
+				return;
+			}
+			paddocks.forEach(function (p) {
+				if (paddock.properties._id === p._id) {
+					found = p;
+				}
+			});
+			return found;
+		}
+
+		farmdataPaddocks.findPaddock = findPaddock;
+
+		function updatePaddock(paddockFeature, paddocksExisting) {
+			var toUpdate = angular.copy(findPaddock(paddockFeature, paddocksExisting));
+			toUpdate.name = paddockFeature.name;
+			toUpdate.geometry = paddockFeature.geometry;
+			return toUpdate;
+		}
+
+		farmdataPaddocks.updatePaddock = updatePaddock;
+
+		function isNew(paddockFeature) {
+			return !isDefined(paddockFeature.properties._id);
+		}
+
+		function merge(paddockFeature, paddocksExisting) {
 //      farmData.paddocks[i].geometry = paddockFeature.geometry;
 //      delete farmData.paddocks[i].geometry.crs;
 
-      if (isNew(paddockFeature)) {
-        return createPaddock(paddockFeature);
-      }
+			if (isNew(paddockFeature)) {
+				return createPaddock(paddockFeature);
+			}
 
-      return updatePaddock(paddockFeature, paddocksExisting)
-    }
+			return updatePaddock(paddockFeature, paddocksExisting)
+		}
 
-    farmdataPaddocks.merge = function(farmData, geoJsons) {
-      var paddockFeatures = geoJsons.paddocks,
-        paddocksExisting = farmData.paddocks,
-        paddocksMerged = [];
+		farmdataPaddocks.merge = function (farmData, geoJsons) {
+			var paddockFeatures = geoJsons.paddocks,
+				paddocksExisting = farmData.paddocks,
+				paddocksMerged = [];
 
-      paddockFeatures.features.forEach(function (paddockFeature, i) {
-        paddocksMerged.push(merge(paddockFeature, paddocksExisting));
-      });
+			paddockFeatures.features.forEach(function (paddockFeature, i) {
+				paddocksMerged.push(merge(paddockFeature, paddocksExisting));
+			});
 
-      farmData.paddocks = paddocksMerged;
+			farmData.paddocks = paddocksMerged;
 
-      return farmData;
+			return farmData;
 
-    }
+		}
 
 
 //    function _add(geoJsons, geoJsonGeometry) {
@@ -105,6 +116,6 @@ angular.module('farmbuild.farmdata')
 //
 //    farmdataPaddocks.add = _add
 
-    return farmdataPaddocks;
+		return farmdataPaddocks;
 
-  });
+	});

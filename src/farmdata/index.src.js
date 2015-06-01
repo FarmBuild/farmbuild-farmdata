@@ -15,7 +15,7 @@
 angular.module('farmbuild.farmdata')
   .factory('farmdata',
   function ($log,
-            farmdataSession, farmdataValidator,
+            farmdataSession, farmdataValidator, farmdataPaddocks,
             crsSupported, validations) {
     var farmdata =
       {
@@ -117,6 +117,13 @@ angular.module('farmbuild.farmdata')
      * @static
      */
     farmdata.find = farmdataSession.find;
+
+    /**
+     * Paddocks collection
+     * @public
+     * @static
+     */
+    farmdata.paddocks = farmdataPaddocks;
 
     /**
      * Save the specified farmData into session

@@ -1367,7 +1367,7 @@ angular.module("farmbuild.farmdata").factory("farmdataConverter", function(valid
 
 "use strict";
 
-angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdataSession, farmdataValidator, crsSupported, validations) {
+angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdataSession, farmdataValidator, farmdataPaddocks, crsSupported, validations) {
     var farmdata = {
         session: farmdataSession,
         validator: farmdataValidator,
@@ -1409,6 +1409,7 @@ angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdata
     farmdata.create = create;
     farmdata.load = farmdataSession.load;
     farmdata.find = farmdataSession.find;
+    farmdata.paddocks = farmdataPaddocks;
     farmdata.save = function(farmData) {
         return farmdataSession.save(farmData).find();
     };
@@ -1429,14 +1430,20 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
     function createName() {
         return "Paddock " + new Date().getTime();
     }
+    function generateId() {
+        return new Date().getTime();
+    }
     function createPaddockFeature(geoJsonGeometry) {
         return farmdataConverter.createFeature(geoJsonGeometry, createName());
     }
     farmdataPaddocks.createPaddockFeature = createPaddockFeature;
     function createPaddock(paddockFeature) {
-        var name = paddockFeature.properties.name, name = isDefined(name) ? name : createName();
+        var name = paddockFeature.properties.name, id = paddockFeature.properties._id;
+        name = isDefined(name) ? name : createName();
+        id = isDefined(id) ? id : generateId();
         return {
             name: name,
+            _id: id,
             geometry: farmdataConverter.convertToFarmDataGeometry(paddockFeature.geometry),
             dateLastUpdated: new Date()
         };

@@ -180,7 +180,6 @@ describe('farmbuild.farmdata module', function () {
 						]
 					]
 				];
-			console.log(paddockToChange.geometry);
 			paddockToChange.name = newName;
 			paddockToChange.geometry.coordinates = newCoordinates;
 			expect(paddockToChange).toBeDefined();
