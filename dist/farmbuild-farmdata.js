@@ -1434,7 +1434,7 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
         return new Date().getTime();
     }
     function createPaddockFeature(geoJsonGeometry) {
-        return farmdataConverter.createFeature(geoJsonGeometry, createName());
+        return farmdataConverter.createFeature(geoJsonGeometry, createName(), generateId());
     }
     farmdataPaddocks.createPaddockFeature = createPaddockFeature;
     function createPaddock(paddockFeature) {
