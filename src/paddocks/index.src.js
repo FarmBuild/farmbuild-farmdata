@@ -44,6 +44,28 @@ angular.module('farmbuild.farmdata')
     }
     farmdataPaddocks.createPaddock = createPaddock;
 
+    function findPaddock(paddock, paddocks) {
+      var found;
+      if(!paddock.properties._id){
+        return;
+      }
+      paddocks.forEach(function(p){
+        if(paddock.properties._id === p._id){
+          found = p;
+        }
+      });
+      return found;
+    }
+    farmdataPaddocks.findPaddock = findPaddock;
+
+    function updatePaddock(paddockFeature, paddocksExisting) {
+      var toUpdate = angular.copy(findPaddock(paddockFeature, paddocksExisting));
+      toUpdate.name = paddockFeature.name;
+      toUpdate.geometry = paddockFeature.geometry;
+      return toUpdate;
+    }
+    farmdataPaddocks.updatePaddock = updatePaddock;
+
     function isNew(paddockFeature) {
       return !isDefined(paddockFeature.properties._id);
     }
@@ -56,8 +78,7 @@ angular.module('farmbuild.farmdata')
         return createPaddock(paddockFeature);
       }
 
-      return update( paddockFeature)
-
+      return updatePaddock(paddockFeature, paddocksExisting)
     }
 
     farmdataPaddocks.merge = function(farmData, geoJsons) {

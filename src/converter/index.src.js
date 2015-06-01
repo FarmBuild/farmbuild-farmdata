@@ -31,11 +31,11 @@ angular.module('farmbuild.farmdata')
     }
     farmdataConverter.convertToFarmDataGeometry = convertToFarmDataGeometry;
 
-    function createFeature(geoJsonGeometry, name) {
+    function createFeature(geoJsonGeometry, name, id) {
       return {
         "type": "Feature",
         "geometry": angular.copy(geoJsonGeometry),
-        "properties": {name:name}
+        "properties": {name:name, _id: id}
       };
     }
     farmdataConverter.createFeature = createFeature;
@@ -53,7 +53,7 @@ angular.module('farmbuild.farmdata')
         paddocks = [];
 
       copied.paddocks.forEach(function (paddock) {
-        paddocks.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name));
+        paddocks.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id));
       });
 
       return {
