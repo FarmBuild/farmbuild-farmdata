@@ -1575,6 +1575,25 @@ angular.module("farmbuild.farmdata").factory("farmdataConverter", function(valid
         };
     }
     farmdataConverter.toGeoJsons = toGeoJsons;
+    function toKml(farmData) {
+        $log.info("Extracting farm and paddocks geometry from farmData ...");
+        var copied = angular.copy(farmData);
+        var farmGeometry = copied.geometry, paddocks = [];
+        copied.paddocks.forEach(function(paddock) {
+            paddocks.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id));
+        });
+        return tokml({
+            farm: {
+                type: "FeatureCollection",
+                features: [ createFeature(convertToGeoJsonGeometry(farmGeometry, farmGeometry.crs), copied.name) ]
+            },
+            paddocks: {
+                type: "FeatureCollection",
+                features: paddocks
+            }
+        });
+    }
+    farmdataConverter.toKml = toKml;
     return farmdataConverter;
 });
 
