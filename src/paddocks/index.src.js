@@ -33,7 +33,7 @@ angular.module('farmbuild.farmdata')
 		}
 
 		function createPaddockFeature(geoJsonGeometry) {
-			return farmdataConverter.createFeature(geoJsonGeometry, createName(), generateId());
+			return farmdataConverter.createFeature(geoJsonGeometry, createName());
 		}
 
 		farmdataPaddocks.createPaddockFeature = createPaddockFeature;

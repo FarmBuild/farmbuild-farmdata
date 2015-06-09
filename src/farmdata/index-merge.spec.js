@@ -130,27 +130,28 @@ describe('farmbuild.farmdata module', function () {
 				geoJsonsNew = farmdataConverter.toGeoJsons(farmDataNew),
 				paddockFeatureNew = farmdataPaddocks.createPaddockFeature(createGeometry());
 
+			console.log(paddockFeatureNew);
+
 			expect(geoJsonsNew.paddocks).toBeDefined();
 			expect(geoJsonsNew.paddocks.features).toBeDefined();
 			expect(geoJsonsNew.paddocks.features.length).toBe(0);
 
 			geoJsonsNew.paddocks.features.push(paddockFeatureNew);
 			var geoJsonsAdded = geoJsonsNew;
-			expect(geoJsonsAdded.paddocks.features.length).toBe(1)
-			var toVerify = geoJsonsAdded.paddocks.features[0]
-			expect(angular.equals(paddockFeatureNew, toVerify)).toBeTruthy()
+			expect(geoJsonsAdded.paddocks.features.length).toBe(1);
+			var toVerify = geoJsonsAdded.paddocks.features[0];
+			expect(angular.equals(paddockFeatureNew, toVerify)).toBeTruthy();
 
 			var farmDataAdded = farmdata.merge(farmDataNew, geoJsonsAdded);
 
-			expect(farmDataAdded.paddocks.length).toBe(1)
+			expect(farmDataAdded.paddocks.length).toBe(1);
 			var farmDataPaddock = farmDataAdded.paddocks[0];
 
-			expect(farmDataPaddock.name).toBe(paddockFeatureNew.properties.name)
-			expect(farmDataPaddock.geometry.coordinates.length).toBe(paddockFeatureNew.geometry.coordinates.length)
-			expect(angular.equals(farmDataPaddock.geometry.coordinates, paddockFeatureNew.geometry.coordinates)).toBeTruthy()
+			expect(farmDataPaddock.name).toBe(paddockFeatureNew.properties.name);
+			expect(farmDataPaddock.geometry.coordinates.length).toBe(paddockFeatureNew.geometry.coordinates.length);
+			expect(angular.equals(farmDataPaddock.geometry.coordinates, paddockFeatureNew.geometry.coordinates)).toBeTruthy();
 
-
-		}))
+		}));
 
 		it('updating existing paddock', inject(function () {
 			var susanFarmData = angular.copy(susanFarm),
@@ -180,7 +181,7 @@ describe('farmbuild.farmdata module', function () {
 						]
 					]
 				];
-			paddockToChange.name = newName;
+			paddockToChange.properties.name = newName;
 			paddockToChange.geometry.coordinates = newCoordinates;
 			expect(paddockToChange).toBeDefined();
 

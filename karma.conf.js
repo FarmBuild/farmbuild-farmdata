@@ -26,8 +26,8 @@ module.exports = function (config) {
 //      'src/session/index-load.spec.js',
 //      'src/paddocks/validator.spec.js',
 //      'src/farmdata/index-merge.spec.js',
-			'src/converter/index.spec.js',
-//      'src/**/*.spec.js',
+//			'src/converter/index.spec.js',
+      'src/**/*.spec.js',
 			{
 				pattern: 'data/*.json'
 			}

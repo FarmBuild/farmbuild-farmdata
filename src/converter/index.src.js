@@ -11,7 +11,8 @@
 angular.module('farmbuild.farmdata')
 	.factory('farmdataConverter',
 	function (validations,
-	          $log, $filter) {
+	          $log, $filter,
+	          farmdataValidator) {
 		var _isDefined = validations.isDefined,
 			farmdataConverter = {};
 
@@ -44,11 +45,11 @@ angular.module('farmbuild.farmdata')
 
 		function toGeoJsons(farmData) {
 			$log.info("Extracting farm and paddocks geometry from farmData ...");
-			var copied = angular.copy(farmData)
+			var copied = angular.copy(farmData);
 
-//      if (!validator.validate(copied)) {
-//        return undefined;
-//      }
+      if (!farmdataValidator.validate(copied)) {
+        return undefined;
+      }
 
 			var farmGeometry = copied.geometry,
 				paddocks = [];
@@ -73,11 +74,11 @@ angular.module('farmbuild.farmdata')
 
 		function toGeoJson(farmData) {
 			$log.info("Extracting farm and paddocks geometry from farmData ...");
-			var copied = angular.copy(farmData)
+			var copied = angular.copy(farmData);
 
-//      if (!validator.validate(copied)) {
-//        return undefined;
-//      }
+      if (!farmdataValidator.validate(copied)) {
+        return undefined;
+      }
 
 			var farmGeometry = copied.geometry,
 				features = [];
@@ -101,7 +102,7 @@ angular.module('farmbuild.farmdata')
 			angular.element(a).attr({
 				download: name,
 				href: "data:application/json;charset=utf8," + encodeURIComponent(JSON.stringify(toGeoJson(farmData), undefined, 2))
-			})
+			});
 			a.click();
 		};
 		farmdataConverter.exportGeoJson = exportGeoJson;
@@ -110,9 +111,9 @@ angular.module('farmbuild.farmdata')
 			$log.info("Extracting farm and paddocks geometry from farmData ...");
 			var copied = angular.copy(farmData)
 
-//      if (!validator.validate(copied)) {
-//        return undefined;
-//      }
+      if (!farmdataValidator.validate(copied)) {
+        return undefined;
+      }
 
 			var farmGeometry = copied.geometry,
 				features = [];
@@ -139,7 +140,7 @@ angular.module('farmbuild.farmdata')
 			angular.element(a).attr({
 				download: name,
 				href: "data:application/vnd.google-earth.kml+xml;charset=utf8," + toKml(farmData)
-			})
+			});
 			a.click();
 		};
 		farmdataConverter.exportKml = exportKml;
