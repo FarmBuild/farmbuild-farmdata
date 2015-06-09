@@ -13,4 +13,4 @@ To get you started simply download this repository using <a href="https://github
 
 For more information about API and Testing see the [Wiki](https://github.com/FarmBuild/farmbuild-farmdata/wiki) section.
 
-[![Build Status](https://travis-ci.org/FarmBuild/farmdata.svg?branch=master)](https://travis-ci.org/FarmBuild/farmbuild-farmdata)
+[![Build Status](https://api.travis-ci.org/FarmBuild/farmbuild-farmdata.svg?branch=master)](https://travis-ci.org/FarmBuild/farmbuild-farmdata)
