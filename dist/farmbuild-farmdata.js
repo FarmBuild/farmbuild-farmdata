@@ -1575,25 +1575,42 @@ angular.module("farmbuild.farmdata").factory("farmdataConverter", function(valid
         };
     }
     farmdataConverter.toGeoJsons = toGeoJsons;
+    function toGeoJson(farmData) {
+        $log.info("Extracting farm and paddocks geometry from farmData ...");
+        var copied = angular.copy(farmData);
+        var farmGeometry = copied.geometry, features = [];
+        features.push(createFeature(convertToGeoJsonGeometry(farmGeometry, farmGeometry.crs), copied.name, copied.id));
+        copied.paddocks.forEach(function(paddock) {
+            features.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id));
+        });
+        return {
+            type: "FeatureCollection",
+            features: features
+        };
+    }
+    farmdataConverter.toGeoJson = toGeoJson;
     function toKml(farmData) {
         $log.info("Extracting farm and paddocks geometry from farmData ...");
         var copied = angular.copy(farmData);
-        var farmGeometry = copied.geometry, paddocks = [];
+        var farmGeometry = copied.geometry, features = [];
+        features.push(createFeature(convertToGeoJsonGeometry(farmGeometry, farmGeometry.crs), copied.name, copied.id));
         copied.paddocks.forEach(function(paddock) {
-            paddocks.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id));
+            features.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id));
         });
-        return tokml({
-            farm: {
-                type: "FeatureCollection",
-                features: [ createFeature(convertToGeoJsonGeometry(farmGeometry, farmGeometry.crs), copied.name) ]
-            },
-            paddocks: {
-                type: "FeatureCollection",
-                features: paddocks
-            }
-        });
+        return tokml(JSON.parse(JSON.stringify({
+            type: "FeatureCollection",
+            features: features
+        })));
     }
     farmdataConverter.toKml = toKml;
+    function toFarmData(farmData, geoJsons) {
+        $log.info("Converting geoJsons.farm.features[0] and paddocks geojson to farmData ...");
+        var farmFeature = geoJsons.farm.features[0];
+        farmData.geometry = convertToFarmDataGeometry(farmFeature.geometry);
+        farmData = farmdataPaddocks.merge(farmData, geoJsons);
+        return farmData;
+    }
+    farmdataConverter.toFarmData = toFarmData;
     return farmdataConverter;
 });
 
