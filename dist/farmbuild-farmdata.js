@@ -1589,6 +1589,17 @@ angular.module("farmbuild.farmdata").factory("farmdataConverter", function(valid
         };
     }
     farmdataConverter.toGeoJson = toGeoJson;
+    function exportGeoJson(document, farmData) {
+        var a = document.createElement("a"), name = "farmdata-" + farmData.name.replace(/\W+/g, "") + "-" + $filter("date")(new Date(), "yyyyMMddHHmmss") + ".json";
+        a.id = "downloadFarmData123456";
+        document.body.appendChild(a);
+        angular.element(a).attr({
+            download: name,
+            href: "data:application/json;charset=utf8," + encodeURIComponent(JSON.stringify(toGeoJson(farmData), undefined, 2))
+        });
+        a.click();
+    }
+    farmdataConverter.exportGeoJson = exportGeoJson;
     function toKml(farmData) {
         $log.info("Extracting farm and paddocks geometry from farmData ...");
         var copied = angular.copy(farmData);
@@ -1603,6 +1614,17 @@ angular.module("farmbuild.farmdata").factory("farmdataConverter", function(valid
         })));
     }
     farmdataConverter.toKml = toKml;
+    function exportKml(document, farmData) {
+        var a = document.createElement("a"), name = "farmdata-" + farmData.name.replace(/\W+/g, "") + "-" + $filter("date")(new Date(), "yyyyMMddHHmmss") + ".kml";
+        a.id = "downloadFarmData123456";
+        document.body.appendChild(a);
+        angular.element(a).attr({
+            download: name,
+            href: "data:application/vnd.google-earth.kml+xml;charset=utf8," + toKml(farmData)
+        });
+        a.click();
+    }
+    farmdataConverter.exportKml = exportKml;
     function toFarmData(farmData, geoJsons) {
         $log.info("Converting geoJsons.farm.features[0] and paddocks geojson to farmData ...");
         var farmFeature = geoJsons.farm.features[0];
