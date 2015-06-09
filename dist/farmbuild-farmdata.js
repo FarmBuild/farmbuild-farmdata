@@ -1528,7 +1528,7 @@ angular.injector([ "ng", "farmbuild.farmdata" ]);
 
 "use strict";
 
-angular.module("farmbuild.farmdata").factory("farmdataConverter", function(validations, $log) {
+angular.module("farmbuild.farmdata").factory("farmdataConverter", function(validations, $log, $filter) {
     var _isDefined = validations.isDefined, farmdataConverter = {};
     function createFeatureCollection(geometry) {}
     function convertToGeoJsonGeometry(geometry, crs) {
