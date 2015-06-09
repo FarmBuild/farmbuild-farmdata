@@ -23,7 +23,7 @@ describe('farmbuild.farmdata module', function() {
     $log = _$log_,
     farmdataConverter = _farmdataConverter_
     geoJsonValidator = _geoJsonValidator_
-  }))
+  }));
 
   describe('Given calling validator.validate should return true or fale', function() {
     it('farmdataConverter should be defined', inject(function() {
@@ -50,25 +50,51 @@ describe('farmbuild.farmdata module', function() {
       $log.info('geoJsons:%j', geoJsons)
     }))
 
-    it('geoJsons  should be converted to valid farmData', inject(function() {
+    it('Susan farm data should be converted to valid geoJsons', inject(function() {
       var loaded = fixture.load(susanFarm),
-        source = angular.copy(loaded),
-        geoJsons = farmdataConverter.toGeoJsons(loaded)
+        geoJson = farmdataConverter.toGeoJson(loaded);
 
-      $log.info('loaded:%j', source.geometry.crs)
 
-      var converted = farmdataConverter.toFarmData(loaded, geoJsons)
+      expect(geoJson).toBeDefined()
+      expect(geoJson.type).toBeDefined()
+      expect(geoJson.type).toBe('FeatureCollection')
 
-      $log.info('source:%j, converted:%j', source.geometry.crs, converted.geometry.crs)
+      expect(geojsonhint.hint(geoJson)).toBeTruthy()
+      expect(geoJson.features[0].properties.name).toBeDefined()
 
-      expect(angular.equals(source.geometry.crs, loaded.geometry.crs)).toBeTruthy()
-      expect(angular.equals(source.geometry, loaded.geometry)).toBeTruthy()
+      $log.info('geoJson:%j', geoJson)
+    }))
 
-      $log.info('source:%j, converted:%j',
-        source.paddocks[0].geometry, converted.paddocks[0].geometry)
-      expect(angular.equals(source.paddocks, loaded.paddocks)).toBeTruthy()
+    it('Susan farm data should be converted to valid kml', inject(function() {
+      var loaded = fixture.load(susanFarm),
+        kml = farmdataConverter.toKml(loaded);
+
+
+      expect(kml).toBeDefined();
+
+      $log.info('kml.farm:%j', kml);
 
     }))
+
+    //it('geoJsons  should be converted to valid farmData', inject(function() {
+    //  var loaded = fixture.load(susanFarm),
+    //    source = angular.copy(loaded),
+    //    geoJsons = farmdataConverter.toGeoJsons(loaded)
+    //
+    //  $log.info('loaded:%j', source.geometry.crs)
+    //
+    //  var converted = farmdataConverter.toFarmData(loaded, geoJsons)
+    //
+    //  $log.info('source:%j, converted:%j', source.geometry.crs, converted.geometry.crs)
+    //
+    //  expect(angular.equals(source.geometry.crs, loaded.geometry.crs)).toBeTruthy()
+    //  expect(angular.equals(source.geometry, loaded.geometry)).toBeTruthy()
+    //
+    //  $log.info('source:%j, converted:%j',
+    //    source.paddocks[0].geometry, converted.paddocks[0].geometry)
+    //  expect(angular.equals(source.paddocks, loaded.paddocks)).toBeTruthy()
+    //
+    //}))
 
 
   })
