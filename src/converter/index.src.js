@@ -11,7 +11,7 @@
 angular.module('farmbuild.farmdata')
 	.factory('farmdataConverter',
 	function (validations,
-	          $log) {
+	          $log, $filter) {
 		var _isDefined = validations.isDefined,
 			farmdataConverter = {};
 
