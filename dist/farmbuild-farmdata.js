@@ -1953,7 +1953,7 @@ angular.module("farmbuild.core").factory("farmdataValidator", function(validatio
             $log.error("farmData must have name, area (positve number or zero) and areaUnit (must be " + areaUnitDefault + "): %j", farmData);
             return false;
         }
-        return geoJsonValidator.validate(farmData);
+        return true;
     }
     farmdataValidator.validate = _validate;
     return farmdataValidator;
