@@ -47,9 +47,9 @@ angular.module('farmbuild.farmdata')
 			$log.info("Extracting farm and paddocks geometry from farmData ...");
 			var copied = angular.copy(farmData);
 
-      if (!farmdataValidator.validate(copied)) {
-        return undefined;
-      }
+      //if (!farmdataValidator.validate(copied)) {
+      //  return undefined;
+      //}
 
 			var farmGeometry = copied.geometry,
 				paddocks = [];

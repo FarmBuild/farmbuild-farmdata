@@ -55,8 +55,7 @@ angular.module('farmbuild.core')
         return false;
       }
 
-      //return geoJsonValidator.validate(farmData);
-      return true;
+      return geoJsonValidator.validate(farmData);
     };
 
 

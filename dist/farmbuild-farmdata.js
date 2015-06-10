@@ -1559,9 +1559,6 @@ angular.module("farmbuild.farmdata").factory("farmdataConverter", function(valid
     function toGeoJsons(farmData) {
         $log.info("Extracting farm and paddocks geometry from farmData ...");
         var copied = angular.copy(farmData);
-        if (!farmdataValidator.validate(copied)) {
-            return undefined;
-        }
         var farmGeometry = copied.geometry, paddocks = [];
         copied.paddocks.forEach(function(paddock) {
             paddocks.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id));
@@ -1953,7 +1950,7 @@ angular.module("farmbuild.core").factory("farmdataValidator", function(validatio
             $log.error("farmData must have name, area (positve number or zero) and areaUnit (must be " + areaUnitDefault + "): %j", farmData);
             return false;
         }
-        return true;
+        return geoJsonValidator.validate(farmData);
     }
     farmdataValidator.validate = _validate;
     return farmdataValidator;
