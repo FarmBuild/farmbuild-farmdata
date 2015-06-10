@@ -1741,7 +1741,11 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
     function updatePaddock(paddockFeature, paddocksExisting) {
         var toUpdate = angular.copy(findPaddock(paddockFeature, paddocksExisting));
         toUpdate.name = paddockFeature.properties.name;
+        toUpdate.commment = paddockFeature.properties.commment;
+        toUpdate.type = paddockFeature.properties.type;
         toUpdate.geometry = paddockFeature.geometry;
+        toUpdate.area = paddockFeature.area;
+        toUpdate.dateLastUpdated = new Date();
         return toUpdate;
     }
     farmdataPaddocks.updatePaddock = updatePaddock;
