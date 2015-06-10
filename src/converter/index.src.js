@@ -32,11 +32,17 @@ angular.module('farmbuild.farmdata')
 
 		farmdataConverter.convertToFarmDataGeometry = convertToFarmDataGeometry;
 
-		function createFeature(geoJsonGeometry, name, id) {
+		function createFeature(geoJsonGeometry, name, id, type, comment, area) {
+			var properties;
+			if(_isDefined(type) || _isDefined(comment) || _isDefined(area)){
+				properties = {name: name, _id: id, type: type, comment: comment, area: area}
+			} else {
+				properties = {name: name, _id: id}
+			}
 			return {
 				"type": "Feature",
 				"geometry": angular.copy(geoJsonGeometry),
-				"properties": {name: name, _id: id}
+				"properties": properties
 			};
 		}
 
@@ -55,7 +61,7 @@ angular.module('farmbuild.farmdata')
 				paddocks = [];
 
 			copied.paddocks.forEach(function (paddock) {
-				paddocks.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id));
+				paddocks.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id, paddock.type, paddock.comment, paddock.area));
 			});
 
 			return {
@@ -84,7 +90,7 @@ angular.module('farmbuild.farmdata')
 				features = [];
 			features.push(createFeature(convertToGeoJsonGeometry(farmGeometry, farmGeometry.crs), copied.name, copied.id));
 			copied.paddocks.forEach(function (paddock) {
-				features.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id));
+				features.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id, paddock.type, paddock.comment, paddock.area));
 			});
 
 			return {
@@ -120,7 +126,7 @@ angular.module('farmbuild.farmdata')
 
 			features.push(createFeature(convertToGeoJsonGeometry(farmGeometry, farmGeometry.crs), copied.name, copied.id));
 			copied.paddocks.forEach(function (paddock) {
-				features.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id));
+				features.push(createFeature(convertToGeoJsonGeometry(paddock.geometry, farmGeometry.crs), paddock.name, paddock._id, paddock.type, paddock.comment, paddock.area));
 			});
 
 			return tokml(JSON.parse(JSON.stringify(
