@@ -75,6 +75,7 @@ angular.module('farmbuild.farmdata')
 			toUpdate.type = paddockFeature.properties.type;
 			toUpdate.geometry = paddockFeature.geometry;
 			toUpdate.area = paddockFeature.area;
+			toUpdate.group = paddockFeature.group;
 			toUpdate.dateLastUpdated = new Date();
 			return toUpdate;
 		}
