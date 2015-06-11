@@ -1756,9 +1756,9 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
         toUpdate.name = paddockFeature.properties.name;
         toUpdate.comment = paddockFeature.properties.comment;
         toUpdate.type = paddockFeature.properties.type;
+        toUpdate.area = paddockFeature.properties.area;
+        toUpdate.group = paddockFeature.properties.group;
         toUpdate.geometry = paddockFeature.geometry;
-        toUpdate.area = paddockFeature.area;
-        toUpdate.group = paddockFeature.group;
         toUpdate.dateLastUpdated = new Date();
         return toUpdate;
     }
