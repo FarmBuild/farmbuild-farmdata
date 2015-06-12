@@ -101,21 +101,47 @@ angular.module('farmbuild.farmdata')
 			return updatePaddock(paddockFeature, paddocksExisting)
 		}
 
+		function createPaddcokGroup(name) {
+			return {
+				name: name,
+				paddocks: []
+			}
+		}
+
+		function findPaddcokGroup(name, paddockGroups) {
+			var found;
+			paddockGroups.forEach(function (paddockGroup) {
+				if (paddockGroup.name === name) {
+					found = paddockGroup;
+				}
+			})
+			return found;
+		}
+
 		farmdataPaddocks.merge = function (farmData, geoJsons) {
 			var paddockFeatures = geoJsons.paddocks,
 				paddocksExisting = farmData.paddocks,
-				paddocksMerged = [];
+				paddocksMerged = [],
+				paddockGroups = [];
 
 			paddockFeatures.features.forEach(function (paddockFeature, i) {
 				paddocksMerged.push(merge(paddockFeature, paddocksExisting));
+				if (paddockFeature.properties.group) {
+					var paddockGroup = findPaddcokGroup(paddockFeature.properties.group, paddockGroups);
+					if (!isDefined(paddockGroup)) {
+						paddockGroup = createPaddcokGroup(paddockFeature.properties.group);
+						paddockGroups.push(paddockGroup);
+					}
+					paddockGroup.paddocks.push(paddockFeature.properties.name);
+				}
 			});
 
 			farmData.paddocks = paddocksMerged;
+			farmData.paddockGroups = paddockGroups;
 
 			return farmData;
 
-		}
-
+		};
 
 //    function _add(geoJsons, geoJsonGeometry) {
 //      $log.info('farmdataPaddocks.add item ...', geoJsonGeometry);
