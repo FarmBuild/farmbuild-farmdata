@@ -2,10 +2,10 @@
 /**
  * nutrientMedium
  * @since 0.0.1
- * @copyright 2015 Spatial Vision, Inc. http://spatialvision.com.au
- * @license The MIT License
- * @author Spatial Vision
- * @version 0.1.0
+ * @copyright 2015 State of Victoria
+
+ * @author State of Victoria
+ * @version 1.0.0
  */
 
 'use strict';
@@ -15,47 +15,49 @@
  * @private-module nutrientCalculator/farmdataPaddockValidator
  */
 angular.module('farmbuild.farmdata')
-  .factory('farmdataPaddockValidator',
-  function (validations,
-            $log) {
-    var farmdataPaddockValidator = {},
-      _isDefined = validations.isDefined,
-      _isArray = validations.isArray,
-      _isPositiveNumber = validations.isPositiveNumber,
-      _isEmpty = validations.isEmpty;
+	.factory('farmdataPaddockValidator',
+	function (validations,
+	          $log) {
+		var farmdataPaddockValidator = {},
+			_isDefined = validations.isDefined,
+			_isArray = validations.isArray,
+			_isEmpty = validations.isEmpty;
 
-    function _validate(paddock) {
-      $log.info('validating paddock...', paddock);
+		function _validate(paddock) {
+			$log.info('validating paddock...', paddock);
 
-      if (!_isDefined(paddock) ||
-        !_isDefined(paddock.name) ||
-        !_isDefined(paddock.geometry)) {
-        $log.error('invalid, must have type (must pass type validate), weight (positive number) and isDry (boolean): %j', paddock);
-        return false;
-      }
+			if (!_isDefined(paddock) || !_isDefined(paddock.name) || !_isDefined(paddock.geometry)) {
+				$log.error('invalid paddock, must have name and geometry: %j', paddock);
+				return false;
+			}
 
-      return true;
-    };
+			//if(!checkName(paddock.name)){
+			//	$log.error('invalid paddock, name already exist: %j, %s', paddock, paddock.name);
+			//	return false;
+			//}
 
-    farmdataPaddockValidator.validate = _validate;
+			return true;
+		};
 
-    farmdataPaddockValidator.validateAll = function(items) {
-      if(!_isArray(items) || _isEmpty(items)) {
-        return false;
-      }
+		farmdataPaddockValidator.validate = _validate;
 
-      var i = 0;
-      for (i; i < items.length; i++) {
-        var item = items[i];
+		farmdataPaddockValidator.validateAll = function (items) {
+			if (!_isArray(items) || _isEmpty(items)) {
+				return false;
+			}
 
-        if (!_validate(item)) {
-          $log.error('validator invalid at %s: %j', i, item);
-          return false;
-        }
-      }
-      return true;
-    }
+			var i = 0;
+			for (i; i < items.length; i++) {
+				var item = items[i];
+
+				if (!_validate(item)) {
+					$log.error('validator invalid at %s: %j', i, item);
+					return false;
+				}
+			}
+			return true;
+		}
 
 
-    return farmdataPaddockValidator;
-  });
+		return farmdataPaddockValidator;
+	});

@@ -1305,6 +1305,140 @@
     }, {}, [ 1 ])(1);
 });
 
+(function() {
+    var _global = this;
+    var _rng;
+    if (typeof _global.require == "function") {
+        try {
+            var _rb = _global.require("crypto").randomBytes;
+            _rng = _rb && function() {
+                return _rb(16);
+            };
+        } catch (e) {}
+    }
+    if (!_rng && _global.crypto && crypto.getRandomValues) {
+        var _rnds8 = new Uint8Array(16);
+        _rng = function whatwgRNG() {
+            crypto.getRandomValues(_rnds8);
+            return _rnds8;
+        };
+    }
+    if (!_rng) {
+        var _rnds = new Array(16);
+        _rng = function() {
+            for (var i = 0, r; i < 16; i++) {
+                if ((i & 3) === 0) r = Math.random() * 4294967296;
+                _rnds[i] = r >>> ((i & 3) << 3) & 255;
+            }
+            return _rnds;
+        };
+    }
+    var BufferClass = typeof _global.Buffer == "function" ? _global.Buffer : Array;
+    var _byteToHex = [];
+    var _hexToByte = {};
+    for (var i = 0; i < 256; i++) {
+        _byteToHex[i] = (i + 256).toString(16).substr(1);
+        _hexToByte[_byteToHex[i]] = i;
+    }
+    function parse(s, buf, offset) {
+        var i = buf && offset || 0, ii = 0;
+        buf = buf || [];
+        s.toLowerCase().replace(/[0-9a-f]{2}/g, function(oct) {
+            if (ii < 16) {
+                buf[i + ii++] = _hexToByte[oct];
+            }
+        });
+        while (ii < 16) {
+            buf[i + ii++] = 0;
+        }
+        return buf;
+    }
+    function unparse(buf, offset) {
+        var i = offset || 0, bth = _byteToHex;
+        return bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + "-" + bth[buf[i++]] + bth[buf[i++]] + "-" + bth[buf[i++]] + bth[buf[i++]] + "-" + bth[buf[i++]] + bth[buf[i++]] + "-" + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]];
+    }
+    var _seedBytes = _rng();
+    var _nodeId = [ _seedBytes[0] | 1, _seedBytes[1], _seedBytes[2], _seedBytes[3], _seedBytes[4], _seedBytes[5] ];
+    var _clockseq = (_seedBytes[6] << 8 | _seedBytes[7]) & 16383;
+    var _lastMSecs = 0, _lastNSecs = 0;
+    function v1(options, buf, offset) {
+        var i = buf && offset || 0;
+        var b = buf || [];
+        options = options || {};
+        var clockseq = options.clockseq != null ? options.clockseq : _clockseq;
+        var msecs = options.msecs != null ? options.msecs : new Date().getTime();
+        var nsecs = options.nsecs != null ? options.nsecs : _lastNSecs + 1;
+        var dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 1e4;
+        if (dt < 0 && options.clockseq == null) {
+            clockseq = clockseq + 1 & 16383;
+        }
+        if ((dt < 0 || msecs > _lastMSecs) && options.nsecs == null) {
+            nsecs = 0;
+        }
+        if (nsecs >= 1e4) {
+            throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
+        }
+        _lastMSecs = msecs;
+        _lastNSecs = nsecs;
+        _clockseq = clockseq;
+        msecs += 122192928e5;
+        var tl = ((msecs & 268435455) * 1e4 + nsecs) % 4294967296;
+        b[i++] = tl >>> 24 & 255;
+        b[i++] = tl >>> 16 & 255;
+        b[i++] = tl >>> 8 & 255;
+        b[i++] = tl & 255;
+        var tmh = msecs / 4294967296 * 1e4 & 268435455;
+        b[i++] = tmh >>> 8 & 255;
+        b[i++] = tmh & 255;
+        b[i++] = tmh >>> 24 & 15 | 16;
+        b[i++] = tmh >>> 16 & 255;
+        b[i++] = clockseq >>> 8 | 128;
+        b[i++] = clockseq & 255;
+        var node = options.node || _nodeId;
+        for (var n = 0; n < 6; n++) {
+            b[i + n] = node[n];
+        }
+        return buf ? buf : unparse(b);
+    }
+    function v4(options, buf, offset) {
+        var i = buf && offset || 0;
+        if (typeof options == "string") {
+            buf = options == "binary" ? new BufferClass(16) : null;
+            options = null;
+        }
+        options = options || {};
+        var rnds = options.random || (options.rng || _rng)();
+        rnds[6] = rnds[6] & 15 | 64;
+        rnds[8] = rnds[8] & 63 | 128;
+        if (buf) {
+            for (var ii = 0; ii < 16; ii++) {
+                buf[i + ii] = rnds[ii];
+            }
+        }
+        return buf || unparse(rnds);
+    }
+    var uuid = v4;
+    uuid.v1 = v1;
+    uuid.v4 = v4;
+    uuid.parse = parse;
+    uuid.unparse = unparse;
+    uuid.BufferClass = BufferClass;
+    if (typeof define === "function" && define.amd) {
+        define(function() {
+            return uuid;
+        });
+    } else if (typeof module != "undefined" && module.exports) {
+        module.exports = uuid;
+    } else {
+        var _previousRoot = _global.uuid;
+        uuid.noConflict = function() {
+            _global.uuid = _previousRoot;
+            return uuid;
+        };
+        _global.uuid = uuid;
+    }
+}).call(this);
+
 (function(f) {
     if (typeof exports === "object" && typeof module !== "undefined") {
         module.exports = f();
@@ -1715,7 +1849,7 @@ angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdata
 "use strict";
 
 angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, collections, validations, farmdataConverter) {
-    var farmdataPaddocks = {}, isEmpty = validations.isEmpty, isDefined = validations.isDefined;
+    var farmdataPaddocks = {}, _isDefined = validations.isDefined;
     function createName() {
         return "Paddock " + new Date().getTime();
     }
@@ -1728,8 +1862,8 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
     farmdataPaddocks.createPaddockFeature = createPaddockFeature;
     function createPaddock(paddockFeature) {
         var name = paddockFeature.properties.name, id = paddockFeature.properties._id;
-        name = isDefined(name) ? name : createName();
-        id = isDefined(id) ? id : generateId();
+        name = _isDefined(name) ? name : createName();
+        id = _isDefined(id) ? id : generateId();
         return {
             name: name,
             _id: id,
@@ -1768,7 +1902,7 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
     }
     farmdataPaddocks.updatePaddock = updatePaddock;
     function isNew(paddockFeature) {
-        return !isDefined(paddockFeature.properties._id);
+        return !_isDefined(paddockFeature.properties._id);
     }
     function merge(paddockFeature, paddocksExisting) {
         if (isNew(paddockFeature)) {
@@ -1782,7 +1916,7 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
             paddocks: []
         };
     }
-    function findPaddcokGroup(name, paddockGroups) {
+    function findPaddockGroup(name, paddockGroups) {
         var found;
         paddockGroups.forEach(function(paddockGroup) {
             if (paddockGroup.name === name) {
@@ -1796,8 +1930,8 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
         paddockFeatures.features.forEach(function(paddockFeature, i) {
             paddocksMerged.push(merge(paddockFeature, paddocksExisting));
             if (paddockFeature.properties.group) {
-                var paddockGroup = findPaddcokGroup(paddockFeature.properties.group, paddockGroups);
-                if (!isDefined(paddockGroup)) {
+                var paddockGroup = findPaddockGroup(paddockFeature.properties.group, paddockGroups);
+                if (!_isDefined(paddockGroup)) {
                     paddockGroup = createPaddcokGroup(paddockFeature.properties.group);
                     paddockGroups.push(paddockGroup);
                 }
@@ -1814,11 +1948,11 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
 "use strict";
 
 angular.module("farmbuild.farmdata").factory("farmdataPaddockValidator", function(validations, $log) {
-    var farmdataPaddockValidator = {}, _isDefined = validations.isDefined, _isArray = validations.isArray, _isPositiveNumber = validations.isPositiveNumber, _isEmpty = validations.isEmpty;
+    var farmdataPaddockValidator = {}, _isDefined = validations.isDefined, _isArray = validations.isArray, _isEmpty = validations.isEmpty;
     function _validate(paddock) {
         $log.info("validating paddock...", paddock);
         if (!_isDefined(paddock) || !_isDefined(paddock.name) || !_isDefined(paddock.geometry)) {
-            $log.error("invalid, must have type (must pass type validate), weight (positive number) and isDry (boolean): %j", paddock);
+            $log.error("invalid paddock, must have name and geometry: %j", paddock);
             return false;
         }
         return true;

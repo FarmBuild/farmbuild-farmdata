@@ -7,6 +7,7 @@ module.exports = function (config) {
 			//'src/specs/index.js'
 			'bower_components/farmbuild-core/dist/farmbuild-core.js',
 			'bower_components/angular-mocks/angular-mocks.js',
+			'bower_components/node-uuid/uuid.js',
 			'node_modules/geojsonhint/geojsonhint.js',
 			'node_modules/tokml/tokml.js',
 			'src/index.js',

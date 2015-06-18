@@ -1,8 +1,7 @@
 /**
  * @since 0.0.1
- * @copyright 2015 Spatial Vision, Inc. http://spatialvision.com.au
- * @license The MIT License
- * @author Spatial Vision
+ * @copyright 2015 State of Victoria
+ * @author State of Victoria
  * @version 1.0.0
  */
 
@@ -146,7 +145,7 @@ angular.module('farmbuild.farmdata')
      * Merges the geoJsons into the farmData
      * @method merge
      * @param {Object} farmData - The updated farmData
-     * @param {Object} farmData - The updated farmData
+     * @param {Object} geoJsons - The updated farmData
      * @returns {Object} the farmData
      * @public
      * @static
