@@ -142,7 +142,7 @@
             "PBI": 350,
             "KCl 40 Sulphur (mg/kg)": 15,
             "Colwell Potassium (mg/kg)": 950,
-            "Exch Potassium (meq/100g)": null
+            "Exch Potassium (meq/100g)": 0.5
           }
         ]
       }
@@ -251,7 +251,7 @@
             "PBI": 350,
             "KCl 40 Sulphur (mg/kg)": 15,
             "Colwell Potassium (mg/kg)": 950,
-            "Exch Potassium (meq/100g)": null
+            "Exch Potassium (meq/100g)": 0.43
           }
         ]
       }
