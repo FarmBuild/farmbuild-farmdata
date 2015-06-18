@@ -130,8 +130,6 @@ describe('farmbuild.farmdata module', function () {
 				geoJsonsNew = farmdataConverter.toGeoJsons(farmDataNew),
 				paddockFeatureNew = farmdataPaddocks.createPaddockFeature(createGeometry());
 
-			console.log(paddockFeatureNew);
-
 			expect(geoJsonsNew.paddocks).toBeDefined();
 			expect(geoJsonsNew.paddocks.features).toBeDefined();
 			expect(geoJsonsNew.paddocks.features.length).toBe(0);
@@ -193,6 +191,50 @@ describe('farmbuild.farmdata module', function () {
 			expect(farmDataPaddock.geometry.coordinates).toEqual(newCoordinates);
 
 
+		}))
+
+		it('updating existing paddock with duplicate name should fail the merge operation', inject(function () {
+			var susanFarmData = angular.copy(susanFarm),
+				geoJsons = farmdataConverter.toGeoJsons(susanFarmData),
+				paddockToChange = geoJsons.paddocks.features[0], newName = 'Changed Paddock',
+				paddockFeatureNew = farmdataPaddocks.createPaddockFeature(createGeometry()),
+			newCoordinates = [
+					[
+						[
+							145.57368096419663,
+							-36.224879531701255
+						],
+						[
+							145.5826132801325,
+							-36.22488327137526
+						],
+						[
+							145.58260951039628,
+							-36.22801228957186
+						],
+						[
+							145.57363088613704,
+							-36.22803939355771
+						],
+						[
+							145.57368096419663,
+							-36.224879531701255
+						]
+					]
+				];
+			paddockToChange.properties.name = newName;
+			paddockFeatureNew.properties.name = newName;
+			paddockToChange.geometry.coordinates = newCoordinates;
+			expect(paddockToChange).toBeDefined();
+
+
+			geoJsons.paddocks.features.push(paddockFeatureNew);
+			expect(geoJsons.paddocks.features.length).toBe(2);
+			var toVerify = geoJsons.paddocks.features[1];
+			expect(angular.equals(paddockFeatureNew, toVerify)).toBeTruthy();
+
+			//If merge fails we return the original farmData so we don't break current components.
+			expect(farmdata.merge(susanFarmData, geoJsons)).toEqual(susanFarmData);
 		}))
 
 	});

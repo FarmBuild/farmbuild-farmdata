@@ -32,7 +32,9 @@ angular.module('farmbuild.farmdata')
 
       var farmDataMerged = farmdataPaddocks.merge(farmData, geoJsons);
 
-      return farmdataSession.update(farmDataMerged);
+      if(farmDataMerged) {
+        return farmdataSession.update(farmDataMerged);
+      }
     };
     farmdataSession.merge = merge;
 

@@ -1840,7 +1840,12 @@ angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdata
         return farmdataSession.update(farmData).find();
     };
     farmdata.merge = function(farmData, geoJsons) {
-        return farmdataSession.merge(farmData, geoJsons).find();
+        var merged = farmdataSession.merge(farmData, geoJsons);
+        if (merged) {
+            return merged.find();
+        } else {
+            return farmData;
+        }
     };
     window.farmbuild.farmdata = farmdata;
     return farmdata;
@@ -1848,7 +1853,7 @@ angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdata
 
 "use strict";
 
-angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, collections, validations, farmdataConverter) {
+angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, collections, validations, farmdataPaddockValidator, farmdataConverter) {
     var farmdataPaddocks = {}, _isDefined = validations.isDefined;
     function createName() {
         return "Paddock " + new Date().getTime();
@@ -1860,10 +1865,14 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
         return farmdataConverter.createFeature(geoJsonGeometry, createName());
     }
     farmdataPaddocks.createPaddockFeature = createPaddockFeature;
-    function createPaddock(paddockFeature) {
+    function createPaddock(paddockFeature, paddocksExisting, paddocksMerged) {
         var name = paddockFeature.properties.name, id = paddockFeature.properties._id;
         name = _isDefined(name) ? name : createName();
         id = _isDefined(id) ? id : generateId();
+        if (!farmdataPaddockValidator.validate(paddockFeature, paddocksExisting) || !farmdataPaddockValidator.validate(paddockFeature, paddocksMerged)) {
+            $log.error("creating new paddock failed, paddock data is invalid", paddockFeature);
+            return;
+        }
         return {
             name: name,
             _id: id,
@@ -1889,8 +1898,12 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
         return found;
     }
     farmdataPaddocks.findPaddock = findPaddock;
-    function updatePaddock(paddockFeature, paddocksExisting) {
+    function updatePaddock(paddockFeature, paddocksExisting, paddocksMerged) {
         var toUpdate = angular.copy(findPaddock(paddockFeature, paddocksExisting));
+        if (!farmdataPaddockValidator.validate(paddockFeature, paddocksExisting) || !farmdataPaddockValidator.validate(paddockFeature, paddocksMerged)) {
+            $log.error("updating paddock failed, paddock data is invalid", paddockFeature);
+            return;
+        }
         toUpdate.name = paddockFeature.properties.name;
         toUpdate.comment = paddockFeature.properties.comment;
         toUpdate.type = paddockFeature.properties.type;
@@ -1904,13 +1917,13 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
     function isNew(paddockFeature) {
         return !_isDefined(paddockFeature.properties._id);
     }
-    function merge(paddockFeature, paddocksExisting) {
+    function merge(paddockFeature, paddocksExisting, paddocksMerged) {
         if (isNew(paddockFeature)) {
-            return createPaddock(paddockFeature);
+            return createPaddock(paddockFeature, paddocksExisting, paddocksMerged);
         }
-        return updatePaddock(paddockFeature, paddocksExisting);
+        return updatePaddock(paddockFeature, paddocksExisting, paddocksMerged);
     }
-    function createPaddcokGroup(name) {
+    function createPaddockGroup(name) {
         return {
             name: name,
             paddocks: []
@@ -1926,13 +1939,18 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
         return found;
     }
     farmdataPaddocks.merge = function(farmData, geoJsons) {
-        var paddockFeatures = geoJsons.paddocks, paddocksExisting = farmData.paddocks, paddocksMerged = [], paddockGroups = [];
+        var paddockFeatures = geoJsons.paddocks, paddocksExisting = farmData.paddocks, paddocksMerged = [], paddockGroups = [], failed = false;
         paddockFeatures.features.forEach(function(paddockFeature, i) {
-            paddocksMerged.push(merge(paddockFeature, paddocksExisting));
+            var merged = merge(paddockFeature, paddocksExisting, paddocksMerged);
+            if (!_isDefined(merged)) {
+                $log.error("merging paddocks failed, paddocks data is invalid", paddockFeature, paddocksExisting);
+                failed = true;
+            }
+            paddocksMerged.push(merged);
             if (paddockFeature.properties.group) {
                 var paddockGroup = findPaddockGroup(paddockFeature.properties.group, paddockGroups);
                 if (!_isDefined(paddockGroup)) {
-                    paddockGroup = createPaddcokGroup(paddockFeature.properties.group);
+                    paddockGroup = createPaddockGroup(paddockFeature.properties.group);
                     paddockGroups.push(paddockGroup);
                 }
                 paddockGroup.paddocks.push(paddockFeature.properties.name);
@@ -1940,7 +1958,9 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
         });
         farmData.paddocks = paddocksMerged;
         farmData.paddockGroups = paddockGroups;
-        return farmData;
+        if (!failed) {
+            return farmData;
+        }
     };
     return farmdataPaddocks;
 });
@@ -1949,13 +1969,27 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
 
 angular.module("farmbuild.farmdata").factory("farmdataPaddockValidator", function(validations, $log) {
     var farmdataPaddockValidator = {}, _isDefined = validations.isDefined, _isArray = validations.isArray, _isEmpty = validations.isEmpty;
-    function _validate(paddock) {
+    function _validate(paddock, paddocksExisting) {
         $log.info("validating paddock...", paddock);
-        if (!_isDefined(paddock) || !_isDefined(paddock.name) || !_isDefined(paddock.geometry)) {
+        if (!_isDefined(paddock) || !_isDefined(paddock.properties) || !_isDefined(paddock.properties.name) || !_isDefined(paddock.geometry)) {
             $log.error("invalid paddock, must have name and geometry: %j", paddock);
             return false;
         }
+        if (!checkName(paddock, paddocksExisting)) {
+            return false;
+        }
         return true;
+    }
+    function checkName(paddock, paddocksExisting) {
+        $log.info("checking paddock for duplicate name...", paddock);
+        var result = true;
+        paddocksExisting.forEach(function(paddockExisting) {
+            if (paddock.properties.name === paddockExisting.name && paddock.properties._id !== paddockExisting._id) {
+                $log.error("invalid paddock, name already exist: %j, %j", paddock, paddockExisting);
+                result = false;
+            }
+        });
+        return result;
     }
     farmdataPaddockValidator.validate = _validate;
     farmdataPaddockValidator.validateAll = function(items) {
@@ -2014,7 +2048,9 @@ angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, $
         var farmFeature = geoJsons.farm.features[0], paddocks = geoJsons.paddocks;
         farmData.geometry = farmdataConverter.convertToFarmDataGeometry(farmFeature.geometry);
         var farmDataMerged = farmdataPaddocks.merge(farmData, geoJsons);
-        return farmdataSession.update(farmDataMerged);
+        if (farmDataMerged) {
+            return farmdataSession.update(farmDataMerged);
+        }
     }
     farmdataSession.merge = merge;
     farmdataSession.clear = function() {

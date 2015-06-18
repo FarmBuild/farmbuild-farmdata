@@ -23,21 +23,32 @@ angular.module('farmbuild.farmdata')
 			_isArray = validations.isArray,
 			_isEmpty = validations.isEmpty;
 
-		function _validate(paddock) {
+		function _validate(paddock, paddocksExisting) {
 			$log.info('validating paddock...', paddock);
 
-			if (!_isDefined(paddock) || !_isDefined(paddock.name) || !_isDefined(paddock.geometry)) {
+			if (!_isDefined(paddock) || !_isDefined(paddock.properties) || !_isDefined(paddock.properties.name) || !_isDefined(paddock.geometry)) {
 				$log.error('invalid paddock, must have name and geometry: %j', paddock);
 				return false;
 			}
 
-			//if(!checkName(paddock.name)){
-			//	$log.error('invalid paddock, name already exist: %j, %s', paddock, paddock.name);
-			//	return false;
-			//}
+			if (!checkName(paddock, paddocksExisting)) {
+				return false;
+			}
 
 			return true;
 		};
+
+		function checkName(paddock, paddocksExisting) {
+			$log.info('checking paddock for duplicate name...', paddock);
+			var result = true;
+			paddocksExisting.forEach(function (paddockExisting) {
+				if (paddock.properties.name === paddockExisting.name && paddock.properties._id !== paddockExisting._id) {
+					$log.error('invalid paddock, name already exist: %j, %j', paddock, paddockExisting);
+					result = false;
+				}
+			});
+			return result;
+		}
 
 		farmdataPaddockValidator.validate = _validate;
 

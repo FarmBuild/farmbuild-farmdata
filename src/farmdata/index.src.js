@@ -151,7 +151,12 @@ angular.module('farmbuild.farmdata')
      * @static
      */
     farmdata.merge = function(farmData, geoJsons) {
-       return farmdataSession.merge(farmData, geoJsons).find();
+      var merged = farmdataSession.merge(farmData, geoJsons);
+      if(merged) {
+        return merged.find();
+      } else {
+        return farmData;
+      }
     }
 
     window.farmbuild.farmdata = farmdata;
