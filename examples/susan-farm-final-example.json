@@ -1,7 +1,7 @@
 {
   "version": 1,
   "dateCreated": "2015-03-30T21:19:00",
-  "dateLastUpdated": "2015-06-18T03:53:51.673Z",
+  "dateLastUpdated": "2015-06-18T05:25:38.784Z",
   "id": "1432602446885",
   "name": "Susan's Farm",
   "area": 28.14975537903255,
@@ -34,7 +34,22 @@
     ],
     "crs": "EPSG:4283"
   },
-  "paddockGroups": [],
+  "paddockGroups": [
+    {
+      "name": "A - Average Use and Soil Type Paddock",
+      "paddocks": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "name": "FC - Future Crop",
+      "paddocks": [
+        "P20",
+        "P19"
+      ]
+    }
+  ],
   "soils": {
     "soilAreas": {
       "dateLastUpdated": "2015-06-18T01:40:32",
@@ -86,7 +101,7 @@
             ],
             [
               145.57949688713074,
-              -36.225810393402234
+              -36.225810393402256
             ],
             [
               145.579975038195,
@@ -104,15 +119,74 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.135Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.778Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.11486,
-              "description": "0.1149",
-              "soilGroup": "P10",
+              "area": 0.87066,
+              "description": "0.8707",
+              "soilGroup": "P1",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        },
+        "sampleResults": [
+          {
+            "Sample Id": "P1",
+            "Sample Name": "P1",
+            "pH H2O (Water)": 6.4,
+            "Olsen Phosphorus (mg/kg)": 46,
+            "Colwell Phosphorus (mg/kg)": 220,
+            "PBI": 350,
+            "KCl 40 Sulphur (mg/kg)": 15,
+            "Colwell Potassium (mg/kg)": 950,
+            "Exch Potassium (meq/100g)": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "P9",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.5800712702983,
+              -36.22545010813503
+            ],
+            [
+              145.5795015574349,
+              -36.22545267772393
+            ],
+            [
+              145.57950267711723,
+              -36.22560171080234
+            ],
+            [
+              145.5800710187229,
+              -36.22559896173692
+            ],
+            [
+              145.5800712702983,
+              -36.22545010813503
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.778Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -140,7 +214,7 @@
             ],
             [
               145.58218018756546,
-              -36.22550501283939
+              -36.22550501283941
             ],
             [
               145.58211312173296,
@@ -154,7 +228,7 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.778Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
@@ -195,7 +269,7 @@
             ],
             [
               145.57948994791735,
-              -36.22488204094499
+              -36.22488204094501
             ],
             [
               145.5795015574349,
@@ -217,15 +291,15 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.778Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.32659,
-              "description": "0.3266",
-              "soilGroup": "P8",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -263,15 +337,15 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.779Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.07611,
-              "description": "0.0761",
-              "soilGroup": "TRESS",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -279,112 +353,141 @@
       }
     },
     {
-      "name": "P9",
+      "name": "P6",
       "_id": 1434598791136,
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              145.5800712702983,
-              -36.22545010813503
+              145.58261063782288,
+              -36.22707651102285
             ],
             [
-              145.5795015574349,
-              -36.22545267772393
+              145.5797934711441,
+              -36.22712616006474
             ],
             [
-              145.57950267711723,
-              -36.22560171080234
+              145.57979327079317,
+              -36.22754941299995
             ],
             [
-              145.5800710187229,
-              -36.22559896173692
+              145.58261007007923,
+              -36.227547748364984
             ],
             [
-              145.5800712702983,
-              -36.22545010813503
+              145.58261063782288,
+              -36.22707651102285
             ]
           ]
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.779Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.08454,
-              "description": "0.0845",
-              "soilGroup": "P9",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
-        },
-        "sampleResults": [
-          {
-            "Sample Id": "P9",
-            "Sample Name": "tank back",
-            "pH H2O (Water)": 5.7,
-            "Olsen Phosphorus (mg/kg)": 20,
-            "Colwell Phosphorus (mg/kg)": 100,
-            "PBI": 360,
-            "KCl 40 Sulphur (mg/kg)": 11,
-            "Colwell Potassium (mg/kg)": 500,
-            "Exch Potassium (meq/100g)": 0.24
-          }
-        ]
+        }
       }
     },
     {
-      "name": "P4",
+      "name": "HOUSE",
       "_id": 1434598791136,
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              145.5820157811102,
-              -36.22615010446919
+              145.579975038195,
+              -36.22579611106871
             ],
             [
-              145.5797939225214,
-              -36.22617258223378
+              145.57949688713074,
+              -36.225810393402256
             ],
             [
-              145.57979369971073,
-              -36.226643294054334
+              145.57918055725202,
+              -36.225817914680185
             ],
             [
-              145.58253450005296,
-              -36.226629988796375
+              145.57918288491715,
+              -36.226127903498735
             ],
             [
-              145.58249654141727,
-              -36.22647517679845
+              145.57997732422797,
+              -36.22610013854838
             ],
             [
-              145.58231089093684,
-              -36.22624955829733
-            ],
-            [
-              145.5820157811102,
-              -36.22615010446919
+              145.579975038195,
+              -36.22579611106871
             ]
           ]
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.779Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 1.23602,
-              "description": "1.236",
-              "soilGroup": "P4",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "P7",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.58261007007923,
+              -36.227547748364984
+            ],
+            [
+              145.57979327079317,
+              -36.22754941299995
+            ],
+            [
+              145.57979304762398,
+              -36.22802086554963
+            ],
+            [
+              145.58260951039628,
+              -36.22801228957186
+            ],
+            [
+              145.58261007007923,
+              -36.227547748364984
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.779Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -430,89 +533,15 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.779Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.72286,
-              "description": "0.7229",
-              "soilGroup": "P3",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        },
-        "sampleResults": [
-          {
-            "Sample Id": "P3",
-            "Sample Name": "tank front and middle (2&3)",
-            "pH H2O (Water)": 5.6,
-            "Olsen Phosphorus (mg/kg)": 25,
-            "Colwell Phosphorus (mg/kg)": 130,
-            "PBI": 410,
-            "KCl 40 Sulphur (mg/kg)": 15,
-            "Colwell Potassium (mg/kg)": 530,
-            "Exch Potassium (meq/100g)": 0.19
-          },
-          {
-            "Sample Id": "P3",
-            "Sample Name": "tank front and middle (2&3)",
-            "pH H2O (Water)": 5.6,
-            "Olsen Phosphorus (mg/kg)": 25,
-            "Colwell Phosphorus (mg/kg)": 130,
-            "PBI": 410,
-            "KCl 40 Sulphur (mg/kg)": 15,
-            "Colwell Potassium (mg/kg)": 530,
-            "Exch Potassium (meq/100g)": 0.19
-          }
-        ]
-      }
-    },
-    {
-      "name": "HOUSE",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.579975038195,
-              -36.22579611106871
-            ],
-            [
-              145.57949688713074,
-              -36.225810393402234
-            ],
-            [
-              145.57918055725202,
-              -36.225817914680185
-            ],
-            [
-              145.57918288491715,
-              -36.226127903498735
-            ],
-            [
-              145.57997732422797,
-              -36.22610013854838
-            ],
-            [
-              145.579975038195,
-              -36.22579611106871
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 0.24289,
-              "description": "0.2429",
-              "soilGroup": "HOUSE",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -528,7 +557,7 @@
           [
             [
               145.58261175062248,
-              -36.226152850869454
+              -36.22615285086948
             ],
             [
               145.5820157811102,
@@ -552,163 +581,21 @@
             ],
             [
               145.58261175062248,
-              -36.226152850869454
+              -36.22615285086948
             ]
           ]
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.779Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.1052,
-              "description": "0.1052",
-              "soilGroup": "TREES",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "P7",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.58261007007923,
-              -36.227547748364955
-            ],
-            [
-              145.57979327079317,
-              -36.22754941299995
-            ],
-            [
-              145.57979304762398,
-              -36.22802086554963
-            ],
-            [
-              145.58260951039628,
-              -36.22801228957186
-            ],
-            [
-              145.58261007007923,
-              -36.227547748364955
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 1.31485,
-              "description": "1.3148",
-              "soilGroup": "P7",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "P6",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.58261063782288,
-              -36.22707651102285
-            ],
-            [
-              145.5797934711441,
-              -36.22712616006474
-            ],
-            [
-              145.57979327079317,
-              -36.22754941299995
-            ],
-            [
-              145.58261007007923,
-              -36.227547748364955
-            ],
-            [
-              145.58261063782288,
-              -36.22707651102285
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 1.2567,
-              "description": "1.2567",
-              "soilGroup": "P6",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "P5",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.57979369971073,
-              -36.226643294054334
-            ],
-            [
-              145.5797934711441,
-              -36.22712616006474
-            ],
-            [
-              145.58261063782288,
-              -36.22707651102285
-            ],
-            [
-              145.58261117601626,
-              -36.22662979565157
-            ],
-            [
-              145.58253450005296,
-              -36.226629988796375
-            ],
-            [
-              145.57979369971073,
-              -36.226643294054334
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 1.30641,
-              "description": "1.3064",
-              "soilGroup": "P5",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -724,7 +611,7 @@
           [
             [
               145.58218018756546,
-              -36.22550501283939
+              -36.22550501283941
             ],
             [
               145.58070132605394,
@@ -740,25 +627,25 @@
             ],
             [
               145.58217462979982,
-              -36.22574350218093
+              -36.225743502180954
             ],
             [
               145.58218018756546,
-              -36.22550501283939
+              -36.22550501283941
             ]
           ]
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.779Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.82349,
-              "description": "0.8235",
-              "soilGroup": "P2",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -782,11 +669,11 @@
             ],
             [
               145.58218018756546,
-              -36.22550501283939
+              -36.22550501283941
             ],
             [
               145.58217462979982,
-              -36.22574350218093
+              -36.225743502180954
             ],
             [
               145.5820524307267,
@@ -808,33 +695,140 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.779Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.57752,
-              "description": "0.5775",
-              "soilGroup": "DAMS",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
-        },
-        "sampleResults": [
-          {
-            "Sample Id": "DAMS",
-            "Sample Name": "dam",
-            "pH H2O (Water)": 5.6,
-            "Olsen Phosphorus (mg/kg)": 19,
-            "Colwell Phosphorus (mg/kg)": 110,
-            "PBI": 450,
-            "KCl 40 Sulphur (mg/kg)": 15,
-            "Colwell Potassium (mg/kg)": 410,
-            "Exch Potassium (meq/100g)": 0.2
-          }
-        ]
+        }
       }
+    },
+    {
+      "name": "P4",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.5820157811102,
+              -36.22615010446919
+            ],
+            [
+              145.58231089093684,
+              -36.22624955829733
+            ],
+            [
+              145.58249654141727,
+              -36.22647517679845
+            ],
+            [
+              145.58253450005296,
+              -36.226629988796375
+            ],
+            [
+              145.57979369971073,
+              -36.22664329405436
+            ],
+            [
+              145.5797939225214,
+              -36.22617258223378
+            ],
+            [
+              145.5797939250071,
+              -36.22617258220864
+            ],
+            [
+              145.57985278319424,
+              -36.226172291767
+            ],
+            [
+              145.58201050729113,
+              -36.22615015782259
+            ],
+            [
+              145.5820157811102,
+              -36.22615010446919
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.779Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      },
+      "area": 1.238679356439791,
+      "group": "A - Average Use and Soil Type Paddock"
+    },
+    {
+      "name": "P5",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.57979369971073,
+              -36.22664329405436
+            ],
+            [
+              145.58253450005296,
+              -36.226629988796375
+            ],
+            [
+              145.58261117599722,
+              -36.22662979565162
+            ],
+            [
+              145.58261063780674,
+              -36.22707651102313
+            ],
+            [
+              145.5797934711441,
+              -36.22712616006474
+            ],
+            [
+              145.57979369971073,
+              -36.22664329405436
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.779Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      },
+      "area": 1.3092321548814019,
+      "group": "A - Average Use and Soil Type Paddock"
     },
     {
       "name": "UTILITIES / SHEDS",
@@ -861,7 +855,7 @@
             ],
             [
               145.57949688713074,
-              -36.225810393402234
+              -36.225810393402256
             ],
             [
               145.57918055725202,
@@ -907,15 +901,15 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.780Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.31239,
-              "description": "0.3124",
-              "soilGroup": "UTILITIES / SHEDS",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -935,7 +929,7 @@
             ],
             [
               145.57825943325665,
-              -36.22563168223553
+              -36.22563168223556
             ],
             [
               145.57826050585015,
@@ -953,61 +947,15 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.780Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.07814,
-              "description": "0.0781",
-              "soilGroup": "EFFLUENT POND",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "STOCK YARD",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.5788186952284,
-              -36.225640851559646
-            ],
-            [
-              145.5788254264718,
-              -36.2255573567859
-            ],
-            [
-              145.57892044791373,
-              -36.22547342702361
-            ],
-            [
-              145.57899087046715,
-              -36.22564119555521
-            ],
-            [
-              145.5788186952284,
-              -36.225640851559646
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 0.01807,
-              "description": "0.0181",
-              "soilGroup": "STOCK YARD",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -1027,7 +975,7 @@
             ],
             [
               145.5788469622084,
-              -36.2254857121654
+              -36.22548571216542
             ],
             [
               145.5786409516748,
@@ -1043,7 +991,7 @@
             ],
             [
               145.5788254264718,
-              -36.2255573567859
+              -36.22555735678592
             ],
             [
               145.57892044791373,
@@ -1053,15 +1001,61 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.780Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.03146,
-              "description": "0.0315",
-              "soilGroup": "CALF SHED",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "STOCK YARD",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.5788186952284,
+              -36.225640851559646
+            ],
+            [
+              145.5788254264718,
+              -36.22555735678592
+            ],
+            [
+              145.57892044791373,
+              -36.22547342702361
+            ],
+            [
+              145.57899087046715,
+              -36.22564119555521
+            ],
+            [
+              145.5788186952284,
+              -36.225640851559646
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.780Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -1085,7 +1079,7 @@
             ],
             [
               145.57825943325665,
-              -36.22563168223553
+              -36.22563168223556
             ],
             [
               145.57863471216098,
@@ -1097,7 +1091,7 @@
             ],
             [
               145.5788469622084,
-              -36.2254857121654
+              -36.22548571216542
             ],
             [
               145.57892044791373,
@@ -1111,43 +1105,73 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.780Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.17961,
-              "description": "0.1796",
-              "soilGroup": "HAY SHED",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
-        },
-        "sampleResults": [
-          {
-            "Sample Id": "HAY SHED",
-            "Sample Name": "hay shed front",
-            "pH H2O (Water)": 5.4,
-            "Olsen Phosphorus (mg/kg)": 20,
-            "Colwell Phosphorus (mg/kg)": 100,
-            "PBI": 450,
-            "KCl 40 Sulphur (mg/kg)": 15,
-            "Colwell Potassium (mg/kg)": 480,
-            "Exch Potassium (meq/100g)": 0.67
-          },
-          {
-            "Sample Id": "HAY SHED",
-            "Sample Name": "hay shed back",
-            "pH H2O (Water)": 5.4,
-            "Olsen Phosphorus (mg/kg)": 16,
-            "Colwell Phosphorus (mg/kg)": 88,
-            "PBI": 480,
-            "KCl 40 Sulphur (mg/kg)": 19,
-            "Colwell Potassium (mg/kg)": 430,
-            "Exch Potassium (meq/100g)": 0.38
-          }
-        ]
+        }
+      }
+    },
+    {
+      "name": "P15",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.5782388927763,
+              -36.22488152480597
+            ],
+            [
+              145.57520031997973,
+              -36.22488021573582
+            ],
+            [
+              145.57519352192625,
+              -36.22529415280782
+            ],
+            [
+              145.57817333934065,
+              -36.22529152102429
+            ],
+            [
+              145.57816689786333,
+              -36.22506579098722
+            ],
+            [
+              145.57824783013447,
+              -36.22506539270852
+            ],
+            [
+              145.5782388927763,
+              -36.22488152480597
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.780Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
       }
     },
     {
@@ -1163,11 +1187,11 @@
             ],
             [
               145.5782388927763,
-              -36.22488152480595
+              -36.22488152480597
             ],
             [
               145.57824783013447,
-              -36.225065392708494
+              -36.22506539270852
             ],
             [
               145.57824917735286,
@@ -1193,15 +1217,61 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.781Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.2773,
-              "description": "0.2773",
-              "soilGroup": "CALVING PAD",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "TREES",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.57948994791735,
+              -36.22488204094501
+            ],
+            [
+              145.57890875890018,
+              -36.22488180282462
+            ],
+            [
+              145.57891727122728,
+              -36.22505017307248
+            ],
+            [
+              145.579493067858,
+              -36.225035394647165
+            ],
+            [
+              145.57948994791735,
+              -36.22488204094501
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.781Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -1239,21 +1309,15 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.781Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.86321,
-              "description": "0.0398",
-              "soilGroup": "P16",
-              "soilClass": "Type M"
-            },
-            {
-              "area": 0.86321,
-              "description": "0.8234",
-              "soilGroup": "P16",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -1261,159 +1325,49 @@
       }
     },
     {
-      "name": "TREES",
+      "name": "P12",
       "_id": 1434598791136,
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              145.57948994791735,
-              -36.22488204094499
-            ],
-            [
-              145.57890875890018,
-              -36.22488180282462
-            ],
-            [
-              145.57891727122728,
-              -36.22505017307248
-            ],
-            [
-              145.579493067858,
-              -36.225035394647165
-            ],
-            [
-              145.57948994791735,
-              -36.22488204094499
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 0.09287,
-              "description": "0.0929",
-              "soilGroup": "TREES",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "P15",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.5782388927763,
-              -36.22488152480595
-            ],
-            [
-              145.57520031997973,
-              -36.22488021573582
-            ],
-            [
-              145.57519352192625,
-              -36.22529415280782
-            ],
-            [
-              145.57817333934065,
-              -36.22529152102429
-            ],
-            [
-              145.57816689786333,
-              -36.22506579098722
-            ],
-            [
-              145.57824783013447,
-              -36.225065392708494
-            ],
-            [
-              145.5782388927763,
-              -36.22488152480595
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 1.23531,
-              "description": "0.924",
-              "soilGroup": "P15",
-              "soilClass": "Katamatite loam - yellow phase"
-            },
-            {
-              "area": 1.23531,
-              "description": "0.3113",
-              "soilGroup": "P15",
-              "soilClass": "Type M"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "P13",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.57877918053026,
-              -36.22723874003956
-            ],
-            [
-              145.57876511314558,
-              -36.22634457769362
+              145.5796767387895,
+              -36.22624469895846
             ],
             [
               145.57883057104408,
               -36.22624290899373
             ],
             [
-              145.57883007895057,
-              -36.2261773344336
-            ],
-            [
-              145.57816789627498,
-              -36.22618059472176
-            ],
-            [
-              145.57816109017742,
-              -36.22723582149905
+              145.57876511314558,
+              -36.22634457769362
             ],
             [
               145.57877918053026,
               -36.22723874003956
+            ],
+            [
+              145.57968412779695,
+              -36.22723428054794
+            ],
+            [
+              145.5796767387895,
+              -36.22624469895846
             ]
           ]
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.781Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.64778,
-              "description": "0.6478",
-              "soilGroup": "P13",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -1429,7 +1383,7 @@
           [
             [
               145.57651257301177,
-              -36.22620661308837
+              -36.2262066130884
             ],
             [
               145.57435662162464,
@@ -1449,125 +1403,21 @@
             ],
             [
               145.57651257301177,
-              -36.22620661308837
+              -36.2262066130884
             ]
           ]
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.782Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 1.59762,
-              "description": "1.5976",
-              "soilGroup": "P24",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "REUSE DAM",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.5749004611122,
-              -36.22610720431477
-            ],
-            [
-              145.57485452046953,
-              -36.22488006177917
-            ],
-            [
-              145.57520031997973,
-              -36.22488021573582
-            ],
-            [
-              145.57518009360606,
-              -36.22611179730415
-            ],
-            [
-              145.5749004611122,
-              -36.22610720431477
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 0.38345,
-              "description": "0.1686",
-              "soilGroup": "REUSE DAM",
-              "soilClass": "Type M"
-            },
-            {
-              "area": 0.38345,
-              "description": "0.2148",
-              "soilGroup": "REUSE DAM",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "P22",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.57485452046953,
-              -36.22488006177917
-            ],
-            [
-              145.57433983931378,
-              -36.224879830748456
-            ],
-            [
-              145.57434864258408,
-              -36.22610990302557
-            ],
-            [
-              145.5749004611122,
-              -36.22610720431477
-            ],
-            [
-              145.57485452046953,
-              -36.22488006177917
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 0.65356,
-              "description": "0.1751",
-              "soilGroup": "P22",
-              "soilClass": "Type M"
-            },
-            {
-              "area": 0.65356,
-              "description": "0.4784",
-              "soilGroup": "P22",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -1605,15 +1455,61 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.782Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.87365,
-              "description": "0.8737",
-              "soilGroup": "P17",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "P22",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.57485452046953,
+              -36.22488006177917
+            ],
+            [
+              145.57433983931378,
+              -36.224879830748456
+            ],
+            [
+              145.57434864258408,
+              -36.22610990302557
+            ],
+            [
+              145.5749004611122,
+              -36.22610720431477
+            ],
+            [
+              145.57485452046953,
+              -36.22488006177917
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.782Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -1637,7 +1533,7 @@
             ],
             [
               145.57518009360606,
-              -36.22611179730415
+              -36.22611179730417
             ],
             [
               145.57819683506227,
@@ -1651,15 +1547,157 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.782Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.71708,
-              "description": "0.7171",
-              "soilGroup": "P18",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "P23",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.57433983931378,
+              -36.224879830748456
+            ],
+            [
+              145.57368096419663,
+              -36.22487953170128
+            ],
+            [
+              145.57365972537926,
+              -36.22621970559776
+            ],
+            [
+              145.57435662162464,
+              -36.22619332561467
+            ],
+            [
+              145.57434864258408,
+              -36.22610990302557
+            ],
+            [
+              145.57433983931378,
+              -36.224879830748456
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.782Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "P11",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.57881972412468,
+              -36.225777961999505
+            ],
+            [
+              145.57826050585015,
+              -36.22577475400345
+            ],
+            [
+              145.57826300858383,
+              -36.22610858813534
+            ],
+            [
+              145.57880002234208,
+              -36.22609402088333
+            ],
+            [
+              145.57881972412468,
+              -36.225777961999505
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.782Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "REUSE DAM",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.5749004611122,
+              -36.22610720431477
+            ],
+            [
+              145.57485452046953,
+              -36.22488006177917
+            ],
+            [
+              145.57520031997973,
+              -36.22488021573582
+            ],
+            [
+              145.57518009360606,
+              -36.22611179730417
+            ],
+            [
+              145.5749004611122,
+              -36.22610720431477
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.782Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -1705,15 +1743,15 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.782Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.11238,
-              "description": "0.1124",
-              "soilGroup": "DAIRY",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -1721,101 +1759,157 @@
       }
     },
     {
-      "name": "P23",
+      "name": "P21",
       "_id": 1434598791136,
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              145.57433983931378,
-              -36.224879830748456
+              145.57818902440368,
+              -36.22802571954082
             ],
             [
-              145.57368096419663,
-              -36.22487953170128
+              145.57816338863347,
+              -36.227300815708865
             ],
             [
-              145.57365972537926,
-              -36.22621970559776
+              145.57737417469988,
+              -36.22728738331589
             ],
             [
-              145.57435662162464,
-              -36.22619332561467
+              145.57662364556055,
+              -36.22728510740307
             ],
             [
-              145.57434864258408,
-              -36.22610990302557
+              145.57661709004563,
+              -36.227392447359904
             ],
             [
-              145.57433983931378,
-              -36.224879830748456
+              145.5763080220172,
+              -36.22738800214752
+            ],
+            [
+              145.57632015374696,
+              -36.22803134737691
+            ],
+            [
+              145.57818902440368,
+              -36.22802571954082
             ]
           ]
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.783Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.89264,
-              "description": "0.8442",
-              "soilGroup": "P23",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
-            },
-            {
-              "area": 0.89264,
-              "description": "0.0484",
-              "soilGroup": "P23",
-              "soilClass": "Type M"
             }
           ]
         }
       }
     },
     {
-      "name": "P11",
+      "name": "P26",
       "_id": 1434598791136,
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              145.57881972412468,
-              -36.225777961999505
+              145.57629990712115,
+              -36.22728669570885
             ],
             [
-              145.57826050585015,
-              -36.22577475400345
+              145.57364242603472,
+              -36.227311263592476
             ],
             [
-              145.57826300858383,
-              -36.22610858813534
+              145.57363088613704,
+              -36.22803939355771
             ],
             [
-              145.57880002234208,
-              -36.22609402088333
+              145.57632015374696,
+              -36.22803134737691
             ],
             [
-              145.57881972412468,
-              -36.225777961999505
+              145.5763080220172,
+              -36.22738800214752
+            ],
+            [
+              145.57629990712115,
+              -36.22728669570885
             ]
           ]
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.783Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.17761,
-              "description": "0.1776",
-              "soilGroup": "P11",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "P14",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.57968412779695,
+              -36.22723428054794
+            ],
+            [
+              145.57877918053026,
+              -36.22723874003956
+            ],
+            [
+              145.57816109017742,
+              -36.22723582149905
+            ],
+            [
+              145.57818902440368,
+              -36.22802571954082
+            ],
+            [
+              145.57969000353782,
+              -36.228021178033146
+            ],
+            [
+              145.57968412779695,
+              -36.22723428054794
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.783Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -1831,7 +1925,7 @@
           [
             [
               145.57883007895057,
-              -36.2261773344336
+              -36.22617733443363
             ],
             [
               145.57883057104408,
@@ -1855,21 +1949,75 @@
             ],
             [
               145.57883007895057,
-              -36.2261773344336
+              -36.22617733443363
             ]
           ]
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.783Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 0.26135,
-              "description": "0.2614",
-              "soilGroup": "LANE WAY 2",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "P13",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.57877918053026,
+              -36.22723874003956
+            ],
+            [
+              145.57876511314558,
+              -36.22634457769362
+            ],
+            [
+              145.57883057104408,
+              -36.22624290899373
+            ],
+            [
+              145.57883007895057,
+              -36.22617733443363
+            ],
+            [
+              145.57816789627498,
+              -36.22618059472176
+            ],
+            [
+              145.57816109017742,
+              -36.22723582149905
+            ],
+            [
+              145.57877918053026,
+              -36.22723874003956
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.783Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -1957,11 +2105,11 @@
             ],
             [
               145.57825943325665,
-              -36.22563168223553
+              -36.22563168223556
             ],
             [
               145.57824783013447,
-              -36.225065392708494
+              -36.22506539270852
             ],
             [
               145.57816689786333,
@@ -1973,7 +2121,7 @@
             ],
             [
               145.57518009360606,
-              -36.22611179730415
+              -36.22611179730417
             ],
             [
               145.5749004611122,
@@ -1989,7 +2137,7 @@
             ],
             [
               145.57651257301177,
-              -36.22620661308837
+              -36.2262066130884
             ],
             [
               145.57652063787634,
@@ -2025,7 +2173,7 @@
             ],
             [
               145.57985278319424,
-              -36.22617229176698
+              -36.226172291767
             ],
             [
               145.5820967560167,
@@ -2033,7 +2181,7 @@
             ],
             [
               145.58261175062248,
-              -36.226152850869454
+              -36.22615285086948
             ],
             [
               145.5826118583508,
@@ -2043,123 +2191,15 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.783Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 1.00792,
-              "description": "1.0079",
-              "soilGroup": "LANE WAY 1",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "P14",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.57968412779695,
-              -36.22723428054794
-            ],
-            [
-              145.57877918053026,
-              -36.22723874003956
-            ],
-            [
-              145.57816109017742,
-              -36.22723582149905
-            ],
-            [
-              145.57818902440368,
-              -36.22802571954082
-            ],
-            [
-              145.57969000353782,
-              -36.228021178033146
-            ],
-            [
-              145.57968412779695,
-              -36.22723428054794
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 1.18642,
-              "description": "1.1864",
-              "soilGroup": "P14",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "P21",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.57818902440368,
-              -36.22802571954082
-            ],
-            [
-              145.57816338863347,
-              -36.227300815708865
-            ],
-            [
-              145.57737417469988,
-              -36.22728738331589
-            ],
-            [
-              145.57662364556055,
-              -36.22728510740307
-            ],
-            [
-              145.57661709004563,
-              -36.227392447359904
-            ],
-            [
-              145.5763080220172,
-              -36.22738800214752
-            ],
-            [
-              145.57632015374696,
-              -36.22803134737691
-            ],
-            [
-              145.57818902440368,
-              -36.22802571954082
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 1.34065,
-              "description": "1.3406",
-              "soilGroup": "P21",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -2201,115 +2241,15 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.783Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
           "types": [
             {
-              "area": 1.53611,
-              "description": "1.5361",
-              "soilGroup": "P25",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "P26",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.57629990712115,
-              -36.22728669570885
-            ],
-            [
-              145.57364242603472,
-              -36.227311263592476
-            ],
-            [
-              145.57363088613704,
-              -36.22803939355771
-            ],
-            [
-              145.57632015374696,
-              -36.22803134737691
-            ],
-            [
-              145.5763080220172,
-              -36.22738800214752
-            ],
-            [
-              145.57629990712115,
-              -36.22728669570885
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 1.96575,
-              "description": "1.9657",
-              "soilGroup": "P26",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "P19",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.57816789627498,
-              -36.22618059472176
-            ],
-            [
-              145.57740999889094,
-              -36.22618724601974
-            ],
-            [
-              145.57737417469988,
-              -36.22728738331589
-            ],
-            [
-              145.57816338863347,
-              -36.227300815708865
-            ],
-            [
-              145.57816109017742,
-              -36.22723582149905
-            ],
-            [
-              145.57816789627498,
-              -36.22618059472176
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 0.85527,
-              "description": "0.8553",
-              "soilGroup": "P19",
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
               "soilClass": "Katamatite loam - yellow phase"
             }
           ]
@@ -2328,16 +2268,16 @@
               -36.22618724601974
             ],
             [
-              145.57662284771402,
-              -36.226194148872096
+              145.57737417469988,
+              -36.22728738331589
             ],
             [
               145.57662364556055,
               -36.22728510740307
             ],
             [
-              145.57737417469988,
-              -36.22728738331589
+              145.57662284771402,
+              -36.226194148872096
             ],
             [
               145.57740999889094,
@@ -2347,57 +2287,7 @@
         ],
         "crs": "EPSG:4283"
       },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
-      "soils": {
-        "soilAreas": {
-          "dateLastUpdated": "2015-06-18T01:40:32",
-          "types": [
-            {
-              "area": 0.84015,
-              "description": "0.8401",
-              "soilGroup": "P20",
-              "soilClass": "Katamatite loam - yellow phase"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "P12",
-      "_id": 1434598791136,
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              145.5796767387895,
-              -36.22624469895846
-            ],
-            [
-              145.57883057104408,
-              -36.22624290899373
-            ],
-            [
-              145.57876511314558,
-              -36.22634457769362
-            ],
-            [
-              145.57877918053026,
-              -36.22723874003956
-            ],
-            [
-              145.57968412779695,
-              -36.22723428054794
-            ],
-            [
-              145.5796767387895,
-              -36.22624469895846
-            ]
-          ]
-        ],
-        "crs": "EPSG:4283"
-      },
-      "dateLastUpdated": "2015-06-18T03:39:51.136Z",
+      "dateLastUpdated": "2015-06-18T05:25:38.783Z",
       "soils": {
         "soilAreas": {
           "dateLastUpdated": "2015-06-18T01:40:32",
@@ -2410,7 +2300,61 @@
             }
           ]
         }
-      }
+      },
+      "area": 0.8419624722483761,
+      "group": "FC - Future Crop"
+    },
+    {
+      "name": "P19",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.57816789627498,
+              -36.22618059472176
+            ],
+            [
+              145.57816109017742,
+              -36.22723582149905
+            ],
+            [
+              145.57816338863347,
+              -36.227300815708865
+            ],
+            [
+              145.57737417469988,
+              -36.22728738331589
+            ],
+            [
+              145.57740999889094,
+              -36.22618724601974
+            ],
+            [
+              145.57816789627498,
+              -36.22618059472176
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.784Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      },
+      "area": 0.8571162396922377,
+      "group": "FC - Future Crop"
     }
   ],
   "nutrientCalculator": {
