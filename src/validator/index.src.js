@@ -14,11 +14,11 @@
  */
 angular.module('farmbuild.core')
   .factory('farmdataValidator',
-  function (validations, $log, geoJsonValidator) {
+  function (validations, $log, geoJsonValidator, farmdataPaddockValidator) {
 
     var farmdataValidator =
       {
-        isGeoJsons: geoJsonValidator.isGeoJsons,
+        isGeoJsons: geoJsonValidator.isGeoJsons
       },
       _isDefined = validations.isDefined,
       _isArray = validations.isArray,
@@ -33,6 +33,7 @@ angular.module('farmbuild.core')
 
     }
     function _validate(farmData) {
+      var hasInvalidPaddock = false;
       $log.info('validating farmData...');
 
       if(!_isDefined(farmData)) {
@@ -55,7 +56,18 @@ angular.module('farmbuild.core')
         return false;
       }
 
-      return geoJsonValidator.validate(farmData);
+      farmData.paddocks.forEach(function(paddock){
+         if(!farmdataPaddockValidator.validate(paddock, farmData.paddocks)){
+           $log.error('found invalid paddock in farmData', paddock);
+           hasInvalidPaddock = true;
+         };
+      });
+
+      if(!hasInvalidPaddock) {
+        return geoJsonValidator.validate(farmData);
+      } else {
+        return false;
+      }
     };
 
 

@@ -1,0 +1,1220 @@
+{
+  "version": 1,
+  "dateCreated": "2015-03-30T21:19:00",
+  "dateLastUpdated": "2015-06-18T05:25:38.784Z",
+  "id": "1432602446885",
+  "name": "Susan's Farm",
+  "area": 28.14975537903255,
+  "areaUnit": "hectare",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          145.57368096419663,
+          -36.22487953170128
+        ],
+        [
+          145.5826132801325,
+          -36.22488327137529
+        ],
+        [
+          145.58260951039628,
+          -36.22801228957186
+        ],
+        [
+          145.57363088613704,
+          -36.22803939355771
+        ],
+        [
+          145.57368096419663,
+          -36.22487953170128
+        ]
+      ]
+    ],
+    "crs": "EPSG:4283"
+  },
+  "paddockGroups": [
+    {
+      "name": "A - Average Use and Soil Type Paddock",
+      "paddocks": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "name": "FC - Future Crop",
+      "paddocks": [
+        "P20",
+        "P19"
+      ]
+    }
+  ],
+  "soils": {
+    "soilAreas": {
+      "dateLastUpdated": "2015-06-18T01:40:32",
+      "types": [
+        {
+          "area": 27.3458,
+          "description": "Katamatite loam - yellow phase",
+          "soilGroup": "2",
+          "soilClass": "Light"
+        },
+        {
+          "area": 0.7433,
+          "description": "Type M",
+          "soilGroup": "0",
+          "soilClass": "Light"
+        }
+      ]
+    },
+    "sampleResults": {
+      "dateLastUpdated": "2015-06-18T03:46:55.394Z",
+      "importFieldNames": [
+        "Sample Id",
+        "Sample Name",
+        "pH H2O (Water)",
+        "Olsen Phosphorus (mg/kg)",
+        "Colwell Phosphorus (mg/kg)",
+        "PBI",
+        "KCl 40 Sulphur (mg/kg)",
+        "Colwell Potassium (mg/kg)",
+        "Exch Potassium (meq/100g)"
+      ]
+    }
+  },
+  "paddocks": [    {
+    "name": "P10",
+    "_id": 1434598791135,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            145.5800710187229,
+            -36.22559896173692
+          ],
+          [
+            145.57950267711723,
+            -36.22560171080234
+          ],
+          [
+            145.57949688713074,
+            -36.225810393402256
+          ],
+          [
+            145.579975038195,
+            -36.22579611106871
+          ],
+          [
+            145.58007068632003,
+            -36.22579563889769
+          ],
+          [
+            145.5800710187229,
+            -36.22559896173692
+          ]
+        ]
+      ],
+      "crs": "EPSG:4283"
+    },
+    "dateLastUpdated": "2015-06-18T05:25:38.778Z",
+    "soils": {
+      "soilAreas": {
+        "dateLastUpdated": "2015-06-18T01:40:32",
+        "types": [
+          {
+            "area": 0.87066,
+            "description": "0.8707",
+            "soilGroup": "P1",
+            "soilClass": "Katamatite loam - yellow phase"
+          }
+        ]
+      },
+      "sampleResults": [
+        {
+          "Sample Id": "P1",
+          "Sample Name": "P1",
+          "pH H2O (Water)": 6.4,
+          "Olsen Phosphorus (mg/kg)": 46,
+          "Colwell Phosphorus (mg/kg)": 220,
+          "PBI": 350,
+          "KCl 40 Sulphur (mg/kg)": 15,
+          "Colwell Potassium (mg/kg)": 950,
+          "Exch Potassium (meq/100g)": 0.5
+        }
+      ]
+    }
+  },
+    {
+      "name": "P10",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.5800712702983,
+              -36.22545010813503
+            ],
+            [
+              145.5795015574349,
+              -36.22545267772393
+            ],
+            [
+              145.57950267711723,
+              -36.22560171080234
+            ],
+            [
+              145.5800710187229,
+              -36.22559896173692
+            ],
+            [
+              145.5800712702983,
+              -36.22545010813503
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.778Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "P11",
+      "_id": 1434598791136,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.5800712702983,
+              -36.22545010813503
+            ],
+            [
+              145.5795015574349,
+              -36.22545267772393
+            ],
+            [
+              145.57950267711723,
+              -36.22560171080234
+            ],
+            [
+              145.5800710187229,
+              -36.22559896173692
+            ],
+            [
+              145.5800712702983,
+              -36.22545010813503
+            ]
+          ]
+        ],
+        "crs": "EPSG:4283"
+      },
+      "dateLastUpdated": "2015-06-18T05:25:38.778Z",
+      "soils": {
+        "soilAreas": {
+          "dateLastUpdated": "2015-06-18T01:40:32",
+          "types": [
+            {
+              "area": 0.89687,
+              "description": "0.8969",
+              "soilGroup": "P12",
+              "soilClass": "Katamatite loam - yellow phase"
+            }
+          ]
+        }
+      }
+    }],
+  "nutrientCalculator": {
+    "summary": {
+      "milkingAreaInHa": 15,
+      "averageCowWeightInKg": 850,
+      "numberOfMilkingCows": 5,
+      "numberOfMilkingDays": 330
+    },
+    "milkSold": {
+      "totalPerYearInLitre": 10000,
+      "fatInKg": 500,
+      "fatPercentage": 5,
+      "proteinInKg": 5400,
+      "proteinPercentage": 54,
+      "nitrogenInKg": 853.0805687203792,
+      "nitrogenPercentage": 8.530805687203792,
+      "phosphorusInKg": 10.805,
+      "phosphorusPercentage": 0.10805000000000001,
+      "potassiumInKg": 14.000000000000002,
+      "potassiumPercentage": 0.14,
+      "sulphurInKg": 6,
+      "sulphurPercentage": 0.06
+    },
+    "cowsCulled": {
+      "cows": [
+        {
+          "name": "Average adult cattle",
+          "numberOfCows": 2,
+          "weight": 500
+        }
+      ],
+      "numberOfCows": 2,
+      "weight": 1000,
+      "nitrogenInKg": 28,
+      "phosphorusInKg": 7.2,
+      "potassiumInKg": 2,
+      "sulphurInKg": 8,
+      "types": [
+        {
+          "name": "Heavy adult cattle",
+          "weight": 650
+        },
+        {
+          "name": "Average adult cattle",
+          "weight": 500
+        },
+        {
+          "name": "Yearling",
+          "weight": 300
+        },
+        {
+          "name": "Weaned young stock",
+          "weight": 120
+        },
+        {
+          "name": "Bobby calve",
+          "weight": 40
+        }
+      ]
+    },
+    "cowsPurchased": {
+      "cows": [
+        {
+          "name": "Heavy adult cattle",
+          "numberOfCows": 4,
+          "weight": 650
+        }
+      ],
+      "numberOfCows": 4,
+      "weight": 2600,
+      "nitrogenInKg": 72.8,
+      "phosphorusInKg": 18.72,
+      "potassiumInKg": 5.2,
+      "sulphurInKg": 20.8,
+      "types": [
+        {
+          "name": "Heavy adult cattle",
+          "weight": 650
+        },
+        {
+          "name": "Average adult cattle",
+          "weight": 500
+        },
+        {
+          "name": "Yearling",
+          "weight": 300
+        },
+        {
+          "name": "Weaned young stock",
+          "weight": 120
+        },
+        {
+          "name": "Bobby calve",
+          "weight": 40
+        }
+      ]
+    },
+    "fertilizersPurchased": {
+      "fertilizers": [
+        {
+          "type": {
+            "name": "Dairy manure stockpile",
+            "nitrogenPercentage": 1.44,
+            "phosphorusPercentage": 0.55,
+            "potassiumPercentage": 1.38,
+            "sulphurPercentage": 0.3,
+            "dryMatterPercentage": 76.83
+          },
+          "weight": 564,
+          "isDry": true
+        }
+      ],
+      "weight": 564,
+      "dryMatterWeight": 564,
+      "nitrogenInKg": 8.121599999999999,
+      "nitrogenPercentage": 1.4399999999999997,
+      "phosphorusInKg": 3.1020000000000003,
+      "phosphorusPercentage": 0.55,
+      "potassiumInKg": 7.783199999999999,
+      "potassiumPercentage": 1.38,
+      "sulphurInKg": 1.692,
+      "sulphurPercentage": 0.3,
+      "types": [
+        {
+          "name": "Dairy manure stockpile",
+          "nitrogenPercentage": 1.44,
+          "phosphorusPercentage": 0.55,
+          "potassiumPercentage": 1.38,
+          "sulphurPercentage": 0.3,
+          "dryMatterPercentage": 76.83
+        },
+        {
+          "name": "DAP",
+          "nitrogenPercentage": 18,
+          "phosphorusPercentage": 20,
+          "potassiumPercentage": 0,
+          "sulphurPercentage": 1.6,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Double Super",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 16.8,
+          "potassiumPercentage": 0,
+          "sulphurPercentage": 4,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Effluent solids",
+          "nitrogenPercentage": 1.65,
+          "phosphorusPercentage": 0.3,
+          "potassiumPercentage": 0.4,
+          "sulphurPercentage": 0.25,
+          "dryMatterPercentage": 11.3
+        },
+        {
+          "name": "Fodder Blend",
+          "nitrogenPercentage": 11.5,
+          "phosphorusPercentage": 8.1,
+          "potassiumPercentage": 19.8,
+          "sulphurPercentage": 5.5,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Fodderbooster",
+          "nitrogenPercentage": 11.6,
+          "phosphorusPercentage": 7.6,
+          "potassiumPercentage": 19.6,
+          "sulphurPercentage": 6,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "General Compost",
+          "nitrogenPercentage": 1.2,
+          "phosphorusPercentage": 0.8,
+          "potassiumPercentage": 0.8,
+          "sulphurPercentage": 0.7,
+          "dryMatterPercentage": 77
+        },
+        {
+          "name": "Grass Blend",
+          "nitrogenPercentage": 29.5,
+          "phosphorusPercentage": 0,
+          "potassiumPercentage": 0,
+          "sulphurPercentage": 15.8,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Grassbooster",
+          "nitrogenPercentage": 29.7,
+          "phosphorusPercentage": 0,
+          "potassiumPercentage": 0,
+          "sulphurPercentage": 14.6,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Hay Blend",
+          "nitrogenPercentage": 13.4,
+          "phosphorusPercentage": 4.5,
+          "potassiumPercentage": 23.8,
+          "sulphurPercentage": 4.7,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Hayboosta",
+          "nitrogenPercentage": 11.8,
+          "phosphorusPercentage": 4.7,
+          "potassiumPercentage": 23.6,
+          "sulphurPercentage": 4.6,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Legume Gold",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 15,
+          "potassiumPercentage": 0,
+          "sulphurPercentage": 10,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "MAP",
+          "nitrogenPercentage": 10,
+          "phosphorusPercentage": 21.8,
+          "potassiumPercentage": 0,
+          "sulphurPercentage": 1.5,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Muriate of Potash",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 0,
+          "potassiumPercentage": 50,
+          "sulphurPercentage": 0,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Pasture Blend",
+          "nitrogenPercentage": 23.8,
+          "phosphorusPercentage": 3.6,
+          "potassiumPercentage": 13,
+          "sulphurPercentage": 5.3,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Pasture Gold",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 14,
+          "potassiumPercentage": 0,
+          "sulphurPercentage": 17,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Potassium Nitate",
+          "nitrogenPercentage": 13,
+          "phosphorusPercentage": 0,
+          "potassiumPercentage": 36.5,
+          "sulphurPercentage": 0,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Poultry Manure (fresh)",
+          "nitrogenPercentage": 3.9,
+          "phosphorusPercentage": 1.8,
+          "potassiumPercentage": 1.9,
+          "sulphurPercentage": 0.5,
+          "dryMatterPercentage": 90
+        },
+        {
+          "name": "Shed bedding",
+          "nitrogenPercentage": 0.21,
+          "phosphorusPercentage": 0.06,
+          "potassiumPercentage": 0.24,
+          "sulphurPercentage": 0.04,
+          "dryMatterPercentage": 69.05
+        },
+        {
+          "name": "Sulphate of Ammonia",
+          "nitrogenPercentage": 20.5,
+          "phosphorusPercentage": 0,
+          "potassiumPercentage": 0,
+          "sulphurPercentage": 23.5,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Sulphate of Potash",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 0,
+          "potassiumPercentage": 40.5,
+          "sulphurPercentage": 17,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Superphosphate (Super)",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 8.8,
+          "potassiumPercentage": 0,
+          "sulphurPercentage": 11,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Triple Super",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 20.2,
+          "potassiumPercentage": 0,
+          "sulphurPercentage": 1,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Urea",
+          "nitrogenPercentage": 46,
+          "phosphorusPercentage": 0,
+          "potassiumPercentage": 0,
+          "sulphurPercentage": 0,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Super and Potash 1:1",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 4.4,
+          "potassiumPercentage": 25,
+          "sulphurPercentage": 5.5,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Super and Potash 2:1",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 5.9,
+          "potassiumPercentage": 16.8,
+          "sulphurPercentage": 7.3,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Super and Potash 3:1",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 6.6,
+          "potassiumPercentage": 12.7,
+          "sulphurPercentage": 8.2,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Super and Potash 4:1",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 7,
+          "potassiumPercentage": 10,
+          "sulphurPercentage": 8.8,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Super and Potash 5:1",
+          "nitrogenPercentage": 0,
+          "phosphorusPercentage": 7.4,
+          "potassiumPercentage": 8,
+          "sulphurPercentage": 9.2,
+          "dryMatterPercentage": 100
+        },
+        {
+          "name": "Pasturebooster",
+          "nitrogenPercentage": 23.8,
+          "phosphorusPercentage": 3.7,
+          "potassiumPercentage": 12.8,
+          "sulphurPercentage": 4,
+          "dryMatterPercentage": 100
+        }
+      ]
+    },
+    "foragesPurchased": {
+      "forages": [
+        {
+          "type": {
+            "name": "Average hay",
+            "nitrogenPercentage": 2.44,
+            "phosphorusPercentage": 0.38,
+            "potassiumPercentage": 2.29,
+            "sulphurPercentage": 0.23,
+            "dryMatterPercentage": 85,
+            "metabolisableEnergyInMJPerKg": 9.39
+          },
+          "weight": 65,
+          "isDry": true
+        }
+      ],
+      "weight": 65,
+      "dryMatterWeight": 65,
+      "nitrogenInKg": 1.5859999999999999,
+      "nitrogenPercentage": 2.44,
+      "phosphorusInKg": 0.247,
+      "phosphorusPercentage": 0.38,
+      "potassiumInKg": 1.4885,
+      "potassiumPercentage": 2.29,
+      "sulphurInKg": 0.14950000000000002,
+      "sulphurPercentage": 0.23000000000000004,
+      "metabolisableEnergyInMJ": 610.35,
+      "metabolisableEnergyInMJPerKg": 9.39,
+      "types": [
+        {
+          "name": "Average crop",
+          "nitrogenPercentage": 2.99,
+          "phosphorusPercentage": 0.34,
+          "potassiumPercentage": 2.68,
+          "sulphurPercentage": 0.5,
+          "dryMatterPercentage": 44.45,
+          "metabolisableEnergyInMJPerKg": 9.75
+        },
+        {
+          "name": "Average hay",
+          "nitrogenPercentage": 2.44,
+          "phosphorusPercentage": 0.38,
+          "potassiumPercentage": 2.29,
+          "sulphurPercentage": 0.23,
+          "dryMatterPercentage": 85,
+          "metabolisableEnergyInMJPerKg": 9.39
+        },
+        {
+          "name": "Average silage",
+          "nitrogenPercentage": 2.12,
+          "phosphorusPercentage": 0.34,
+          "potassiumPercentage": 2.35,
+          "sulphurPercentage": 0.27,
+          "dryMatterPercentage": 49.01,
+          "metabolisableEnergyInMJPerKg": 8.76
+        },
+        {
+          "name": "Average straw",
+          "nitrogenPercentage": 2.6,
+          "phosphorusPercentage": 0.4,
+          "potassiumPercentage": 2.7,
+          "sulphurPercentage": 0.28,
+          "dryMatterPercentage": 45.1,
+          "metabolisableEnergyInMJPerKg": 9.18
+        },
+        {
+          "name": "Brassica crop",
+          "nitrogenPercentage": 3.72,
+          "phosphorusPercentage": 0.33,
+          "potassiumPercentage": 2.85,
+          "sulphurPercentage": 0.64,
+          "dryMatterPercentage": 25.99,
+          "metabolisableEnergyInMJPerKg": 11.32
+        },
+        {
+          "name": "Canola hay",
+          "nitrogenPercentage": 2.88,
+          "phosphorusPercentage": 0.33,
+          "potassiumPercentage": 2.29,
+          "sulphurPercentage": 0.57,
+          "dryMatterPercentage": 82.93,
+          "metabolisableEnergyInMJPerKg": 9.06
+        },
+        {
+          "name": "Canola silage",
+          "nitrogenPercentage": 2.75,
+          "phosphorusPercentage": 0.3,
+          "potassiumPercentage": 2.88,
+          "sulphurPercentage": 0.51,
+          "dryMatterPercentage": 23.77,
+          "metabolisableEnergyInMJPerKg": 9.45
+        },
+        {
+          "name": "Cereal hay",
+          "nitrogenPercentage": 1.54,
+          "phosphorusPercentage": 0.22,
+          "potassiumPercentage": 1.83,
+          "sulphurPercentage": 0.17,
+          "dryMatterPercentage": 84.74,
+          "metabolisableEnergyInMJPerKg": 8.32
+        },
+        {
+          "name": "Cereal silage",
+          "nitrogenPercentage": 2.02,
+          "phosphorusPercentage": 0.35,
+          "potassiumPercentage": 2.02,
+          "sulphurPercentage": 0.17,
+          "dryMatterPercentage": 36.28,
+          "metabolisableEnergyInMJPerKg": 9.14
+        },
+        {
+          "name": "Cereal straw",
+          "nitrogenPercentage": 0.62,
+          "phosphorusPercentage": 0.1,
+          "potassiumPercentage": 1.05,
+          "sulphurPercentage": 0.1,
+          "dryMatterPercentage": 87.22,
+          "metabolisableEnergyInMJPerKg": 5.99
+        },
+        {
+          "name": "Clover hay",
+          "nitrogenPercentage": 2.99,
+          "phosphorusPercentage": 0.28,
+          "potassiumPercentage": 2.51,
+          "sulphurPercentage": 0.25,
+          "dryMatterPercentage": 88.26,
+          "metabolisableEnergyInMJPerKg": 9.31
+        },
+        {
+          "name": "Forage blend",
+          "nitrogenPercentage": 1.94,
+          "phosphorusPercentage": 0.38,
+          "potassiumPercentage": 2.29,
+          "sulphurPercentage": 0.2,
+          "dryMatterPercentage": 84.18,
+          "metabolisableEnergyInMJPerKg": 8.47
+        },
+        {
+          "name": "Kikuyu pasture",
+          "nitrogenPercentage": 3.07,
+          "phosphorusPercentage": 0.46,
+          "potassiumPercentage": 2.82,
+          "sulphurPercentage": 0.23,
+          "dryMatterPercentage": 20.67,
+          "metabolisableEnergyInMJPerKg": 9.57
+        },
+        {
+          "name": "Kikuyu silage",
+          "nitrogenPercentage": 1.7,
+          "phosphorusPercentage": 0.39,
+          "potassiumPercentage": 1.85,
+          "sulphurPercentage": 0.13,
+          "dryMatterPercentage": 57.95,
+          "metabolisableEnergyInMJPerKg": 10.16
+        },
+        {
+          "name": "Lucerne hay",
+          "nitrogenPercentage": 3.34,
+          "phosphorusPercentage": 0.38,
+          "potassiumPercentage": 2.03,
+          "sulphurPercentage": 0.29,
+          "dryMatterPercentage": 83.23,
+          "metabolisableEnergyInMJPerKg": 9.54
+        },
+        {
+          "name": "Lucerne pasture",
+          "nitrogenPercentage": 3.53,
+          "phosphorusPercentage": 0.41,
+          "potassiumPercentage": 2.89,
+          "sulphurPercentage": 0.35,
+          "dryMatterPercentage": 23.34,
+          "metabolisableEnergyInMJPerKg": 10.22
+        },
+        {
+          "name": "Lucerne silage",
+          "nitrogenPercentage": 2.64,
+          "phosphorusPercentage": 0.45,
+          "potassiumPercentage": 2.29,
+          "sulphurPercentage": 0.23,
+          "dryMatterPercentage": 53.54,
+          "metabolisableEnergyInMJPerKg": 8.75
+        },
+        {
+          "name": "Maize silage",
+          "nitrogenPercentage": 1.2,
+          "phosphorusPercentage": 0.26,
+          "potassiumPercentage": 1.12,
+          "sulphurPercentage": 0.1,
+          "dryMatterPercentage": 41.27,
+          "metabolisableEnergyInMJPerKg": 9.12
+        },
+        {
+          "name": "Millett crop",
+          "nitrogenPercentage": 2.82,
+          "phosphorusPercentage": 0.41,
+          "potassiumPercentage": 3.56,
+          "sulphurPercentage": 0.41,
+          "dryMatterPercentage": 52.68,
+          "metabolisableEnergyInMJPerKg": 9.54
+        },
+        {
+          "name": "Oat Hay",
+          "nitrogenPercentage": 1.4,
+          "phosphorusPercentage": 0.24,
+          "potassiumPercentage": 1.64,
+          "sulphurPercentage": 0.15,
+          "dryMatterPercentage": 87.32,
+          "metabolisableEnergyInMJPerKg": 8.42
+        },
+        {
+          "name": "Oats & peas silage",
+          "nitrogenPercentage": 2.26,
+          "phosphorusPercentage": 0.39,
+          "potassiumPercentage": 2.43,
+          "sulphurPercentage": 0.2,
+          "dryMatterPercentage": 47.5,
+          "metabolisableEnergyInMJPerKg": 9.16
+        },
+        {
+          "name": "Paspalum silage",
+          "nitrogenPercentage": 1.91,
+          "phosphorusPercentage": 0.32,
+          "potassiumPercentage": 2.06,
+          "sulphurPercentage": 0.18,
+          "dryMatterPercentage": 52.39,
+          "metabolisableEnergyInMJPerKg": 8.21
+        },
+        {
+          "name": "Pasture hay",
+          "nitrogenPercentage": 1.87,
+          "phosphorusPercentage": 0.28,
+          "potassiumPercentage": 1.87,
+          "sulphurPercentage": 0.24,
+          "dryMatterPercentage": 85.53,
+          "metabolisableEnergyInMJPerKg": 8.17
+        },
+        {
+          "name": "Pasture silage",
+          "nitrogenPercentage": 2.6,
+          "phosphorusPercentage": 0.4,
+          "potassiumPercentage": 2.7,
+          "sulphurPercentage": 0.28,
+          "dryMatterPercentage": 45.1,
+          "metabolisableEnergyInMJPerKg": 9.18
+        },
+        {
+          "name": "Prairie grass silage",
+          "nitrogenPercentage": 1.9,
+          "phosphorusPercentage": 0.19,
+          "potassiumPercentage": 1.3,
+          "sulphurPercentage": 0.14,
+          "dryMatterPercentage": 64.37,
+          "metabolisableEnergyInMJPerKg": 8.51
+        },
+        {
+          "name": "Ryegrass pasture",
+          "nitrogenPercentage": 3.61,
+          "phosphorusPercentage": 0.45,
+          "potassiumPercentage": 2.78,
+          "sulphurPercentage": 0.34,
+          "dryMatterPercentage": 20.82,
+          "metabolisableEnergyInMJPerKg": 10.46
+        },
+        {
+          "name": "Seteria silage",
+          "nitrogenPercentage": 1.91,
+          "phosphorusPercentage": 0.27,
+          "potassiumPercentage": 2.08,
+          "sulphurPercentage": 0.12,
+          "dryMatterPercentage": 31.98,
+          "metabolisableEnergyInMJPerKg": 8.04
+        },
+        {
+          "name": "Sorghum crop",
+          "nitrogenPercentage": 2.2,
+          "phosphorusPercentage": 0.39,
+          "potassiumPercentage": 2.5,
+          "sulphurPercentage": 0.14,
+          "dryMatterPercentage": 30.16,
+          "metabolisableEnergyInMJPerKg": 8.59
+        },
+        {
+          "name": "Sorghum hay",
+          "nitrogenPercentage": 1.87,
+          "phosphorusPercentage": 0.34,
+          "potassiumPercentage": 2,
+          "sulphurPercentage": 0.13,
+          "dryMatterPercentage": 88.05,
+          "metabolisableEnergyInMJPerKg": 7.6
+        },
+        {
+          "name": "Sorghum/millet hay",
+          "nitrogenPercentage": 1.86,
+          "phosphorusPercentage": 0.41,
+          "potassiumPercentage": 1.72,
+          "sulphurPercentage": 0.38,
+          "dryMatterPercentage": 79.1,
+          "metabolisableEnergyInMJPerKg": 8.46
+        },
+        {
+          "name": "Sorghum/millet silage",
+          "nitrogenPercentage": 1.3,
+          "phosphorusPercentage": 0.35,
+          "potassiumPercentage": 3.36,
+          "sulphurPercentage": 0.4,
+          "dryMatterPercentage": 33.91,
+          "metabolisableEnergyInMJPerKg": 7.53
+        },
+        {
+          "name": "Turnip crop",
+          "nitrogenPercentage": 2.03,
+          "phosphorusPercentage": 0.28,
+          "potassiumPercentage": 3.18,
+          "sulphurPercentage": 0.52,
+          "dryMatterPercentage": 11.06,
+          "metabolisableEnergyInMJPerKg": 11.1
+        }
+      ]
+    },
+    "legumes": {
+      "importedEnergyConsumedInMJ": 6643.12155,
+      "utilisationFactor": 75,
+      "dryMatterConsumedPerHaInKg": 2790.681867346939,
+      "dryMatterGrownPerHaInKg": 3720.909156462585,
+      "averageNitrogenAppliedPerHaInKg": 0.5414399999999999,
+      "availableNitrogenFromLegumesPerHaInKg": 30.621331037076732,
+      "availableNitrogenToPasturePerHaInKg": 31.162771037076734,
+      "cattleEnergyUsedInMJ": 446175.51565714285,
+      "milkEnergyInMJ": 236363.81999999995,
+      "milkEnergyNotSoldInMJ": 9454.552799999998,
+      "milkProteinInKg": 5400,
+      "milkFatInKg": 500,
+      "milkSoldPerYearInLitre": 10000,
+      "legumePerHaInKg": 855.8091059863946,
+      "legumePercentage": 23
+    },
+    "concentratesPurchased": {
+      "concentrates": [
+        {
+          "type": {
+            "name": "Average grain",
+            "nitrogenPercentage": 2.42,
+            "phosphorusPercentage": 0.52,
+            "potassiumPercentage": 1.29,
+            "sulphurPercentage": 0.23,
+            "dryMatterPercentage": 66.94,
+            "metabolisableEnergyInMJPerKg": 11.78
+          },
+          "weight": 546,
+          "isDry": true
+        }
+      ],
+      "weight": 546,
+      "dryMatterWeight": 546,
+      "nitrogenInKg": 13.213199999999999,
+      "nitrogenPercentage": 2.42,
+      "phosphorusInKg": 2.8392,
+      "phosphorusPercentage": 0.52,
+      "potassiumInKg": 7.0434,
+      "potassiumPercentage": 1.29,
+      "sulphurInKg": 1.2558,
+      "sulphurPercentage": 0.22999999999999998,
+      "metabolisableEnergyInMJ": 6431.879999999999,
+      "metabolisableEnergyInMJPerKg": 11.78,
+      "types": [
+        {
+          "name": "Average concentrate",
+          "nitrogenPercentage": 3.88,
+          "phosphorusPercentage": 0.64,
+          "potassiumPercentage": 0.74,
+          "sulphurPercentage": 0.32,
+          "dryMatterPercentage": 76,
+          "metabolisableEnergyInMJPerKg": 12.62
+        },
+        {
+          "name": "Average grain",
+          "nitrogenPercentage": 2.42,
+          "phosphorusPercentage": 0.52,
+          "potassiumPercentage": 1.29,
+          "sulphurPercentage": 0.23,
+          "dryMatterPercentage": 66.94,
+          "metabolisableEnergyInMJPerKg": 11.78
+        },
+        {
+          "name": "Barley grain",
+          "nitrogenPercentage": 2.05,
+          "phosphorusPercentage": 0.37,
+          "potassiumPercentage": 0.54,
+          "sulphurPercentage": 0.15,
+          "dryMatterPercentage": 89.75,
+          "metabolisableEnergyInMJPerKg": 12.33
+        },
+        {
+          "name": "Bread",
+          "nitrogenPercentage": 2.74,
+          "phosphorusPercentage": 0.28,
+          "potassiumPercentage": 0.31,
+          "sulphurPercentage": 0.17,
+          "dryMatterPercentage": 52.64,
+          "metabolisableEnergyInMJPerKg": 13.19
+        },
+        {
+          "name": "Brewers grain",
+          "nitrogenPercentage": 4.33,
+          "phosphorusPercentage": 0.75,
+          "potassiumPercentage": 0.75,
+          "sulphurPercentage": 0.27,
+          "dryMatterPercentage": 71.57,
+          "metabolisableEnergyInMJPerKg": 11.72
+        },
+        {
+          "name": "Canola meal",
+          "nitrogenPercentage": 6.39,
+          "phosphorusPercentage": 1.16,
+          "potassiumPercentage": 1.37,
+          "sulphurPercentage": 0.68,
+          "dryMatterPercentage": 90.03,
+          "metabolisableEnergyInMJPerKg": 13.25
+        },
+        {
+          "name": "Citrus pulp",
+          "nitrogenPercentage": 1.38,
+          "phosphorusPercentage": 0.23,
+          "potassiumPercentage": 1.19,
+          "sulphurPercentage": 0.1,
+          "dryMatterPercentage": 15.83,
+          "metabolisableEnergyInMJPerKg": 10.06
+        },
+        {
+          "name": "Corn grain",
+          "nitrogenPercentage": 1.62,
+          "phosphorusPercentage": 0.33,
+          "potassiumPercentage": 0.37,
+          "sulphurPercentage": 0.14,
+          "dryMatterPercentage": 90.78,
+          "metabolisableEnergyInMJPerKg": 12.87
+        },
+        {
+          "name": "Cotton seed meal",
+          "nitrogenPercentage": 4.36,
+          "phosphorusPercentage": 1.25,
+          "potassiumPercentage": 1.54,
+          "sulphurPercentage": 0.48,
+          "dryMatterPercentage": 88.52,
+          "metabolisableEnergyInMJPerKg": 11.44
+        },
+        {
+          "name": "Fruit",
+          "nitrogenPercentage": 2.74,
+          "phosphorusPercentage": 0.5,
+          "potassiumPercentage": 3.66,
+          "sulphurPercentage": 0.21,
+          "dryMatterPercentage": 3.85,
+          "metabolisableEnergyInMJPerKg": 11.6
+        },
+        {
+          "name": "Linseed meal",
+          "nitrogenPercentage": 0.15,
+          "phosphorusPercentage": 0.54,
+          "potassiumPercentage": 0.85,
+          "sulphurPercentage": 0.29,
+          "dryMatterPercentage": 90.97,
+          "metabolisableEnergyInMJPerKg": 10.75
+        },
+        {
+          "name": "Lupins grain",
+          "nitrogenPercentage": 4.08,
+          "phosphorusPercentage": 0.36,
+          "potassiumPercentage": 0.77,
+          "sulphurPercentage": 0.18,
+          "dryMatterPercentage": 89.49,
+          "metabolisableEnergyInMJPerKg": 13.26
+        },
+        {
+          "name": "Mixed grain",
+          "nitrogenPercentage": 2.63,
+          "phosphorusPercentage": 0.43,
+          "potassiumPercentage": 0.66,
+          "sulphurPercentage": 0.19,
+          "dryMatterPercentage": 89.14,
+          "metabolisableEnergyInMJPerKg": 12.46
+        },
+        {
+          "name": "Molasses",
+          "nitrogenPercentage": 0.64,
+          "phosphorusPercentage": 0.23,
+          "potassiumPercentage": 4.68,
+          "sulphurPercentage": 0.5,
+          "dryMatterPercentage": 72,
+          "metabolisableEnergyInMJPerKg": 12.7
+        },
+        {
+          "name": "Palm kernels",
+          "nitrogenPercentage": 2.63,
+          "phosphorusPercentage": 0.61,
+          "potassiumPercentage": 0.67,
+          "sulphurPercentage": 0.2,
+          "dryMatterPercentage": 87.66,
+          "metabolisableEnergyInMJPerKg": 8.17
+        },
+        {
+          "name": "Pea pollard",
+          "nitrogenPercentage": 2.11,
+          "phosphorusPercentage": 0.25,
+          "potassiumPercentage": 0.96,
+          "sulphurPercentage": 0.1,
+          "dryMatterPercentage": 89.9,
+          "metabolisableEnergyInMJPerKg": 9.87
+        },
+        {
+          "name": "Pellets Calf",
+          "nitrogenPercentage": 3.14,
+          "phosphorusPercentage": 0.67,
+          "potassiumPercentage": 0.84,
+          "sulphurPercentage": 0.28,
+          "dryMatterPercentage": 88.78,
+          "metabolisableEnergyInMJPerKg": 12.72
+        },
+        {
+          "name": "Pellets Dairy",
+          "nitrogenPercentage": 2.37,
+          "phosphorusPercentage": 0.72,
+          "potassiumPercentage": 0.7,
+          "sulphurPercentage": 0.24,
+          "dryMatterPercentage": 89.64,
+          "metabolisableEnergyInMJPerKg": 12.54
+        },
+        {
+          "name": "Pellets Springer",
+          "nitrogenPercentage": 2.5,
+          "phosphorusPercentage": 0.57,
+          "potassiumPercentage": 0.59,
+          "sulphurPercentage": 1.06,
+          "dryMatterPercentage": 86.67,
+          "metabolisableEnergyInMJPerKg": 12.62
+        },
+        {
+          "name": "Pellets Weaner",
+          "nitrogenPercentage": 2.73,
+          "phosphorusPercentage": 0.74,
+          "potassiumPercentage": 0.79,
+          "sulphurPercentage": 0.5,
+          "dryMatterPercentage": 88.83,
+          "metabolisableEnergyInMJPerKg": 13.1
+        },
+        {
+          "name": "Safflower grain",
+          "nitrogenPercentage": 2.69,
+          "phosphorusPercentage": 0.47,
+          "potassiumPercentage": 0.69,
+          "sulphurPercentage": 0.15,
+          "dryMatterPercentage": 90.85,
+          "metabolisableEnergyInMJPerKg": 9
+        },
+        {
+          "name": "Soybean meal",
+          "nitrogenPercentage": 7.56,
+          "phosphorusPercentage": 0.75,
+          "potassiumPercentage": 2.32,
+          "sulphurPercentage": 0.38,
+          "dryMatterPercentage": 92.51,
+          "metabolisableEnergyInMJPerKg": 14.65
+        },
+        {
+          "name": "Sugar by product",
+          "nitrogenPercentage": 2.62,
+          "phosphorusPercentage": 0.27,
+          "potassiumPercentage": 2.28,
+          "sulphurPercentage": 0.54,
+          "dryMatterPercentage": 68.04,
+          "metabolisableEnergyInMJPerKg": 13.04
+        },
+        {
+          "name": "Triticale grain",
+          "nitrogenPercentage": 2.05,
+          "phosphorusPercentage": 0.29,
+          "potassiumPercentage": 0.45,
+          "sulphurPercentage": 0.16,
+          "dryMatterPercentage": 90.68,
+          "metabolisableEnergyInMJPerKg": 12.66
+        },
+        {
+          "name": "Wheat grain",
+          "nitrogenPercentage": 2.25,
+          "phosphorusPercentage": 0.36,
+          "potassiumPercentage": 0.46,
+          "sulphurPercentage": 0.16,
+          "dryMatterPercentage": 90.04,
+          "metabolisableEnergyInMJPerKg": 12.82
+        }
+      ]
+    },
+    "balance": {},
+    "efficiency": {},
+    "stockingRate": {
+      "milkingArea": 0.3333333333333333,
+      "wholeFarm": 0.17762143694237104
+    },
+    "milkProduction": {
+      "milkSoldPerYearInLitre": 0,
+      "milkSoldPerCowInLitre": 0,
+      "milkSoldPerHectareInLitre": 0,
+      "milkSoldPerCowInKg": 0,
+      "milkSoldPerHectareInInKg": 0,
+      "milkSoldFromImportedFeedInKg": null,
+      "milkSoldFromHomeGrownFeedInKg": null
+    },
+    "feedBalance": {
+      "homeForageConsumed": 0,
+      "forageTotalFeedRatio": null,
+      "supplementTotalFeedRatio": null,
+      "homegrownTotalFeedRatio": null,
+      "supplementHomegrownRatio": null
+    }
+  }
+}

@@ -42,7 +42,7 @@ angular.module('farmbuild.farmdata')
 				id = paddockFeature.properties._id;
 			name = _isDefined(name) ? name : createName();
 			id = _isDefined(id) ? id : generateId();
-			if(!farmdataPaddockValidator.validate(paddockFeature, paddocksExisting) || !farmdataPaddockValidator.validate(paddockFeature, paddocksMerged)){
+			if(!farmdataPaddockValidator.validateFeature(paddockFeature, paddocksExisting) || !farmdataPaddockValidator.validateFeature(paddockFeature, paddocksMerged)){
 				$log.error('creating new paddock failed, paddock data is invalid', paddockFeature);
 				return;
 			}
@@ -77,7 +77,7 @@ angular.module('farmbuild.farmdata')
 
 		function updatePaddock(paddockFeature, paddocksExisting, paddocksMerged) {
 			var toUpdate = angular.copy(findPaddock(paddockFeature, paddocksExisting));
-			if(!farmdataPaddockValidator.validate(paddockFeature, paddocksExisting) || !farmdataPaddockValidator.validate(paddockFeature, paddocksMerged)){
+			if(!farmdataPaddockValidator.validateFeature(paddockFeature, paddocksExisting) || !farmdataPaddockValidator.validateFeature(paddockFeature, paddocksMerged)){
 				$log.error('updating paddock failed, paddock data is invalid', paddockFeature);
 				return;
 			}

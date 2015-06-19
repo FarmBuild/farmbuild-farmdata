@@ -1869,7 +1869,7 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
         var name = paddockFeature.properties.name, id = paddockFeature.properties._id;
         name = _isDefined(name) ? name : createName();
         id = _isDefined(id) ? id : generateId();
-        if (!farmdataPaddockValidator.validate(paddockFeature, paddocksExisting) || !farmdataPaddockValidator.validate(paddockFeature, paddocksMerged)) {
+        if (!farmdataPaddockValidator.validateFeature(paddockFeature, paddocksExisting) || !farmdataPaddockValidator.validateFeature(paddockFeature, paddocksMerged)) {
             $log.error("creating new paddock failed, paddock data is invalid", paddockFeature);
             return;
         }
@@ -1900,7 +1900,7 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
     farmdataPaddocks.findPaddock = findPaddock;
     function updatePaddock(paddockFeature, paddocksExisting, paddocksMerged) {
         var toUpdate = angular.copy(findPaddock(paddockFeature, paddocksExisting));
-        if (!farmdataPaddockValidator.validate(paddockFeature, paddocksExisting) || !farmdataPaddockValidator.validate(paddockFeature, paddocksMerged)) {
+        if (!farmdataPaddockValidator.validateFeature(paddockFeature, paddocksExisting) || !farmdataPaddockValidator.validateFeature(paddockFeature, paddocksMerged)) {
             $log.error("updating paddock failed, paddock data is invalid", paddockFeature);
             return;
         }
@@ -1969,28 +1969,40 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
 
 angular.module("farmbuild.farmdata").factory("farmdataPaddockValidator", function(validations, $log) {
     var farmdataPaddockValidator = {}, _isDefined = validations.isDefined, _isArray = validations.isArray, _isEmpty = validations.isEmpty;
-    function _validate(paddock, paddocksExisting) {
+    function _validateFeature(paddock, paddocksExisting) {
         $log.info("validating paddock...", paddock);
         if (!_isDefined(paddock) || !_isDefined(paddock.properties) || !_isDefined(paddock.properties.name) || !_isDefined(paddock.geometry)) {
             $log.error("invalid paddock, must have name and geometry: %j", paddock);
             return false;
         }
-        if (!checkName(paddock, paddocksExisting)) {
+        if (!checkName(paddock.properties.name, paddock.properties._id, paddocksExisting)) {
             return false;
         }
         return true;
     }
-    function checkName(paddock, paddocksExisting) {
-        $log.info("checking paddock for duplicate name...", paddock);
+    function _validate(paddock, paddocksExisting) {
+        $log.info("validating paddock...", paddock);
+        if (!_isDefined(paddock) || !_isDefined(paddock.name) || !_isDefined(paddock.geometry)) {
+            $log.error("invalid paddock, must have name and geometry: %j", paddock);
+            return false;
+        }
+        if (!checkName(paddock.name, paddock._id, paddocksExisting)) {
+            return false;
+        }
+        return true;
+    }
+    function checkName(name, id, paddocksExisting) {
+        $log.info("checking paddock for duplicate name...", name);
         var result = true;
         paddocksExisting.forEach(function(paddockExisting) {
-            if (paddock.properties.name === paddockExisting.name && paddock.properties._id !== paddockExisting._id) {
-                $log.error("invalid paddock, name already exist: %j, %j", paddock, paddockExisting);
+            if (name === paddockExisting.name && id !== paddockExisting._id) {
+                $log.error("invalid paddock, name already exist: %s, %s, %j", name, id, paddockExisting);
                 result = false;
             }
         });
         return result;
     }
+    farmdataPaddockValidator.validateFeature = _validateFeature;
     farmdataPaddockValidator.validate = _validate;
     farmdataPaddockValidator.validateAll = function(items) {
         if (!_isArray(items) || _isEmpty(items)) {
@@ -2147,12 +2159,13 @@ angular.module("farmbuild.farmdata").factory("geoJsonValidator", function(valida
 
 "use strict";
 
-angular.module("farmbuild.core").factory("farmdataValidator", function(validations, $log, geoJsonValidator) {
+angular.module("farmbuild.core").factory("farmdataValidator", function(validations, $log, geoJsonValidator, farmdataPaddockValidator) {
     var farmdataValidator = {
         isGeoJsons: geoJsonValidator.isGeoJsons
     }, _isDefined = validations.isDefined, _isArray = validations.isArray, _isPositiveNumber = validations.isPositiveNumber, _isPositiveNumberOrZero = validations.isPositiveNumberOrZero, _isEmpty = validations.isEmpty, _isObject = validations.isObject, _isString = validations.isString, areaUnitDefault = "hectare";
     function errorLog() {}
     function _validate(farmData) {
+        var hasInvalidPaddock = false;
         $log.info("validating farmData...");
         if (!_isDefined(farmData)) {
             $log.error("farmData is undefined.");
@@ -2166,7 +2179,17 @@ angular.module("farmbuild.core").factory("farmdataValidator", function(validatio
             $log.error("farmData must have name, area (positve number or zero) and areaUnit (must be " + areaUnitDefault + "): %j", farmData);
             return false;
         }
-        return geoJsonValidator.validate(farmData);
+        farmData.paddocks.forEach(function(paddock) {
+            if (!farmdataPaddockValidator.validate(paddock, farmData.paddocks)) {
+                $log.error("found invalid paddock in farmData", paddock);
+                hasInvalidPaddock = true;
+            }
+        });
+        if (!hasInvalidPaddock) {
+            return geoJsonValidator.validate(farmData);
+        } else {
+            return false;
+        }
     }
     farmdataValidator.validate = _validate;
     return farmdataValidator;
