@@ -14,7 +14,7 @@
 angular.module('farmbuild.farmdata')
   .factory('farmdata',
   function ($log,
-            farmdataSession, farmdataValidator, farmdataPaddockGroups,
+            farmdataSession, farmdataValidator, farmdataPaddockGroups, farmdataPaddockTypes,
             crsSupported, validations) {
     var farmdata =
       {
