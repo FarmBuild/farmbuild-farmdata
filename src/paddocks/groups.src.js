@@ -35,12 +35,6 @@ angular.module('farmbuild.farmdata')
       return collections.add(_groups, _create(name));
     };
 
-    /**
-     * Paddock groups collection api
-     * @property {object} Groups - Paddock groups collection
-     * @public
-     * @static
-     */
     paddockGroups = {
       /**
        * Adds a new Paddock group for nutrient calculation

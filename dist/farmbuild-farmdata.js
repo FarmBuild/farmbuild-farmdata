@@ -1791,7 +1791,7 @@ angular.module("farmbuild.farmdata").factory("farmdataConverter", function(valid
 
 "use strict";
 
-angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdataSession, farmdataValidator, farmdataPaddocks, crsSupported, validations) {
+angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdataSession, farmdataValidator, farmdataPaddockGroups, crsSupported, validations) {
     var farmdata = {
         session: farmdataSession,
         validator: farmdataValidator,
@@ -1847,6 +1847,8 @@ angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdata
             return farmData;
         }
     };
+    farmdata.paddockGroups = farmdataPaddockGroups;
+    farmdata.paddockTypes = farmdataPaddockTypes;
     window.farmbuild.farmdata = farmdata;
     return farmdata;
 });

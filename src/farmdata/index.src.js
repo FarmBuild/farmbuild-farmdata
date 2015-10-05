@@ -14,7 +14,7 @@
 angular.module('farmbuild.farmdata')
   .factory('farmdata',
   function ($log,
-            farmdataSession, farmdataValidator, farmdataPaddocks,
+            farmdataSession, farmdataValidator, farmdataPaddockGroups,
             crsSupported, validations) {
     var farmdata =
       {
@@ -158,6 +158,22 @@ angular.module('farmbuild.farmdata')
         return farmData;
       }
     }
+
+    /**
+     * Paddock groups collection api
+     * @property {object} Groups - Paddock groups collection
+     * @public
+     * @static
+     */
+    farmdata.paddockGroups = farmdataPaddockGroups;
+
+    /**
+     * Paddock types collection api
+     * @property {object} Types - Paddock types collection
+     * @public
+     * @static
+     */
+    farmdata.paddockTypes = farmdataPaddockTypes;
 
     window.farmbuild.farmdata = farmdata;
 

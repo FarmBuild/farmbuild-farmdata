@@ -34,12 +34,6 @@ angular.module('farmbuild.farmdata')
       return collections.add(_types, _create(name));
     };
 
-    /**
-     * Paddock types collection api
-     * @property {object} Types - Paddock types collection
-     * @public
-     * @static
-     */
     paddockTypes = {
       /**
        * Adds a new Paddock type for nutrient calculation
