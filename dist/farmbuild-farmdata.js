@@ -1791,7 +1791,7 @@ angular.module("farmbuild.farmdata").factory("farmdataConverter", function(valid
 
 "use strict";
 
-angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdataSession, farmdataValidator, farmdataPaddockGroups, crsSupported, validations) {
+angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdataSession, farmdataValidator, farmdataPaddockGroups, farmdataPaddockTypes, crsSupported, validations) {
     var farmdata = {
         session: farmdataSession,
         validator: farmdataValidator,
