@@ -18,6 +18,10 @@ module.exports = function (config) {
 			'src/projection/crs-supported.conf.src.js',
 			'src/paddocks/validator.src.js',
 			'src/paddocks/index.src.js',
+			'src/paddocks/groups.defaults.conf.src.js',
+			'src/paddocks/groups.src.js',
+			'src/paddocks/types.defaults.conf.src.js',
+			'src/paddocks/types.src.js',
 			'src/session/index.src.js',
 //      'src/specs/blank.spec.js',
 //      'src/farmdata/index-merge.spec.js',
@@ -29,6 +33,7 @@ module.exports = function (config) {
 //      'src/farmdata/index-merge.spec.js',
 //      'src/farmdata/index.isFarmData.spec.js',
 //			'src/converter/index.spec.js',
+//			'src/paddocks/groups.spec.js',
       'src/**/*.spec.js',
 			{
 				pattern: 'data/*.json'
