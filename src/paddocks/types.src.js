@@ -9,9 +9,8 @@
 'use strict';
 
 /**
- * farmdata paddockTypes
- * @type {object}
- * @namespace farmdata.paddockTypes
+ * farmdata class
+ * @module farmdata/paddockTypes
  */
 angular.module('farmbuild.farmdata')
   .factory('farmdataPaddockTypes',
@@ -47,7 +46,6 @@ angular.module('farmbuild.farmdata')
        * @method add
        * @param {!string} name - name of new type, can only contain alphanumeric values with space or underscore but no other special characters
        * @returns {object} types
-       * @memberof farmdata.paddockTypes
        * @public
        * @static
        */
@@ -56,7 +54,6 @@ angular.module('farmbuild.farmdata')
        * Returns the PaddockType at specified index
        * @method at
        * @returns {object} PaddockType
-       * @memberof farmdata.paddockTypes
        * @public
        * @static
        */
@@ -68,7 +65,6 @@ angular.module('farmbuild.farmdata')
        * Returns PaddockTypes collection as an array
        * @method toArray
        * @returns {Array} PaddockTypes
-       * @memberof farmdata.paddockTypes
        * @public
        * @static
        */
@@ -77,7 +73,6 @@ angular.module('farmbuild.farmdata')
        * Removes the Paddock type at specified index
        * @method removeAt
        * @returns {object} PaddockTypes collection
-       * @memberof farmdata.paddockTypes
        * @public
        * @static
        */
@@ -88,7 +83,6 @@ angular.module('farmbuild.farmdata')
        * @method load
        * @param PaddockTypes
        * @returns {object} fertilizersPurchased
-       * @memberof farmdata.paddockTypes
        * @public
        * @static
        */

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>farmdata/session - Documentation</title>
+    <title>paddocks/groups.src.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,287 +28,114 @@
 
 <div id="main">
     
-    <h1 class="page-title">farmdata/session</h1>
+    <h1 class="page-title">paddocks/groups.src.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>farmdata class</p></div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="session_index.src.js.html">session/index.src.js</a>, <a href="session_index.src.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="~export"><span class="type-signature">(inner) </span>export<span class="signature">(document, farmData)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Exports the farmData.json with a file name: farmdata-NAME_OF_FILE-yyyyMMddHHmmss.json
-It creates <a> element with 'download' attribute, the data is attached to href
-and invoke click() function so the user gets the file save dialogue or something equivalent.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>document</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>farmData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="session_index.src.js.html">session/index.src.js</a>, <a href="session_index.src.js.html#line84">line 84</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @since 1.1.0
+ * @copyright 2015 State of Victoria.
+
+ * @author State of Victoria
+ * @version 1.1.0
+ */
+
+'use strict';
+
+/**
+ * farmdata class
+ * @module farmdata/paddockGroups
+ */
+angular.module('farmbuild.farmdata')
+  .factory('farmdataPaddockGroups',
+  function (collections, validations, paddockGroupDefaults, $log) {
+
+    var paddockGroups,
+      _groups = angular.copy(paddockGroupDefaults.groups),
+      _isDefined = validations.isDefined, _isString = validations.isString;
+
+    function _create(name){
+      return {
+        name: name,
+        paddocks: []
+      }
+    }
+
+    function _add(name) {
+      if(!_isDefined(name) || !_isString(name)){
+        $log.error('Please specify a valid name for paddock group', _isString(name));
+        return;
+      }
+      return collections.add(_groups, _create(name));
+    };
+
+    /**
+     * Paddock groups collection api
+     * @property {object} Groups - Paddock groups collection
+     * @public
+     * @static
+     */
+    paddockGroups = {
+      /**
+       * Adds a new Paddock group for nutrient calculation
+       * @method add
+       * @param {!string} name - name of new group, can only contain alphanumeric values with space, underscore or dash but no other special characters
+       * @returns {object} groups
+       * @public
+       * @static
+       */
+      add: _add,
+      /**
+       * Returns the PaddockGroup at specified index
+       * @method at
+       * @returns {object} PaddockGroup
+       * @public
+       * @static
+       */
+      at: function(index) { return collections.at(_groups, index)},
+      size: function() { return collections.size(_groups)},
+      byName: function(name) { return collections.byProperty(_groups, 'name', name)},
+      defaultTypes: function() { return angular.copy(paddockTypeDefaults.groups)},
+      /**
+       * Returns PaddockGroups collection as an array
+       * @method toArray
+       * @returns {Array} PaddockGroups
+       * @public
+       * @static
+       */
+      toArray: function() { return angular.copy(_groups) },
+      /**
+       * Removes the Paddock group at specified index
+       * @method removeAt
+       * @returns {object} PaddockGroups collection
+       * @public
+       * @static
+       */
+      removeAt: function(index) { return collections.removeAt(_groups, index)},
+      last: function() { return collections.last(_groups) },
+      /**
+       * Loads the groups in PaddockGroups
+       * @method load
+       * @param PaddockGroups
+       * @returns {object} fertilizersPurchased
+       * @public
+       * @static
+       */
+      load: function(PaddockGroups) {
+        _groups = PaddockGroups.groups;
+      }
+    };
+
+    return paddockGroups;
+  });</code></pre>
+        </article>
+    </section>
 
 
 

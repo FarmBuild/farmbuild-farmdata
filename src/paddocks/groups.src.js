@@ -9,9 +9,8 @@
 'use strict';
 
 /**
- * farmdata paddocks
- * @type {object}
- * @namespace farmdata.paddockGroups
+ * farmdata class
+ * @module farmdata/paddockGroups
  */
 angular.module('farmbuild.farmdata')
   .factory('farmdataPaddockGroups',
@@ -48,7 +47,6 @@ angular.module('farmbuild.farmdata')
        * @method add
        * @param {!string} name - name of new group, can only contain alphanumeric values with space, underscore or dash but no other special characters
        * @returns {object} groups
-       * @memberof farmdata.paddockGroups
        * @public
        * @static
        */
@@ -57,7 +55,6 @@ angular.module('farmbuild.farmdata')
        * Returns the PaddockGroup at specified index
        * @method at
        * @returns {object} PaddockGroup
-       * @memberof farmdata.paddockGroups
        * @public
        * @static
        */
@@ -69,7 +66,6 @@ angular.module('farmbuild.farmdata')
        * Returns PaddockGroups collection as an array
        * @method toArray
        * @returns {Array} PaddockGroups
-       * @memberof farmdata.paddockGroups
        * @public
        * @static
        */
@@ -78,7 +74,6 @@ angular.module('farmbuild.farmdata')
        * Removes the Paddock group at specified index
        * @method removeAt
        * @returns {object} PaddockGroups collection
-       * @memberof farmdata.paddockGroups
        * @public
        * @static
        */
@@ -89,7 +84,6 @@ angular.module('farmbuild.farmdata')
        * @method load
        * @param PaddockGroups
        * @returns {object} fertilizersPurchased
-       * @memberof farmdata.paddockGroups
        * @public
        * @static
        */

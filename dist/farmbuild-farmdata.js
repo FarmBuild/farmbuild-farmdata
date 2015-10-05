@@ -1851,6 +1851,93 @@ angular.module("farmbuild.farmdata").factory("farmdata", function($log, farmdata
     return farmdata;
 });
 
+angular.module("farmbuild.farmdata").constant("paddockGroupDefaults", {
+    groups: [ {
+        name: "N/A - Type Not Set"
+    }, {
+        name: "E - Effluent"
+    }, {
+        name: "N - Night Paddocks"
+    }, {
+        name: "A - Average Use and Soil Type Paddock"
+    }, {
+        name: "UL - Usually Harvested, Limited Feeding Back"
+    }, {
+        name: "UF - Usually Harvested, Usually Fed Back"
+    }, {
+        name: "NL - Never Harvested and Limited Feeding Back"
+    }, {
+        name: "NF - Never Harvested and Usually Fed Back"
+    }, {
+        name: "NL1 - 1st Variation of NL"
+    }, {
+        name: "NL2 - 2nd Variation of NL"
+    }, {
+        name: "NF1 - 1st Variation of NF"
+    }, {
+        name: "NF2 - 2nd Variation of NF"
+    }, {
+        name: "UL1 - 1st Variation of UL"
+    }, {
+        name: "UF1 - 1st Variation of UF"
+    }, {
+        name: "C - Crop"
+    }, {
+        name: "FC - Future Crop"
+    }, {
+        name: "O - Other"
+    }, {
+        name: "O1 - 1st Variation of O"
+    } ]
+});
+
+"use strict";
+
+angular.module("farmbuild.farmdata").factory("farmdataPaddockGroups", function(collections, validations, paddockGroupDefaults, $log) {
+    var paddockGroups, _groups = angular.copy(paddockGroupDefaults.groups), _isDefined = validations.isDefined, _isString = validations.isString;
+    function _create(name) {
+        return {
+            name: name,
+            paddocks: []
+        };
+    }
+    function _add(name) {
+        if (!_isDefined(name) || !_isString(name)) {
+            $log.error("Please specify a valid name for paddock group", _isString(name));
+            return;
+        }
+        return collections.add(_groups, _create(name));
+    }
+    paddockGroups = {
+        add: _add,
+        at: function(index) {
+            return collections.at(_groups, index);
+        },
+        size: function() {
+            return collections.size(_groups);
+        },
+        byName: function(name) {
+            return collections.byProperty(_groups, "name", name);
+        },
+        defaultTypes: function() {
+            return angular.copy(paddockTypeDefaults.groups);
+        },
+        toArray: function() {
+            return angular.copy(_groups);
+        },
+        removeAt: function(index) {
+            return collections.removeAt(_groups, index);
+        },
+        last: function() {
+            return collections.last(_groups);
+        },
+        load: function(PaddockGroups) {
+            _groups = PaddockGroups.groups;
+        }
+    };
+    return paddockGroups;
+});
+
 "use strict";
 
 angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, collections, validations, farmdataPaddockValidator, farmdataConverter) {
@@ -1963,6 +2050,80 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, 
         }
     };
     return farmdataPaddocks;
+});
+
+angular.module("farmbuild.farmdata").constant("paddockTypeDefaults", {
+    types: [ {
+        name: "Annual Pasture"
+    }, {
+        name: "Bull Paddock"
+    }, {
+        name: "Calving paddocks"
+    }, {
+        name: "Calf Rearing Area"
+    }, {
+        name: "Dairy"
+    }, {
+        name: "Effluent Paddocks"
+    }, {
+        name: "Feedpad"
+    }, {
+        name: "Lucerne"
+    }, {
+        name: "Other Crops"
+    }, {
+        name: "Permanent Pasture"
+    }, {
+        name: "Springer Paddock"
+    }, {
+        name: "Sumer Crops"
+    } ]
+});
+
+"use strict";
+
+angular.module("farmbuild.farmdata").factory("farmdataPaddockTypes", function(collections, validations, paddockTypeDefaults, $log) {
+    var paddockTypes, _types = angular.copy(paddockTypeDefaults.types), _isDefined = validations.isDefined, _isAlphanumeric = validations.isAlphanumeric;
+    function _create(name) {
+        return {
+            name: name
+        };
+    }
+    function _add(name) {
+        if (!_isDefined(name) || !_isAlphanumeric(name)) {
+            $log.error("Please specify a valid name for paddock type");
+            return;
+        }
+        return collections.add(_types, _create(name));
+    }
+    paddockTypes = {
+        add: _add,
+        at: function(index) {
+            return collections.at(_types, index);
+        },
+        size: function() {
+            return collections.size(_types);
+        },
+        byName: function(name) {
+            return collections.byProperty(_types, "name", name);
+        },
+        defaultTypes: function() {
+            return angular.copy(paddockTypeDefaults.types);
+        },
+        toArray: function() {
+            return angular.copy(_types);
+        },
+        removeAt: function(index) {
+            return collections.removeAt(_types, index);
+        },
+        last: function() {
+            return collections.last(_types);
+        },
+        load: function(PaddockTypes) {
+            _types = PaddockTypes.types;
+        }
+    };
+    return paddockTypes;
 });
 
 "use strict";

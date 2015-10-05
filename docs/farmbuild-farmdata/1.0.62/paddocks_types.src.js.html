@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>farmdata/session - Documentation</title>
+    <title>paddocks/types.src.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,287 +28,113 @@
 
 <div id="main">
     
-    <h1 class="page-title">farmdata/session</h1>
+    <h1 class="page-title">paddocks/types.src.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>farmdata class</p></div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="session_index.src.js.html">session/index.src.js</a>, <a href="session_index.src.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="~export"><span class="type-signature">(inner) </span>export<span class="signature">(document, farmData)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Exports the farmData.json with a file name: farmdata-NAME_OF_FILE-yyyyMMddHHmmss.json
-It creates <a> element with 'download' attribute, the data is attached to href
-and invoke click() function so the user gets the file save dialogue or something equivalent.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>document</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>farmData</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="session_index.src.js.html">session/index.src.js</a>, <a href="session_index.src.js.html#line84">line 84</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @since 1.1.0
+ * @copyright 2015 State of Victoria.
+
+ * @author State of Victoria
+ * @version 1.1.0
+ */
+
+'use strict';
+
+/**
+ * farmdata class
+ * @module farmdata/paddockTypes
+ */
+angular.module('farmbuild.farmdata')
+  .factory('farmdataPaddockTypes',
+  function (collections, validations, paddockTypeDefaults, $log) {
+
+    var paddockTypes,
+      _types = angular.copy(paddockTypeDefaults.types),
+      _isDefined = validations.isDefined, _isAlphanumeric = validations.isAlphanumeric;
+
+    function _create(name){
+      return {
+        name: name
+      }
+    }
+
+    function _add(name) {
+      if(!_isDefined(name) || !_isAlphanumeric(name)){
+        $log.error('Please specify a valid name for paddock type');
+        return;
+      }
+      return collections.add(_types, _create(name));
+    };
+
+    /**
+     * Paddock types collection api
+     * @property {object} Types - Paddock types collection
+     * @public
+     * @static
+     */
+    paddockTypes = {
+      /**
+       * Adds a new Paddock type for nutrient calculation
+       * @method add
+       * @param {!string} name - name of new type, can only contain alphanumeric values with space or underscore but no other special characters
+       * @returns {object} types
+       * @public
+       * @static
+       */
+      add: _add,
+      /**
+       * Returns the PaddockType at specified index
+       * @method at
+       * @returns {object} PaddockType
+       * @public
+       * @static
+       */
+      at: function(index) { return collections.at(_types, index)},
+      size: function() { return collections.size(_types)},
+      byName: function(name) { return collections.byProperty(_types, 'name', name)},
+      defaultTypes: function() { return angular.copy(paddockTypeDefaults.types)},
+      /**
+       * Returns PaddockTypes collection as an array
+       * @method toArray
+       * @returns {Array} PaddockTypes
+       * @public
+       * @static
+       */
+      toArray: function() { return angular.copy(_types) },
+      /**
+       * Removes the Paddock type at specified index
+       * @method removeAt
+       * @returns {object} PaddockTypes collection
+       * @public
+       * @static
+       */
+      removeAt: function(index) { return collections.removeAt(_types, index)},
+      last: function() { return collections.last(_types) },
+      /**
+       * Loads the types in PaddockTypes
+       * @method load
+       * @param PaddockTypes
+       * @returns {object} fertilizersPurchased
+       * @public
+       * @static
+       */
+      load: function(PaddockTypes) {
+        _types = PaddockTypes.types;
+      }
+    };
+
+    return paddockTypes;
+  });</code></pre>
+        </article>
+    </section>
 
 
 
