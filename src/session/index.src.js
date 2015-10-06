@@ -97,7 +97,6 @@ angular.module('farmbuild.farmdata')
         $log.error('Unable to load farmData... it is invalid');
         return undefined;
       }
-      loadDefaults(farmData);
       return farmdataSession.save(farmData).find();
     };
 
