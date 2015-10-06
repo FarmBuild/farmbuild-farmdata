@@ -2129,7 +2129,7 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddockTypes", function(co
             return;
         }
         if (_isDefined(paddockTypes.byName(name))) {
-            $log.error("There is a paddock type with the same name, please use another name");
+            $log.error("There is a paddock type with the same name, please use another name", name);
             return;
         }
         return collections.add(_types, _create(name));

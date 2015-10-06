@@ -33,7 +33,7 @@ angular.module('farmbuild.farmdata')
       }
 
       if(_isDefined(paddockTypes.byName(name))){
-        $log.error('There is a paddock type with the same name, please use another name');
+        $log.error('There is a paddock type with the same name, please use another name', name);
         return;
       }
 
