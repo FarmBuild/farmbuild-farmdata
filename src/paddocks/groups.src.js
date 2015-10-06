@@ -53,10 +53,10 @@ angular.module('farmbuild.farmdata')
 
     paddockGroups = {
       /**
-       * Adds a new Paddock group for nutrient calculation
+       * Adds a new Paddock group to farmdata PaddockGroups
        * @method add
-       * @param {!string} name - name of new group, can only contain alphanumeric values with space, underscore or dash but no other special characters
-       * @returns {object} groups
+       * @param {!string} name - name of new group. it must be unique, can only contain alphanumeric values with space, underscore or dash but no other special characters
+       * @returns {object} PaddockGroups collection
        * @public
        * @static
        */
@@ -93,7 +93,7 @@ angular.module('farmbuild.farmdata')
        * Loads the groups in PaddockGroups
        * @method load
        * @param PaddockGroups
-       * @returns {object} fertilizersPurchased
+       * @returns {object} PaddockGroups collection
        * @public
        * @static
        */

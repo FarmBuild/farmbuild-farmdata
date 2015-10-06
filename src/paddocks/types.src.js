@@ -52,10 +52,10 @@ angular.module('farmbuild.farmdata')
 
     paddockTypes = {
       /**
-       * Adds a new Paddock type for nutrient calculation
+       * Adds a new Paddock type to farmdata PaddockTypes
        * @method add
-       * @param {!string} name - name of new type, can only contain alphanumeric values with space or underscore but no other special characters
-       * @returns {object} types
+       * @param {!string} name - name of new type. it must be unique, can only contain alphanumeric values with space or underscore but no other special characters
+       * @returns {object} PaddockTypes collection
        * @public
        * @static
        */
@@ -92,7 +92,7 @@ angular.module('farmbuild.farmdata')
        * Loads the types in PaddockTypes
        * @method load
        * @param PaddockTypes
-       * @returns {object} PaddockTypes
+       * @returns {object} PaddockTypes collection
        * @public
        * @static
        */
