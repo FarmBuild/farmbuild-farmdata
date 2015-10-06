@@ -8,7 +8,7 @@ describe('farmbuild.farmdata.paddockTypes module', function() {
     $provide.value('$log', console)
   }));
 
-  var farmdataPaddockTypes, annualPasture = 'Annual Pasture', collections;
+  var farmdataPaddockTypes, annualPasture = 'Annual Pasture', newAnnualPasture = 'Annual Pasture2', collections;
 
   beforeEach(module('farmbuild.farmdata'));
 
@@ -33,12 +33,12 @@ describe('farmbuild.farmdata.paddockTypes module', function() {
   });
 
   describe('types.add', function(){
-    it('add should create ' + annualPasture, inject(function() {
+    it('add should create ' + newAnnualPasture, inject(function() {
       var
-        types = farmdataPaddockTypes.add(annualPasture),
+        types = farmdataPaddockTypes.add(newAnnualPasture),
         added = collections.last(types);
 
-      expect(added.name).toEqual(annualPasture);
+      expect(added.name).toEqual(newAnnualPasture);
     }));
   });
 

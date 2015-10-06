@@ -32,7 +32,23 @@ angular.module('farmbuild.farmdata')
         $log.error('Please specify a valid name for paddock group', _isString(name));
         return;
       }
+
+      if(_isDefined(paddockGroups.byName(name))){
+        $log.error('There is a paddock group with the same name, please use another name');
+        return;
+      }
+
       return collections.add(_groups, _create(name));
+    }
+
+    function _validateGroups(paddockGroups){
+      var isValid = true;
+      angular.forEach(paddockGroups, function(paddockGroup){
+        if(!_isDefined(paddockGroup) ||!_isDefined(paddockGroup.name) || !_isAlphanumeric(paddockGroup.name) || !_isArray(paddockGroup.paddocks)){
+          isValid = false;
+        }
+      });
+      return isValid;
     }
 
     paddockGroups = {
@@ -82,6 +98,10 @@ angular.module('farmbuild.farmdata')
        * @static
        */
       load: function(PaddockGroups) {
+        if(!_validateGroups()){
+          $log.error('There is a problem in custom paddock group passed, please check if all paddock groups have a valid name and an array of paddocks');
+          return;
+        }
         _groups = PaddockGroups;
       }
     };

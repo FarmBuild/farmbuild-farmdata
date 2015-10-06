@@ -8,7 +8,7 @@ describe('farmbuild.farmdata.paddockGroups module', function() {
     $provide.value('$log', console)
   }));
 
-  var farmdataPaddockGroups, futureCrop = 'FC - Future Crop', collections;
+  var farmdataPaddockGroups, futureCrop = 'FC - Future Crop', newFutureCrop = 'FC - Future Crop2', collections;
 
   beforeEach(module('farmbuild.farmdata'));
 
@@ -33,12 +33,12 @@ describe('farmbuild.farmdata.paddockGroups module', function() {
   });
 
   describe('types.add', function(){
-    it('add should create ' + futureCrop, inject(function() {
+    it('add should create ' + newFutureCrop, inject(function() {
       var
-        types = farmdataPaddockGroups.add(futureCrop),
+        types = farmdataPaddockGroups.add(newFutureCrop),
         added = collections.last(types);
 
-      expect(added.name).toEqual(futureCrop);
+      expect(added.name).toEqual(newFutureCrop);
     }));
   });
 
