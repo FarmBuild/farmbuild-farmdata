@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>paddocks/groups.src.js - Documentation</title>
+    <title>paddocks/types.src.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,7 +28,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">paddocks/groups.src.js</h1>
+    <h1 class="page-title">paddocks/types.src.js</h1>
     
 
     
@@ -50,103 +50,102 @@
 
 /**
  * farmdata class
- * @module farmdata/paddockGroups
+ * @module farmdata/paddockTypes
  */
 angular.module('farmbuild.farmdata')
-  .factory('farmdataPaddockGroups',
-  function ($log, collections, validations, paddockGroupDefaults) {
+  .factory('farmdataPaddockTypes',
+  function (collections, validations, paddockTypeDefaults, $log) {
 
-    var paddockGroups,
-      _groups = angular.copy(paddockGroupDefaults.groups),
-      _isDefined = validations.isDefined, _isString = validations.isString;
+    var paddockTypes,
+      _types = angular.copy(paddockTypeDefaults.types),
+      _isDefined = validations.isDefined, _isAlphanumeric = validations.isAlphanumeric, _isArray = validations.isArray;
 
     function _create(name){
       return {
-        name: name,
-        paddocks: []
+        name: name
       }
     }
 
     function _add(name) {
-      if(!_isDefined(name) || !_isString(name)){
-        $log.error('Please specify a valid name for paddock group', _isString(name));
+      if(!_isDefined(name) || !_isAlphanumeric(name)){
+        $log.error('Please specify a valid name for paddock type');
         return;
       }
 
-      if(_isDefined(paddockGroups.byName(name))){
-        $log.error('There is a paddock group with the same name, please use another name', name);
+      if(_isDefined(paddockTypes.byName(name))){
+        $log.error('There is a paddock type with the same name, please use another name', name);
         return;
       }
 
-      return collections.add(_groups, _create(name));
-    }
+      return collections.add(_types, _create(name));
+    };
 
-    function _validateGroups(paddockGroups){
+    function _validateTypes(paddockTypes){
       var isValid = true;
-      angular.forEach(paddockGroups, function(paddockGroup){
-        if(!_isDefined(paddockGroup) ||!_isDefined(paddockGroup.name) || !_isAlphanumeric(paddockGroup.name) || !_isArray(paddockGroup.paddocks)){
+      angular.forEach(paddockTypes, function(paddockType){
+        if(!_isDefined(paddockType) ||!_isDefined(paddockType.name) || !_isAlphanumeric(paddockType.name)){
           isValid = false;
         }
       });
       return isValid;
     }
 
-    paddockGroups = {
+    paddockTypes = {
       /**
-       * Adds a new Paddock group to farmdata PaddockGroups
+       * Adds a new Paddock type to farmdata PaddockTypes
        * @method add
-       * @param {!string} name - name of new group. it must be unique, can only contain alphanumeric values with space, underscore or dash but no other special characters
-       * @returns {object} PaddockGroups collection
+       * @param {!string} name - name of new type. it must be unique, can only contain alphanumeric values with space or underscore but no other special characters
+       * @returns {object} PaddockTypes collection
        * @public
        * @static
        */
       add: _add,
       /**
-       * Returns the PaddockGroup at specified index
+       * Returns the PaddockType at specified index
        * @method at
-       * @returns {object} PaddockGroup
+       * @returns {object} PaddockType
        * @public
        * @static
        */
-      at: function(index) { return collections.at(_groups, index)},
-      size: function() { return collections.size(_groups)},
-      byName: function(name) { return collections.byProperty(_groups, 'name', name)},
-      defaultTypes: function() { return angular.copy(paddockTypeDefaults.groups)},
+      at: function(index) { return collections.at(_types, index)},
+      size: function() { return collections.size(_types)},
+      byName: function(name) { return collections.byProperty(_types, 'name', name)},
+      defaultTypes: function() { return angular.copy(paddockTypeDefaults.types)},
       /**
-       * Returns PaddockGroups collection as an array
+       * Returns PaddockTypes collection as an array
        * @method toArray
-       * @returns {Array} PaddockGroups
+       * @returns {Array} PaddockTypes
        * @public
        * @static
        */
-      toArray: function() { return angular.copy(_groups) },
+      toArray: function() { return angular.copy(_types) },
       /**
-       * Removes the Paddock group at specified index
+       * Removes the Paddock type at specified index
        * @method removeAt
-       * @returns {object} PaddockGroups collection
+       * @returns {object} PaddockTypes collection
        * @public
        * @static
        */
-      removeAt: function(index) { return collections.removeAt(_groups, index)},
-      last: function() { return collections.last(_groups) },
+      removeAt: function(index) { return collections.removeAt(_types, index)},
+      last: function() { return collections.last(_types) },
       /**
-       * Loads the groups in PaddockGroups
+       * Loads the types in PaddockTypes
        * @method load
-       * @param PaddockGroups
-       * @returns {object} PaddockGroups collection
+       * @param PaddockTypes
+       * @returns {object} PaddockTypes collection
        * @public
        * @static
        */
-      load: function(PaddockGroups) {
-        if(!_validateGroups()){
-          $log.error('There is a problem in custom paddock group passed, please check if all paddock groups have a valid name and an array of paddocks');
+      load: function(PaddockTypes) {
+        if(!_validateTypes()){
+          $log.error('There is a problem in custom paddock type passed, please check if all paddock types have a valid name');
           return;
         }
-        _groups = PaddockGroups;
+        _types = PaddockTypes;
       }
     };
 
-    return paddockGroups;
+    return paddockTypes;
   });</code></pre>
         </article>
     </section>
@@ -159,7 +158,7 @@ angular.module('farmbuild.farmdata')
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Wed Oct 07 2015 10:13:21 GMT+1100 (AEDT) using the Minami theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Wed Oct 07 2015 10:27:48 GMT+1100 (AEDT) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
