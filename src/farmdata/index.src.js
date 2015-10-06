@@ -106,6 +106,7 @@ angular.module('farmbuild.farmdata')
      * @param {string} id - The ID of this farm in case if you manage this farm in an external system, so you can map the farmData
      * with the external system
      * @param {!string} name - The name of the farm
+     * @param {!string} projectionName - The projection name
      * @returns {Object} the farmdata object, undefined if the required fields are not provided
      * @public
      * @static
