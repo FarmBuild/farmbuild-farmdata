@@ -25,6 +25,7 @@ module.exports = function (config) {
 			'src/session/index.src.js',
 //      'src/specs/blank.spec.js',
 //      'src/farmdata/index-merge.spec.js',
+//      'src/farmdata/index.spec.js',
 //      'src/session/index-merge.spec.js',
 //      'src/validator/geojsonhint.spec.js',
 //      'src/validator/geo.spec.js',
