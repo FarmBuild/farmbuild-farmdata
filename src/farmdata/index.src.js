@@ -111,7 +111,7 @@ angular.module('farmbuild.farmdata')
 		 * with the external system
 		 * @param {!string} name - The name of the farm
 		 * @param {!string} projectionName - The projection name
-		 * @param {!Object} options - an object that describes configuration for different sections
+		 * @param {!Object} options - an object that describes configuration for different sections. Currently you can specify and array for paddockGroups and paddockTypes
 		 * @returns {Object} the farmdata object, undefined if the required fields are not provided
 		 * @public
 		 * @static
