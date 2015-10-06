@@ -76,8 +76,6 @@ angular.module('farmbuild.farmdata')
         farmdataPaddockTypes.load(farmdata.paddockTypes);
       }
 
-      return farmdata;
-
     }
 
     farmdataSession.find = function() {
@@ -89,7 +87,7 @@ angular.module('farmbuild.farmdata')
 
       farmdata = angular.fromJson(json);
 
-      farmdata = loadDefaults(farmdata);
+      loadDefaults(farmdata);
 
       return farmdata;
     };
@@ -99,7 +97,7 @@ angular.module('farmbuild.farmdata')
         $log.error('Unable to load farmData... it is invalid');
         return undefined;
       }
-      farmData = loadDefaults(farmData);
+      loadDefaults(farmData);
       return farmdataSession.save(farmData).find();
     };
 
