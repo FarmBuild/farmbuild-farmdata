@@ -1,23 +1,23 @@
 angular.module('farmbuild.farmdata').
-    constant('paddockGroupDefaults', {
-        "groups": [
-            {name:'N/A - Type Not Set'},
-            {name:'E - Effluent'},
-            {name:'N - Night Paddocks'},
-            {name:'A - Average Use and Soil Type Paddock'},
-            {name:'UL - Usually Harvested, Limited Feeding Back'},
-            {name:'UF - Usually Harvested, Usually Fed Back'},
-            {name:'NL - Never Harvested and Limited Feeding Back'},
-            {name:'NF - Never Harvested and Usually Fed Back'},
-            {name:'NL1 - 1st Variation of NL'},
-            {name:'NL2 - 2nd Variation of NL'},
-            {name:'NF1 - 1st Variation of NF'},
-            {name:'NF2 - 2nd Variation of NF'},
-            {name:'UL1 - 1st Variation of UL'},
-            {name:'UF1 - 1st Variation of UF'},
-            {name:'C - Crop'},
-            {name:'FC - Future Crop'},
-            {name:'O - Other'},
-            {name:'O1 - 1st Variation of O'}
-        ]
-    });
+  constant('paddockGroupDefaults', {
+      "groups": [
+          {name:'N/A - Type Not Set', paddocks:[]},
+          {name:'E - Effluent', paddocks:[]},
+          {name:'N - Night Paddocks', paddocks:[]},
+          {name:'A - Average Use and Soil Type Paddock', paddocks:[]},
+          {name:'UL - Usually Harvested, Limited Feeding Back', paddocks:[]},
+          {name:'UF - Usually Harvested, Usually Fed Back', paddocks:[]},
+          {name:'NL - Never Harvested and Limited Feeding Back', paddocks:[]},
+          {name:'NF - Never Harvested and Usually Fed Back', paddocks:[]},
+          {name:'NL1 - 1st Variation of NL', paddocks:[]},
+          {name:'NL2 - 2nd Variation of NL', paddocks:[]},
+          {name:'NF1 - 1st Variation of NF', paddocks:[]},
+          {name:'NF2 - 2nd Variation of NF', paddocks:[]},
+          {name:'UL1 - 1st Variation of UL', paddocks:[]},
+          {name:'UF1 - 1st Variation of UF', paddocks:[]},
+          {name:'C - Crop', paddocks:[]},
+          {name:'FC - Future Crop', paddocks:[]},
+          {name:'O - Other', paddocks:[]},
+          {name:'O1 - 1st Variation of O', paddocks:[]}
+      ]
+  });

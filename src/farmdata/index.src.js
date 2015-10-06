@@ -23,6 +23,7 @@ angular.module('farmbuild.farmdata')
         crsSupported: crsSupported
       },
       isEmpty = validations.isEmpty,
+      isDefined = validations.isDefined,
       defaults = {
         id:'' + (new Date()).getTime(),
         name:'My new farm',
@@ -33,7 +34,19 @@ angular.module('farmbuild.farmdata')
         g.crs = (!isEmpty(projectionName)?projectionName: g.crs);
         return g;
       },
-      create = function(name, id, projectionName) {
+      create = function(name, id, projectionName, options) {
+
+        if (isDefined(options)) {
+          if (isDefined(options.paddocks)) {
+            if (isDefined(options.paddocks.groups)) {
+              farmdataPaddockGroups.load(options.paddocks.groups);
+            }
+            if (isDefined(options.paddocks.types)) {
+              farmdataPaddockTypes.load(options.paddocks.types);
+            }
+          }
+        }
+
         return {
           version : 1.0,
           dateCreated : new Date(),
@@ -42,6 +55,8 @@ angular.module('farmbuild.farmdata')
           name : (isEmpty(name)?defaults.name:name),
           geometry : geometry(projectionName),
           paddocks:[],
+          paddockGroups: farmdataPaddockGroups.toArray(),
+          paddockTypes: farmdataPaddockTypes.toArray(),
           area : 0,
           areaUnit:'hectare'
         }

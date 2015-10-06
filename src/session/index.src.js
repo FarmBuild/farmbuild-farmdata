@@ -17,6 +17,8 @@ angular.module('farmbuild.farmdata')
             farmdataValidator,
             farmdataConverter,
             farmdataPaddocks,
+            farmdataPaddockGroups,
+            farmdataPaddockTypes,
             validations) {
     var farmdataSession = {},
       isDefined = validations.isDefined
@@ -58,18 +60,36 @@ angular.module('farmbuild.farmdata')
     farmdataSession.update = function(farmData) {
       $log.info('update farmData');
       farmData.dateLastUpdated = new Date();
+      farmData.paddockGroups = farmdataPaddockGroups.toArray();
+      farmData.paddockTypes = farmdataPaddockTypes.toArray();
       farmdataSession.save(farmData);
       return farmdataSession;
     }
 
+    function loadDefaults(farmdata){
+
+      if (isDefined(farmdata.paddockGroups)) {
+        farmdataPaddockGroups.load(farmdata.paddockGroups);
+      }
+
+      if (isDefined(farmdata.paddockTypes)) {
+        farmdataPaddockTypes.load(farmdata.paddockTypes);
+      }
+
+    }
+
     farmdataSession.find = function() {
-      var json = sessionStorage.getItem('farmData');
+      var json = sessionStorage.getItem('farmData'), farmdata;
 
       if(json === null) {
         return undefined;
       }
 
-      return angular.fromJson(json);
+      farmdata = angular.fromJson(json);
+
+      farmdata = loadDefaults(farmdata);
+
+      return farmdata;
     };
 
     farmdataSession.load = function(farmData) {
@@ -77,7 +97,7 @@ angular.module('farmbuild.farmdata')
         $log.error('Unable to load farmData... it is invalid');
         return undefined;
       }
-
+      farmData = loadDefaults(farmData);
       return farmdataSession.save(farmData).find();
     };
 

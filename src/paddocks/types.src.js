@@ -81,7 +81,7 @@ angular.module('farmbuild.farmdata')
        * @static
        */
       load: function(PaddockTypes) {
-        _types = PaddockTypes.types;
+        _types = PaddockTypes;
       }
     };
 

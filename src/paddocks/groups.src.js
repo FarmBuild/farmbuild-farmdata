@@ -14,7 +14,7 @@
  */
 angular.module('farmbuild.farmdata')
   .factory('farmdataPaddockGroups',
-  function (collections, validations, paddockGroupDefaults, $log) {
+  function ($log, collections, validations, paddockGroupDefaults) {
 
     var paddockGroups,
       _groups = angular.copy(paddockGroupDefaults.groups),
@@ -33,7 +33,7 @@ angular.module('farmbuild.farmdata')
         return;
       }
       return collections.add(_groups, _create(name));
-    };
+    }
 
     paddockGroups = {
       /**
@@ -82,7 +82,7 @@ angular.module('farmbuild.farmdata')
        * @static
        */
       load: function(PaddockGroups) {
-        _groups = PaddockGroups.groups;
+        _groups = PaddockGroups;
       }
     };
 
