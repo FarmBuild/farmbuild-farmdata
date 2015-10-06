@@ -2286,7 +2286,6 @@ angular.module("farmbuild.farmdata").factory("farmdataSession", function($log, $
             $log.error("Unable to load farmData... it is invalid");
             return undefined;
         }
-        loadDefaults(farmData);
         return farmdataSession.save(farmData).find();
     };
     farmdataSession.export = function(document, farmData) {
