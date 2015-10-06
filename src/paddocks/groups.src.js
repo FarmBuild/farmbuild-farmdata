@@ -34,7 +34,7 @@ angular.module('farmbuild.farmdata')
       }
 
       if(_isDefined(paddockGroups.byName(name))){
-        $log.error('There is a paddock group with the same name, please use another name');
+        $log.error('There is a paddock group with the same name, please use another name', name);
         return;
       }
 
