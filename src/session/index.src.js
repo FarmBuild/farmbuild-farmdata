@@ -76,6 +76,8 @@ angular.module('farmbuild.farmdata')
         farmdataPaddockTypes.load(farmdata.paddockTypes);
       }
 
+      return farmdata;
+
     }
 
     farmdataSession.find = function() {
