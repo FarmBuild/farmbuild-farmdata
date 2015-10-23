@@ -8,10 +8,7 @@
 
 #FarmData Example data
 
-"susan-farm-final-example.json" is an instance of the FarmData containing "Susan's farm" contents including:
-
-* Name
-* Paddocks
+"susan-farm-final-example.json" is an instance of the FarmData containing "Susan's farm" contents including Name,* Paddocks
 
 The example json is used for API test as well as the example pages of each FarmBuild module.
 
