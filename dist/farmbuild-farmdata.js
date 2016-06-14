@@ -1993,8 +1993,11 @@ angular.module("farmbuild.farmdata").factory("farmdataPaddockGroups", function($
 
 angular.module("farmbuild.farmdata").factory("farmdataPaddocks", function($log, collections, validations, farmdataPaddockValidator, farmdataPaddockGroups, farmdataConverter) {
     var farmdataPaddocks = {}, _isDefined = validations.isDefined;
+    function randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
     function createName() {
-        return "Paddock " + new Date().getTime();
+        return "Paddock " + new Date().getTime() + randomInt(1, 1e3);
     }
     function generateId() {
         return new Date().getTime();
