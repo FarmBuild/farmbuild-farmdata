@@ -1,6 +1,6 @@
 describe('farmbuild.farmdata module', function () {
 	// instantiate log
-	var $log, farmdataPaddocks, farmdata, farmdataConverter,
+	var $log, farmdataPaddocks, farmdata, farmdataConverter, paddockGroupDefaults,
 		susanFarm = {
 			"version": 1.0,
 			"dateCreated": "2015-03-30T21:19:00",
@@ -93,14 +93,21 @@ describe('farmbuild.farmdata module', function () {
 		fixture.setBase('data')
 	})
 
-	beforeEach(inject(function (_$log_, _farmdataPaddocks_, _farmdata_, _farmdataConverter_) {
+	beforeEach(inject(function (_$log_, _farmdataPaddocks_, _farmdata_, _farmdataConverter_, _paddockGroupDefaults_) {
 		$log = _$log_;
 		farmdataPaddocks = _farmdataPaddocks_;
 		farmdata = _farmdata_;
 		farmdataConverter = _farmdataConverter_;
+		paddockGroupDefaults = _paddockGroupDefaults_;
 	}))
 
-	function createGeometry() {
+	function createGeometry(coordinates) {
+		coordinates = (angular.isDefined(coordinates)&&angular.isArray(coordinates)?coordinates:[[[16205687.520831015, -4331788.270308661],
+			[16205603.152080152, -4331789.188156667],
+			[16205599.164149445, -4331941.003031067],
+			[16205687.01904266, -4331942.85666477],
+			[16205686.7631797, -4331933.887643515],
+			[16205687.520831015, -4331788.270308661]]]);
 		return {
 			"type": "Polygon",
 			"crs": {
@@ -109,12 +116,7 @@ describe('farmbuild.farmdata module', function () {
 					"name": "EPSG:4283"
 				}
 			},
-			"coordinates": [[[16205687.520831015, -4331788.270308661],
-				[16205603.152080152, -4331789.188156667],
-				[16205599.164149445, -4331941.003031067],
-				[16205687.01904266, -4331942.85666477],
-				[16205686.7631797, -4331933.887643515],
-				[16205687.520831015, -4331788.270308661]]]
+			"coordinates": coordinates
 		};
 	}
 
@@ -126,29 +128,58 @@ describe('farmbuild.farmdata module', function () {
 
 	describe('farmdataPaddocks.merge should merge the geoJson into the farmData', function () {
 		it('adding a new paddock', inject(function () {
-			var farmDataNew = farmdata.create(),
-				geoJsonsNew = farmdataConverter.toGeoJsons(farmDataNew),
-				paddockFeatureNew = farmdataPaddocks.createPaddockFeature(createGeometry());
+			var farmDataNew = farmdata.create();
+
+			var	geoJsonsNew = farmdataConverter.toGeoJsons(farmDataNew);
 
 			expect(geoJsonsNew.paddocks).toBeDefined();
 			expect(geoJsonsNew.paddocks.features).toBeDefined();
 			expect(geoJsonsNew.paddocks.features.length).toBe(0);
 
+			//Creating 2 paddocks containing a different polygon and names
+			var paddockFeatureNew = farmdataPaddocks.createPaddockFeature(createGeometry());
+			paddockFeatureNew.properties.group = paddockGroupDefaults.groups[1];
+			var paddockFeatureName = paddockFeatureNew.properties.name;
+			var paddockFeatureNew2 = farmdataPaddocks.createPaddockFeature(createGeometry([
+				[
+					[16205856.306951968, -4331933.674996614],
+					[16205755.568683043, -4331934.290393877],
+					[16205686.7631797, -4331933.887643515],
+					[16205689.872803545, -4332042.891894536],
+					[16205856.96103645, -4332042.265172983],
+					[16205856.306951968, -4331933.674996614]
+				]
+			]));
+			paddockFeatureNew2.properties.group = paddockGroupDefaults.groups[1];
+			var paddockFeatureName2 = paddockFeatureNew.properties.name;
+
+			//Adding 2 paddocks
 			geoJsonsNew.paddocks.features.push(paddockFeatureNew);
+			geoJsonsNew.paddocks.features.push(paddockFeatureNew2);
+
 			var geoJsonsAdded = geoJsonsNew;
-			expect(geoJsonsAdded.paddocks.features.length).toBe(1);
+			expect(geoJsonsAdded.paddocks.features.length).toBe(2);
 			var toVerify = geoJsonsAdded.paddocks.features[0];
 			expect(angular.equals(paddockFeatureNew, toVerify)).toBeTruthy();
 
 			var farmDataAdded = farmdata.merge(farmDataNew, geoJsonsAdded);
 
-			expect(farmDataAdded.paddocks.length).toBe(1);
+			expect(farmDataAdded.paddocks.length).toBe(2);
 			var farmDataPaddock = farmDataAdded.paddocks[0];
 
 			expect(farmDataPaddock.name).toBe(paddockFeatureNew.properties.name);
 			expect(farmDataPaddock.geometry.coordinates.length).toBe(paddockFeatureNew.geometry.coordinates.length);
 			expect(angular.equals(farmDataPaddock.geometry.coordinates, paddockFeatureNew.geometry.coordinates)).toBeTruthy();
 
+			//Evaluate teh group.paddocks
+			expect(farmDataAdded.paddockGroups.length).toBe(18)
+			var effluentGroup = farmDataAdded.paddockGroups[1];
+			expect(effluentGroup.name).toBe('E - Effluent');
+			expect(effluentGroup.paddocks.length).toBe(2);
+
+			//the names exist...
+			expect(effluentGroup.paddocks.indexOf(paddockFeatureName) > -1).toBeTruthy();
+			expect(effluentGroup.paddocks.indexOf(paddockFeatureName2) > -1).toBeTruthy();
 		}));
 
 		it('updating existing paddock', inject(function () {

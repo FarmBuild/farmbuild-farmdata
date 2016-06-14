@@ -25,7 +25,7 @@
     "ncp": "2.0.0",
     "generate-schema": "2.1.1",
     "replace": "^0.3",
-    "geojsonhint": "^1.0",
+    "geojsonhint": "1.0.1",
     "tokml": "0.3.0"
   },
   "scripts": {
