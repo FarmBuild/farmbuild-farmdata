@@ -57,6 +57,7 @@ angular.module('farmbuild.farmdata')
 				comment: paddockFeature.properties.comment,
 				type: paddockFeature.properties.type,
 				area: paddockFeature.properties.area,
+				areaUnit: paddockFeature.properties.areaUnit,
 				group: paddockFeature.properties.group,
 				geometry: farmdataConverter.convertToFarmDataGeometry(paddockFeature.geometry),
 				dateLastUpdated: new Date()
@@ -90,6 +91,7 @@ angular.module('farmbuild.farmdata')
 			toUpdate.comment = paddockFeature.properties.comment;
 			toUpdate.type = paddockFeature.properties.type;
 			toUpdate.area = paddockFeature.properties.area;
+			toUpdate.areaUnit = paddockFeature.properties.areaUnit;
 			toUpdate.group = paddockFeature.properties.group;
 			toUpdate.geometry = farmdataConverter.convertToFarmDataGeometry(paddockFeature.geometry);
 			toUpdate.dateLastUpdated = new Date();
