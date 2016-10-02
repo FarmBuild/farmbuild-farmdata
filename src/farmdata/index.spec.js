@@ -35,6 +35,7 @@ describe('farmbuild.farmdata module', function () {
 
 			expect(data.geometry.coordinates).toBeDefined();
 			expect(data.area).toBeDefined();
+			expect(data.areaUnit).toBeDefined();
 			expect(data.name).toEqual(farmdata.defaultValues().name);
 
 			expect(data.paddocks).toBeDefined();
@@ -70,6 +71,7 @@ describe('farmbuild.farmdata module', function () {
 
 			expect(data.geometry.coordinates).toBeDefined();
 			expect(data.area).toBeDefined();
+			expect(data.areaUnit).toBeDefined();
 			expect(data.name).toEqual(name);
 
 			expect(farmdata.paddockGroups.toArray()).toEqual(myOptions.paddockGroups);

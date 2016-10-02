@@ -95,7 +95,7 @@ angular.module('farmbuild.farmdata')
 			toUpdate.group = paddockFeature.properties.group;
 			toUpdate.geometry = farmdataConverter.convertToFarmDataGeometry(paddockFeature.geometry);
 			toUpdate.dateLastUpdated = new Date();
-			return toUpdate; 
+			return toUpdate;
 		}
 
 		farmdataPaddocks.updatePaddock = updatePaddock;
